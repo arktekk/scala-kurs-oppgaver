@@ -1,0 +1,798 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>picture show</title>
+        <link href="assets/css/show.css" type="text/css" rel="stylesheet" />
+        <link href="assets/css/prettify.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1325628871277" type="text/css" rel="stylesheet" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><h2>SCALA KURS</h2><pre><code>Jon-Anders Teigen
+Arktekk
+@jteigen
+</code></pre><br>
+<ul><li>Syntax
+</li><li>Klasser, Objekter, Traits
+</li><li>Funksjonell programmering
+</li><li>Testing
+</li><li>Collections
+</li><li>Implicits
+</li><li>Pattern matching
+</li><li>SBT, Dispatch, Unfiltered
+</li><li>og enda mer…
+</li></ul></div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h1>♥ MASSE programmering  ♥</h1><h1>♥ MASSE teori  ♥</h1></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h1>X3</h1><ul><li>Teori &amp; Oppgaver
+</li><li>Lunch (12.ish)
+</li><li>Teori &amp; Oppgaver
+</li><li>Kake :-D
+</li><li>Teori &amp; Oppgaver
+</li></ul><p><br>
+Pauser når dere føler for det!
+</p></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h1>Kloke hoder tenker best sammen</h1><ul><li>Jobb i par
+</li><li>Diskuter i par/felleskap
+</li><li>Spør om hjelp om dere sitter fast
+</li></ul></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h1>Men først …</h1><ul><li>Hvem er du ?
+</li><li>Hva har du lyst til å lære ?
+</li></ul></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h2><em>Ladies and gentlemen, start your engines..</em></h2><ul><li><a href="http://www.jetbrains.com/idea/" >IntelliJ</a>
+</li><li><a href="https://github.com/harrah/xsbt/wiki/Getting-Started-Setup" >SBT</a>
+</li><li><a href="http://help.github.com/win-set-up-git/" >Git</a>
+</li></ul><p>Sjekk ut koden
+<a href="https://github.com/arktekk/scala-kurs-oppgaver" >https://github.com/arktekk/scala-kurs-oppgaver</a>
+</p></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h2>literals</h2><pre><code class="prettyprint lang-scala font-90">&quot;hello&quot;             // string
+&quot;&quot;&quot;a multi
+line &quot;string&quot;
+&quot;&quot;&quot;                 // multiline escaped string
+5                   // int
+5.5                 // double
+5f                  // float
+1e30f               // float exponential
+1.0e-100            // exponential double
+0xA                 // 10 hex int
+012                 // 10 octal int
+1000L               // long
+'a'                 // character
+'\u0041'            // unicode character
+&lt;hello/&gt;            // xml
+true false          // boolean
+'alright            // symbol
+null
+</code></pre></div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h2>variabler</h2><pre><code class="prettyprint lang-scala">var foo = 5
+foo = 6
+
+// eksplisitt typet
+var foo:Int = 5
+</code></pre></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h2>values</h2><pre><code class="prettyprint lang-scala">val x = &quot;Hello&quot;
+
+// eksplisitt typet
+val x:String = &quot;Hello&quot;
+</code></pre></div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><h2>metode</h2><pre><code class="prettyprint lang-scala">def foo:Int = {
+  return 5
+}
+</code></pre></div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><h2>metode</h2><pre><code class="prettyprint lang-scala">def foo:Int = {
+  5
+}
+
+// siste expression returneres alltid
+</code></pre></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h2>metode</h2><pre><code class="prettyprint lang-scala">def foo = {
+  5
+}
+
+// return type inference
+</code></pre></div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h2>metode</h2><pre><code class="prettyprint lang-scala">def foo = 5
+
+// single expression
+</code></pre></div>
+      </div><div class="content" id="slide-13">
+       <div class="container"><h2>void/Unit metoder</h2><pre><code class="prettyprint lang-scala">def something(i:Int):Unit = {
+  println(&quot;Do &quot; + i)
+}
+</code></pre></div>
+      </div><div class="content" id="slide-14">
+       <div class="container"><h2>void/Unit metoder</h2><pre><code class="prettyprint lang-scala">def something(i:Int) {
+  println(&quot;Do &quot; + i)
+}
+
+// return type inference og ingen =
+</code></pre></div>
+      </div><div class="content" id="slide-15">
+       <div class="container"><h2>void/Unit uten parameter</h2><pre><code class="prettyprint lang-scala">def printSomething(){
+  println(&quot;something&quot;)
+}
+
+// () indikerer sideeffekt
+</code></pre></div>
+      </div><div class="content" id="slide-16">
+       <div class="container"><h2>nøstet definisjon</h2><pre><code class="prettyprint lang-scala">val nesting = {
+  def plus(a:Int, b:Int) = a + b
+  val x = {
+    val y = 5 - 3
+    y - 2	
+  }
+  val z = plus(x, 10)
+  z / 2
+}
+</code></pre></div>
+      </div><div class="content" id="slide-17">
+       <div class="container"><h2>lazy</h2><pre><code class="prettyprint lang-scala">lazy val person = {
+  println(&quot;fra DB&quot;)
+  DB.findPersonByPk(5)
+}
+println(&quot;etter&quot;)
+person.name
+
+// etter
+// fra DB
+</code></pre></div>
+      </div><div class="content" id="slide-18">
+       <div class="container"><h2>equality</h2><pre><code class="prettyprint lang-scala">val a = new String(&quot;Hello&quot;)
+val b = new String(&quot;Hello&quot;)
+
+a == b // true (java equals)
+a eq b // false (java ==)
+</code></pre></div>
+      </div><div class="content" id="slide-19">
+       <div class="container"><pre><code class="prettyprint lang-java font-60">class Person {
+  private final String name;
+  private Integer age;
+		
+  public Person(String name, Integer age){
+    this.name = name;
+    this.age = age;
+  }
+		
+  public String getName(){
+    return name;
+  }
+		
+  public Integer getAge(){
+    return age;
+  }
+		
+  public void setAge(Integer age){
+    this.age = age;
+  }
+		
+  public static Person create30(String name){
+    return new Person(name, 30);
+  }
+		
+  @Override
+  public String toString(){
+    return &quot;[&quot;+name+&quot;,&quot;+age+&quot;]&quot;;
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-20">
+       <div class="container"><h2>object / class</h2><pre><code class="prettyprint lang-scala">object Person {
+  def create30(name:String) = new Person(name, 30)
+}
+	
+class Person(val name: String, var age: Int){
+  override def toString = &quot;[&quot;+name+&quot;,&quot;+age+&quot;]&quot;
+}
+
+</code></pre></div>
+      </div><div class="content" id="slide-21">
+       <div class="container"><h2>unified access</h2><pre><code class="prettyprint lang-scala">class Person(private val _name: String,
+             private var _age: Int) {
+	  
+  def name = _name	
+
+  def age = _age	
+  
+  def age_=(a:Int){
+    _age = a	
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-22">
+       <div class="container"><h2>unified access</h2><pre><code class="prettyprint lang-scala">val person = Person.create30(&quot;foo&quot;)
+	
+person.name // foo
+	
+person.age = 29
+person.age // 29
+</code></pre></div>
+      </div><div class="content" id="slide-23">
+       <div class="container"><h2>tuples</h2><pre><code class="prettyprint lang-scala">val ab = (5, &quot;Hello&quot;)
+val ab = 5 -&gt; &quot;Hello&quot;
+
+val abc = (5.5, &quot;World&quot;, List(1, 2, 3))
+
+ab._1 == 5
+ab._2 == &quot;Hello&quot;
+
+abc._3 == List(1, 2, 3)
+</code></pre></div>
+      </div><div class="content" id="slide-24">
+       <div class="container"><h2>collections</h2><p><img  src="basic/collections.png" alt="collections" />
+</p></div>
+      </div><div class="content" id="slide-25">
+       <div class="container"><h2>“literals“</h2><pre><code class="prettyprint lang-scala">val list  = List(1, 2, 3)
+val map   = Map(1 -&gt; a&quot;, 2 -&gt; &quot;3)
+val set   = Set(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+val array = Array(1, 2, 3)
+val range = 1 to 10
+</code></pre></div>
+      </div><div class="content" id="slide-26">
+       <div class="container"><h2>mutable</h2><p><img  src="basic/mutable.png" alt="mutable" />
+</p></div>
+      </div><div class="content" id="slide-27">
+       <div class="container"><pre><code class="prettyprint lang-scala">import collection.mutable._
+
+val buffer = new ArrayBuffer[Int]
+
+buffer += 1
+buffer += 2
+
+buffer -= 1
+
+buffer.foreach(element =&gt; println(element))
+
+for(element &lt;- buffer)
+  println(element)
+</code></pre></div>
+      </div><div class="content" id="slide-28">
+       <div class="container"><pre><code class="prettyprint lang-scala">import collection.mutable._
+
+val map = new HashMap[Int, String]
+map += (1 -&gt; &quot;World&quot;)
+map += (2 -&gt; &quot;World&quot;)
+
+map -= 1
+map(2) = &quot;Oh yeah&quot;
+</code></pre></div>
+      </div><div class="content" id="slide-29">
+       <div class="container"><h2>immutable</h2><p><img  src="basic/immutable.png" alt="immutable" />
+</p></div>
+      </div><div class="content" id="slide-30">
+       <div class="container"><pre><code class="prettyprint lang-scala">val list = List(1, 2, 3)
+val cons = 1 :: 2 :: 3 :: Nil
+
+val map = Map(1 -&gt; &quot;Hello&quot;)
+val helloWorld = map + (2 -&gt; &quot;World&quot;)
+val world = helloWorld - 1
+
+val vector = Vector(1, 2)
+val done = vector :+ 3
+</code></pre></div>
+      </div><div class="content" id="slide-31">
+       <div class="container"><h2>map</h2><pre><code class="prettyprint lang-scala">List[+A]{
+  def map[B](f:A =&gt; B):List[B]
+}
+
+val list = List(1, 2, 3, 4)
+
+list.map(element =&gt; element * 2)
+// List(1, 4, 6, 8)
+</code></pre></div>
+      </div><div class="content" id="slide-32">
+       <div class="container"><h2>filter &amp; filterNot</h2><pre><code class="prettyprint lang-scala">List[+A]{
+  def filter(f:A =&gt; Boolean):List[A]
+}
+
+val list = List(1, 2, 3, 4)
+
+list.filter(element =&gt; element % 2 == 0)
+// List(2, 4)
+
+list.filterNot(element =&gt; element % 2 == 0)
+// List(1, 3)
+</code></pre></div>
+      </div><div class="content" id="slide-33">
+       <div class="container"><h2>flatMap</h2><pre><code class="prettyprint lang-scala">List[+A]{
+  def flatMap[B](f:A =&gt; Traversable[B]):List[B]
+}
+
+class Person(val pets:List[String])
+
+val family = List(new Person(List(&quot;Dog&quot;, &quot;Cat&quot;)), new Person(&quot;Fish&quot;))
+
+val familyPets = family.flatMap(p =&gt; p.pets)
+// List(&quot;Dog&quot;, &quot;Cat&quot;, &quot;Fish&quot;)
+
+val strings = List(&quot;a,b,c&quot;, &quot;d,e,f&quot;).flatMap(s =&gt; s.split(&quot;,&quot;))
+// List(a, b, c, d, e, f)
+</code></pre></div>
+      </div><div class="content" id="slide-34">
+       <div class="container"><h2>mer funksjonalitet</h2><pre><code class="prettyprint lang-scala">val first10 = list.take(10)
+
+val dropped = list.drop(5)
+
+val familier:Map[String, List[Person]] =
+  personer.groupBy(_.etternavn)
+
+val fornavn:Map[String, List[String]] = 
+  familier.mapValues(_.fornavn)
+
+val sortert:Seq[(String, List[String])] =
+  fornavn.toSeq.sortBy(_.1.size)
+
+List(1, 2, 3).contains(2) == true
+</code></pre></div>
+      </div><div class="content" id="slide-35">
+       <div class="container"><h2>Null ♥ ?</h2><pre><code class="prettyprint lang-java">import java.util.HashMap
+val map = new HashMap[Int, String]
+map.put(0, null)
+...
+map.get(0) // null
+map.get(1) // null
+
+if(map.containsKey(0)){
+  return map.get(0)
+}
+</code></pre></div>
+      </div><div class="content" id="slide-36">
+       <div class="container"><h2>Option</h2><pre><code class="prettyprint lang-scala">val map = Map(1 -&gt; &quot;Hello&quot;, 2 -&gt; &quot;World&quot;)
+map.get(1) // Some(&quot;Hello&quot;)
+map.get(0) // None
+
+map(1) // &quot;Hello&quot;
+map(0) // java.util.NoSuchElementException
+</code></pre></div>
+      </div><div class="content" id="slide-37">
+       <div class="container"><h2>Option</h2><pre><code class="prettyprint lang-scala">trait Option[+A] {
+  def get:A // eller java.util.NoSuchElementException
+  def getOrElse(a:A):A
+  def map(f:A =&gt; B):Option[B]
+  def flatMap(f:A =&gt; Option[B]):Option[B]
+}
+
+object None extends Option[Nothing]
+case class Some[A](value:A) extends Option[A]
+</code></pre></div>
+      </div><div class="content" id="slide-38">
+       <div class="container"><pre><code class="prettyprint lang-scala">class Adresse(val gate:String, val post:Option[String])
+class Person(val navn:String, val adresse:Option[Adresse])
+
+val kaare = new Person(&quot;Kaare&quot;, Some(new Adresse(&quot;Herr Nilsen&quot;, Some(&quot;Oslo&quot;)))
+val jonanders = new Person(&quot;Jon-Anders&quot;, None)
+
+jonanders.adresse.map(_.gate) // None
+kaare.adresse.map(_.gate)     // Some(&quot;Herr Nilsen&quot;)
+
+val jAddr = jonanders.adresse.flatMap(_.post) // None
+val kAddr = kaare.adresse.flatMap(_.post)     // Some(&quot;Oslo&quot;)
+
+jAddr.getOrElse(&quot;Ingen adresse&quot;) // &quot;Ingen adresse&quot;
+kAddr.get // &quot;Oslo&quot;
+jAddr.get // java.util.NoSuchElementException
+</code></pre></div>
+      </div><div class="content" id="slide-39">
+       <div class="container"><h2>NullPointerException ♥ ?</h2><pre><code class="prettyprint lang-java">class Stuff {
+  /* can be null */	
+  public String getIt(){ ... }
+}
+</code></pre><pre><code class="prettyprint lang-scala">val stuff:Option[String] = Option(stuff.getIt)
+</code></pre></div>
+      </div><div class="content" id="slide-40">
+       <div class="container"><h1>Oppgavetid :-)</h1><p>Datamining!
+</p><p><a href="https://github.com/arktekk/scala-kurs-oppgaver/tree/master/buzzword" >https://github.com/arktekk/scala-kurs-oppgaver/tree/master/buzzword</a>
+</p></div>
+      </div><div class="content" id="slide-41">
+       <div class="container"><h2>functions</h2><pre><code class="prettyprint lang-scala">val length:String =&gt; Int =
+  in =&gt; in.length
+
+def takesAFun(f:String =&gt; Int) = {
+  val word = &quot;Hello World&quot;
+  f(word)
+}
+
+takesAFun(length)
+
+takesAFun(in =&gt; in.length)
+
+takesAFun(_.length)
+</code></pre></div>
+      </div><div class="content" id="slide-42">
+       <div class="container"><pre><code class="prettyprint lang-scala">val noArg:() =&gt; Int =
+  () =&gt; 10
+
+def takesNoArg(f:() =&gt; Int) = {
+  val anInt = f()
+  5 + anInt
+}
+
+takesNoArg(noArg)
+
+takesNoArg(() =&gt; 10)
+</code></pre></div>
+      </div><div class="content" id="slide-43">
+       <div class="container"><h2>call by name</h2><pre><code class="prettyprint lang-scala">def callByName(f: =&gt; Int) = {
+  val anInt = f
+  5 + anInt
+}
+
+callByName(5)
+
+def callByNameIgnore(f: =&gt; Int){
+  5 + 10
+}
+
+callByNameIgnore(throw new Exception(&quot;who cares?&quot;))
+// ingen exception kastet
+</code></pre></div>
+      </div><div class="content" id="slide-44">
+       <div class="container"><h2>parameter sets</h2><pre><code class="prettyprint lang-scala">def multiple(name:String)(age:Int) {
+  println(name + &quot; is &quot; + age + &quot; years old&quot;)
+}
+
+multiple(&quot;Mr Java&quot;)(99)
+
+multiple(&quot;Mr Scala&quot;){
+  5 + 10
+}
+</code></pre></div>
+      </div><div class="content" id="slide-45">
+       <div class="container"><pre><code class="prettyprint lang-scala">def debug(name:String)(expr: =&gt; String){
+  val logger = Logger.getLogger(name)
+  if(logger.isDebugEnabled){
+    logger.debug(expr)	
+  }
+}
+
+debug(&quot;database&quot;){
+  DB.reallyHeavyOperation.mkString(&quot;,&quot;)
+}
+</code></pre></div>
+      </div><div class="content" id="slide-46">
+       <div class="container"><h2>partial application</h2><pre><code class="prettyprint lang-scala">def printIt(name:String) = println(&quot;Look, its &quot; + name)
+
+val partiallyApplied:String =&gt; Unit = printIt _
+
+partiallyApplied(&quot;pretty cool&quot;)
+// Look, its pretty cool
+</code></pre></div>
+      </div><div class="content" id="slide-47">
+       <div class="container"><pre><code class="prettyprint lang-scala font-90">val later = new ListBuffer[() =&gt; Unit]
+
+def register(f: =&gt; Unit){
+  later += f _
+}
+
+register(println(&quot;Hello&quot;))
+register(println(&quot;World&quot;))
+register(throw new Exception(&quot;Oh noes&quot;))
+
+println(&quot;Go!&quot;)
+later.foreach(f =&gt; f())
+/*
+Go!
+Hello
+World
+java.lang.Exception: Oh noes
+  at ....
+*/
+</code></pre></div>
+      </div><div class="content" id="slide-48">
+       <div class="container"><h2>tuples</h2><pre><code class="prettyprint lang-scala">val twoThings = (5, &quot;A String&quot;)
+
+twoThings._1 // 5
+twoThings._2 // &quot;A String&quot;
+
+val listOfTuples:List[(Int, String)] =
+  List(5 -&gt; &quot;A String&quot;, 6 -&gt; &quot;Another&quot;)
+
+val aMap = listOfTuples.toMap // Map(5 -&gt; &quot;A String&quot;, 6 -&gt; &quot;Another&quot;)
+
+val (even, odd) = list.partition(_ % 2 == 0)
+</code></pre></div>
+      </div><div class="content" id="slide-49">
+       <div class="container"><h2>traits</h2><pre><code class="prettyprint lang-scala">trait Mult {
+ def mult(a:Int, b:Int) = a * b
+}
+	
+trait Add {
+  def add(a:Int, b:Int) = a + b
+}
+	
+object Calc extends Mult with Add
+	
+Calc.mult(4, Calc.add(1, 2))
+</code></pre></div>
+      </div><div class="content" id="slide-50">
+       <div class="container"><h2>traits (stackable modifications)</h2><pre><code class="prettyprint lang-scala font-80">trait Rule {
+  def convert(int:Int) = int.toString
+}
+
+trait Fizz extends Rule {
+  override def convert(int:Int) =
+    if(int % 3 == 0) &quot;Fizz&quot; else super.convert(int)
+}
+
+trait Buzz extends Rule {
+  override def convert(int:Int) =
+    if(int % 5 == 0) &quot;Buzz&quot; else super.convert(int)
+}
+
+trait FizzBuzz extends Rule {
+  override def convert(int:Int) =
+    if(int % 3 == 0 &amp;&amp; int % 5 == 0) &quot;FizzBuzz&quot;
+    else super.convert(int)
+}
+</code></pre></div>
+      </div><div class="content" id="slide-51">
+       <div class="container"><pre><code class="prettyprint lang-scala">object FizzTest extends Rule with Fizz
+(0 to 15).foreach(i =&gt; println(FizzTest.convert(i)))
+
+object BuzzTest extends Rule with Buzz
+(0 to 15).foreach(i =&gt; println(BuzzTest.convert(i)))
+
+object FizzBuzzTest extends Rule with Fizz with Buzz with FizzBuzz
+(0 to 15).foreach(i =&gt; println(FizzBuzzTest.convert(i)))
+
+object BuzzFizzTest extends Rule with FizzBuzz with Fizz with Buzz
+(0 to 15).foreach(i =&gt; println(BuzzFizzTest.convert(i)))
+</code></pre></div>
+      </div><div class="content" id="slide-52">
+       <div class="container"><p><img  src="advanced/traits.png" alt="traits" />
+</p></div>
+      </div><div class="content" id="slide-53">
+       <div class="container"><h2>pattern matching &amp; case classes</h2><pre><code class="prettyprint lang-scala">sealed trait Tree
+case class Branch(left:Tree, right:Tree) extends Tree
+case class Leaf(value:Int) extends Tree
+
+def sum(tree:Tree):Int = tree match {
+  case Branch(leaf, right) =&gt; sum(left) + sum(right)
+  case Leaf(value) =&gt; value
+}
+
+val tree = Branch(
+    Branch(Leaf(1), Leaf(2)),
+    Branch(Leaf(3), Leaf(4)))
+
+sum(tree)
+</code></pre></div>
+      </div><div class="content" id="slide-54">
+       <div class="container"><h2>pattern matching &amp; exceptions</h2><pre><code class="prettyprint lang-scala">case class SomeException(why:String) extends Exception(why)
+
+try{
+  somethingThatCanThrowAnException()
+} catch {
+  case SomeException(why) =&gt; println(&quot;Thats why: &quot; + why)
+  case ex:Exception =&gt; ex.printStackTrace
+}
+</code></pre></div>
+      </div><div class="content" id="slide-55">
+       <div class="container"><p><img  src="advanced/pimp.png" alt="pimp" />
+</p></div>
+      </div><div class="content" id="slide-56">
+       <div class="container"><h2>implicit conversions</h2><pre><code class="prettyprint lang-scala">class PlusMinus(i:Int){
+  def +- (o:Int) = i-o to o+i
+}
+
+def plusMinus(i:Int) = new PlusMinus(i)
+
+plusMinus(5) +- 2
+//Range(3, 4, 5, 6, 7)
+</code></pre></div>
+      </div><div class="content" id="slide-57">
+       <div class="container"><pre><code class="prettyprint lang-scala">class PlusMinus(i:Int){
+  def +- (o:Int) = i-o to o+i
+}
+
+implicit def plusMinus(i:Int) = new PlusMinus(i)
+
+5 +- 2
+//Range(3, 4, 5, 6, 7)
+</code></pre></div>
+      </div><div class="content" id="slide-58">
+       <div class="container"><h2>Oppgavetid :-)</h2><p>Skriv ditt eget testrammeverk!
+</p><p><a href="https://github.com/arktekk/scala-kurs-oppgaver/tree/master/testframework" >https://github.com/arktekk/scala-kurs-oppgaver/tree/master/testframework</a>
+</p></div>
+      </div><div class="content" id="slide-59">
+       <div class="container"><h1>Testing</h1><ul><li><a href="http://scalatest.org/" >ScalaTest</a>
+</li><li><a href="http://specs2.org" >Specs2</a>
+</li><li><a href="http://code.google.com/p/scalacheck/" >ScalaCheck</a>
+</li></ul></div>
+      </div><div class="content" id="slide-60">
+       <div class="container"><h2><a href="http://scalatest.org/" >ScalaTest</a></h2><ul><li>Et av de eldste scala prosjektene
+</li><li>Støtter en rekke forskjellige test former (junit -&gt; bdd)
+</li><li>Stor utvalg av matchere
+</li><li>JUnit og TestNG integrasjon
+</li><li>IDEA integrasjon
+</li></ul></div>
+      </div><div class="content" id="slide-61">
+       <div class="container"><pre><code class="prettyprint lang-scala">import org.scalatest.FunSuite
+
+class FirstSuite extends FunSuite {
+
+  test(&quot;addition&quot;) {
+    val sum = 1 + 1
+    assert(sum === 2)
+  }
+
+  test(&quot;subtraction&quot;) {
+    val diff = 4 - 1
+    assert(diff === 3)
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-62">
+       <div class="container"><pre><code class="prettyprint lang-scala">import org.scalatest.FunSuite
+import org.scalatest.matchers.ShouldMatchers._
+
+class FirstSuite extends FunSuite {
+
+  test(&quot;addition&quot;) {
+    val sum = 1 + 1
+    sum should be === (2)
+  }
+
+  test(&quot;subtraction&quot;) {
+    val diff = 4 - 1
+    diff should be === (3)
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-63">
+       <div class="container"><pre><code class="prettyprint lang-scala">val s = &quot;hi&quot;
+val thrown = intercept[IndexOutOfBoundsException] {
+  s.charAt(-1)
+}
+assert(thrown.getMessage === &quot;String index out of range: -1&quot;)
+</code></pre></div>
+      </div><div class="content" id="slide-64">
+       <div class="container"><pre><code class="prettyprint lang-scala font-60">import org.scalatest.{FunSuite, BeforeAndAfter}
+import collection.mutable.ListBuffer
+
+class ExampleSuite extends FunSuite with BeforeAndAfter {
+
+  val builder = new StringBuilder
+  val buffer = new ListBuffer[String]
+
+  before {
+    builder.append(&quot;ScalaTest is &quot;)
+  }
+
+  after {
+    builder.clear()
+    buffer.clear()
+  }
+
+  test(&quot;easy&quot;) {
+    builder.append(&quot;easy!&quot;)
+    assert(builder.toString === &quot;ScalaTest is easy!&quot;)
+    assert(buffer.isEmpty)
+    buffer += &quot;sweet&quot;
+  }
+
+  test(&quot;fun&quot;) {
+    builder.append(&quot;fun!&quot;)
+    assert(builder.toString === &quot;ScalaTest is fun!&quot;)
+    assert(buffer.isEmpty)
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-65">
+       <div class="container"><pre><code class="prettyprint lang-scala font-60">import org.scalatest.fixture.FixtureFunSuite
+import java.io.{FileWriter, File}
+
+class ExampleSuite extends FixtureFunSuite {
+
+  final val tmpFile = &quot;temp.txt&quot;
+
+  type FixtureParam = FileWriter
+
+  def withFixture(test: OneArgTest) {
+    val writer = new FileWriter(tmpFile) // set up the fixture
+    try {
+      test(writer) // &quot;loan&quot; the fixture to the test
+    }
+    finally {
+      writer.close() // clean up the fixture
+    }
+  }
+
+  test(&quot;easy&quot;) { writer =&gt;
+    writer.write(&quot;Hello, test!&quot;)
+    writer.flush()
+    assert(new File(tmpFile).length === 12)
+  }
+
+  test(&quot;fun&quot;) { writer =&gt;
+    writer.write(&quot;Hi, test!&quot;)
+    writer.flush()
+    assert(new File(tmpFile).length === 9)
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-66">
+       <div class="container"><h2><a href="http://specs2.org" >Specs2</a></h2><ul><li>Etterfølger til Specs
+</li><li>BDD/Spec orientert
+</li><li>Gigantisk sett med matchere
+</li><li>JUnit integrasjon
+</li></ul></div>
+      </div><div class="content" id="slide-67">
+       <div class="container"><pre><code class="prettyprint lang-scala">import org.specs2._
+
+class HelloWorldSpec extends Specification { def is =
+
+    &quot;This is a specification to check the 'Hello world' string&quot;    ^
+                                                                   p^
+    &quot;The 'Hello world' string should&quot;                              ^
+      &quot;contain 11 characters&quot;                                      ! e1^
+      &quot;start with 'Hello'&quot;                                         ! e2^
+      &quot;end with 'world'&quot;                                           ! e3^
+                                                                   end
+    
+    def e1 = &quot;Hello world&quot; must have size(11)
+    def e2 = &quot;Hello world&quot; must startWith(&quot;Hello&quot;)
+    def e3 = &quot;Hello world&quot; must endWith(&quot;world&quot;)
+  }
+</code></pre></div>
+      </div><div class="content" id="slide-68">
+       <div class="container"><h2><a href="http://code.google.com/p/scalacheck/" >ScalaCheck</a></h2><ul><li>Scala port av <a href="http://www.cse.chalmers.se/~rjmh/QuickCheck/" >QuickCheck</a> fra Haskell
+</li><li>property basert testing
+</li><li>genererer testdata for verifisering av properties
+</li><li>Integrert i både <a href="http://scalatest.org/" >ScalaTest</a> og <a href="http://specs2.org" >Specs2</a>
+</li></ul></div>
+      </div><div class="content" id="slide-69">
+       <div class="container"><pre><code class="prettyprint lang-scala font-80">import org.scalacheck._
+
+object StringSpecification extends Properties(&quot;String&quot;) {
+  property(&quot;startsWith&quot;) = Prop.forAll((a: String, b: String) =&gt; (a+b).startsWith(a))
+
+  property(&quot;endsWith&quot;) = Prop.forAll((a: String, b: String) =&gt; (a+b).endsWith(b))
+
+  // Is this really always true?
+  property(&quot;concat&quot;) = Prop.forAll((a: String, b: String) =&gt; 
+    (a+b).length &gt; a.length &amp;&amp; (a+b).length &gt; b.length
+  )
+
+  property(&quot;substring&quot;) = Prop.forAll((a: String, b: String) =&gt; 
+    (a+b).substring(a.length) == b
+  )
+
+  property(&quot;substring&quot;) = Prop.forAll((a: String, b: String, c: String) =&gt;
+    (a+b+c).substring(a.length, a.length+b.length) == b
+  )
+}
+</code></pre></div>
+      </div><div class="content" id="slide-70">
+       <div class="container"><pre><code>+ String.startsWith: OK, passed 100 tests.                                    
++ String.endsWith: OK, passed 100 tests.                                      
+! String.concat: Falsified after 0 passed tests.                              
+&gt; ARG_0: 
+&gt; ARG_1: 
++ String.substring: OK, passed 100 tests.                                     
++ String.substring: OK, passed 100 tests.
+</code></pre></div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
