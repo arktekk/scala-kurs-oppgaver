@@ -1,0 +1,1380 @@
+ Spring Java Config is cool. Writing it in Scala makes it sexy!
+
+
+Moving from Java to Scala sometimes feels scary. To make the transition a little bit easier it might help to keep some of the existing Java frameworks your company have experience in using. At least that is our theory when we chose to keep SpringMVC as web framework in my current Scala project. Time will tell if we are right or wrong in that theory :)
+
+
+But I did stumble upon a nice little side effect. That Scala could make Spring Java Config go from cool to great.
+
+
+In this lightning talk I will show how a Spring config could look in Scala, and how we could use Scala's features to create very readable and type safe Spring configuration.
+
+
+
+3 Case Studies in NoSQL, Java and the Real World
+
+
+Not-only-SQL systems can be applied in a large number of problem domains.  In general, it's safe to say that NoSQL is a contender against traditional RDBMSs if data storage and retrieval needs aren't transactional.  This presentation covers three case studies where traditional RDBMS approaches had been taken, and ultimately abandoned in favor of NoSQL document databases and massive, fast-access storage mechanisms.  The presentation covers Java, mongoDB, HBase, GridFS, and HDFS, and provides insights into how each of of the applications were designed, deployed, refactored, and launched in production.
+
+
+
+A Deep Dive into Spring's IoC Support, in 2011, and in the Future
+
+
+The Spring framework has served people well for years, but few have exploited the incredible power of the framework's core IoC support and component model, including the Java-only configuration model, the annotation support, the native support for JSR's 250 and 330, and the incredible AOP and meta-framework support that the other Spring frameworks   - Spring Batch, MVC, Integration - etc., all exploit. This talk introduces viewers to the powerful technologies including in the core Spring framework that can be used to meet any challenge - from component-level use cases to low-level framework-building scenarios.
+
+
+
+AST Transformations
+
+
+AST Transformations are how many language features are implemented, and is the magic behind frameworks like Lombok, Groovy, Mirah, IDEA Inspections, CodeNarc, Spock, and Groovy++. This session reviews these approaches including examples of how and why we'd want to do this. Come see the newest language tools, look in-depth at production deployed AST Transforms, and view libraries based on these techniques.
+
+
+
+Above the Clouds: Introducing Akka
+
+
+We believe that one should never have to choose between productivity and scalability, which has been the case with traditional approaches to concurrency and distribution. The cause of that has been the wrong tools and the wrong layer of abstraction — and Akka is here to change that. Akka is using the Actors together with Software Transactional Memory (STM) to create a unified runtime and programming model for scaling both UP (utilizing multi-core processors) and OUT (utilizing the grid/cloud). Akka provides location and network transparency by abstracting away both these tangents of scalability by turning them into an operations and configuration task. This gives the Akka runtime freedom to do adaptive automatic load-balancing, cluster rebalancing, replication and partitioning. In this talk you will learn what Akka is and how it can be used to solve hard scalability problems. Akka is available at http://akka.io (under Apache 2 license).
+
+
+
+Addicted to Scala
+
+
+You don't yet speak Scala? Then let us invite you to a journey on which we will explore the outstanding features of this programming language for the Java Virtual Machine. As an intoduction we will breifly talk about Scala's key characteristics. The following live coding demo will illustrate the aforementioned and unveil the addictive nature of Scala. As a finalizer we will outline the future directions.
+
+
+
+Android eller iOs? Hva skal jeg velge?
+
+
+Android eller iOs? En informert fremstilling av forskjeller og likheter mellom disse to plattformene. Hva passer deg best som sluttbruker? Hvilken plattform bør man utvikle for? Sesjonen vil være aktuell både for sluttbrukere og for utviklere.
+
+
+
+Android for baksideutviklere
+
+
+Veien til mobilutvikling kan virke kort for Java "EE" utviklere. Java er jo bare Java, right?
+
+
+Når man kommer i gang, finner man fort ut at ting er snudd på hodet. Klienten betaler for datatrafikken, man har ikke ubegrenset med strøm og lagringsplass er blitt en begrenset ressurs.
+
+
+I denne lyntalen ønsker jeg å dele mine erfaringer med andre serversideutviklere som ønsker å komme i gang med Android. Fokuset vil være på de utfordringene kan vil støte på når man går inn i mobilutvikling med mest server-side erfaring.
+
+
+
+Arkitektur på vondt og godt - og et kritisk blikk på DIFIs arkitekturprinsipper
+
+
+Arkitektur kan gjøre mer skade enn nytte, på tross av arkitektenes gode intensjoner. I etterpåklokskapens tildels pinlig klare lys presenteres arkitekturerfaringer fra over ti år med Java-prosjekter, og trekker slutninger om hva som har fungert eller vært en fiasko. Med dette som bakteppe ser vi med kritisk blikk på DIFIs arkitekturprinsipper som statlige virksomheter skal følge, og vurderer om dette er arkitektur på vondt eller godt. Ikke minst ser vi på hvilke prinsipper som glimrer med sitt fravær.
+
+
+
+Automated Android testing using Jenkins CI
+
+
+A hands-on introduction to automated Android application testing using Jenkins CI.
+During this lightning talk we will create Android application and test projects and setup Jenkins to run continuous integration tests automatically from a code repository.
+The tests can run on either a physically connected device or an emulator, enabling a real-life scenario for the tests.
+
+
+
+Bakoverkompatibilitet på databasenivå
+
+
+Hva gjør man når det er over 20 systemer som er direkte integrert på databasenivå og man ønsker å endre datamodellen? Dette er ikke et umulig problem, løsningen er å gjøre endringen bakoverkompatibel!
+
+
+Vi ser på én mulig løsning: Bruk av view og "instead of"-triggere.
+
+
+
+Beheading the Software Beast
+
+
+For any code base there comes a time when you want to change it. But if you just steam ahead making changes that break the code and then fixing errors, a common situation is that every fix or change creates several more errors. It feels as if you have picked a fight with a beast, the Software Hydra - for every scary head you cut of, two more grows out!
+
+
+Instead, come learn The Mikado Method (http://mikadomethod.wordpress.com), a systematic approach to beat the Hydra and change the code in a safe way. The method helps you visualize, prepare and perform business-value-focused changes while delivering continuously, and without having a broken code-base in the process. It enhances team communication, collaboration and learning, and helps individuals stay on track.
+
+
+
+Breaking the [Amdahl's] law!  Effective use of the fork-join framework in Java SE 7
+
+
+The reality of today's chip architectures s that rather than seeing ever increasing clock speeds we now see ever increasing core counts.  This has a significant impact on how we write efficient code since we now need to design for parallel operations to get the best from our hardware.  Concurrent programming is hard to get right, especially when faced with early Java support in the form of the sleep, interrupt, wait and notify methods along with synchronised blocks and methods with a single monitor per object.  Java SE 5 started the process of enhancing Java's support for parallel programming with the concurrency APIs.  Java SE 7 includes the latest revisions to this in the form of the fork-join framework (also known as JSR-166y).
+
+
+This session will look at how the fork-join framework can greatly simplify the code required to process a set of tasks that can be distributed among a number of parallel processing units.  We'll look at some good examples for effective use of the framework as well as one that is not suited and provide some hints on what to do in this case.
+
+
+
+Bruk Object Mother og Builder for å forenkle testene dine
+
+
+Å skrive tester har blitt nesten like viktig som å skrive selve produksjonskoden. Etter hvert som systemene blir større er det en tendens til at det blir mer og mer komplisert å skrive tester for koden. For å kunne teste spesifikke deler av koden så må systemet ofte settes i en riktig tilstand, og dette kan kreve mye “boiler-plate”-kode i testene.
+
+
+Jeg vil i denne lyntalen gå igjennom to patterns som jeg bruker for å forenkle måten vi skriver tester på, mer spesifikt hvordan vi oppretter domene-objekter. Disse er Object Mother og Builder. Ved å bruke disse får du økt gjenbruk, mindre testklasser, det blir enklere å gjøre endringer i koden og du får enhetlige testdata i testene dine.
+
+
+
+Building for the Cloud
+
+
+Netflix has moved its production services from being completely datacenter-based, to being primarily cloud-based in a little over a year. This talk will briefly explain why we did it and why we chose Amazon's AWS. The talk will then delve into the evolution of our build and deployment architecture, starting with how our orignal monolithic DC-based SQL-tied webapp was built and deployed, and then detailing the evolution of our continuous integration systems which helped prepare us for the cloud move. And finally, it will cover our current full build pipeline and deployment system which keeps us agile in the cloud now by providing quick turnaround, and rapid roll-out and recovery.
+
+
+
+Bytecode for discriminating developers
+
+
+If you never goofed around with assembler or machine code Java bytecode can seem an obscure piece of low-level magic. But sometimes things go really wrong and understanding that bit may be what stands between you and solving the problem at hand. Looking to deepen you Java programming skills? Understanding bytecodes is necessary to solve performance issues, some classloading issues and to generate code at runtime. And some things you can do are just plain freakin' cool. This talk will introduce you the JVM and bytecode basics using live coding examples. It's my hope that you'll walk out armed for the next battle with low-level issues. From the basics, to more advanced gotchas:
+* How to obtain the bytecode listings
+* How to read the bytecode
+* How the language constructs are mirrored by the compiler: local variables, method calls, optimizations, autoboxing, exception handling, etc
+* insight to some bytecode manipulation libraries (ASM, Javassist)
+
+
+
+Caching abstraction in Spring 3.1
+
+
+Quick overview of the new caching abstraction added in Spring 3.1
+
+
+
+Cascading through Hadoop: A DSL for Simpler MapReduce
+
+
+Hadoop is a MapReduce framework that has literally sprung into the vernacular of "big data" developers everywhere. But coding to the raw Hadoop APIs can be a real chore. Data analysts can express what they want in more English-like vocabularies, but it seems the Hadoop APIs require us to be the translator to a less comprehensible functional and data-centric DSL.
+
+
+The Cascading framework gives developers a convenient higher level abstraction for querying and scheduling complex jobs on a Hadoop cluster. Programmers can think more holistically about the questions being asked of the data and the flow that such data will take without concern for the minutia.
+
+
+We'll explore how to set up, code to, and leverage the Cascading API on top of a Hadoop cluster for a more effective way to code MapReduce applications all while being able to think in a more natural (less than fully MapReduce) way.
+
+
+During this presentation, we'll also explore Cascading's Clojure-based derivative, Cascalog, and how functional programming paradigms and language syntax are emerging as the next important step in big-data thinking and processing.
+
+
+
+Clojure - JVM språket som er "multi-core ready"
+
+
+Denne presentasjonen vil gi deg innsikt i hvordan Clojure som programmeringsspråk håndterer tilstand. Dette gjøres på en helt annnen måte enn hva vi er vant til fra objektorienterte språk. Ved å utvikle programmer på denne måten blir samtidighet og parallellitet mindre problematisk.
+
+
+Presentasjonen vil introdusere Clojure som språk. I tillegg vil vil det tydelig defineres Clojures syn på verdier, tilstand, identitet og tid. Clojure's innebygde typer og datastrukturer gjør det mulig å se verden på en enklere og bedre måte.
+
+
+
+Close that queue-connection!
+
+
+Programming mistakes never make it past code reviews, extensive testing and continous integration, right? Unfortunately not. Programming mistakes go live and cause downtime. So, what are the typical mistakes that sneak past testing, and end up frustrating both customers and operation crews? In my experience, poor connection handling when dealing with queues and topics are overrepresented. In this lightning talk I focus on a few situations where connection mistakes lead to serious incidents. I also briefly go through the Spring JMS Template. This framework is a good starting point for making sure your application isn't too greedy with the connections.
+
+
+
+Code Entropy and Physics of Software
+
+
+Ved å studere hvordan en kodebase endrer seg over tid kan man observere hvordan svake og sterke krefter beveger koden i bestemte retninger. Det er særlig summen av de små endringene som er interessante. Vi har studert et par kjente open-source prosjekter for å identifisere noen av de rådende kreftene. I denne sesjonen vil vi først introdusere konseptet "code entropy" for så å vurdere og diskutere tilstanden til sammenlignbare kodesnutter.
+
+
+
+Code Reviews - One Thing Every Programmer Should Know
+
+
+You should do code reviews. Why? Because they increase code quality and reduce defect rate. But not necessarily for the reasons you might think.
+
+
+
+Code Templates - The unknown superhero
+
+
+IIn my experience many java-developers is not aware of the many features included in their IDE. Code templates are one such undiscovered feature. In this talk I will demonstrate how code templates can be used. I will code a real life example and use code templates both to generate code for test code and production code.
+
+
+The demonstration will be performed in Eclipse, but I will also describe how the same features can be used in other IDEs - such as Intelij.
+
+
+After attending the talk you will have learned how you can use existing code templates in your IDE and how you can create your own.
+
+
+
+CoffeeScript: JavaScript without the Fail
+
+
+JavaScript. Love it or hate it, in the web development world it's impossible to avoid it. It was designed in one week by one man at Netscape, just to keep the browser from standardising on something even worse -- and it shows. Oh, it's not all bad, but the Good Parts -- which actually make up a pretty neat language -- are well hidden in among all the Bad Parts, which are there to make you, the JavaScript developer, suffer.
+
+
+CoffeeScript is a language designed to take the Good Parts out of JavaScript and make a new, concise and beautiful language out of them. It runs anywhere JavaScript does -- in fact, it compiles to fairly readable JavaScript -- so you can already use it in your web applications and wherever else you've been stuck with JavaScript. In this talk, you'll learn what CoffeeScript looks like, how it relates to the JavaScript you know, and what new features it has to offer. In fact, if you already know JavaScript well, you'll probably be perfectly fluent in CoffeeScript after this -- it's that easy. And trust me, your life will be so much better for it.
+
+
+
+Comparing Asynchronous Web Techniques
+
+
+The world is all about the asynchronous web these days.  There are an increasing number of options for Java developers.  In this presentation we'll cover 3 such options: comet, servlet 3, and websockets.  We'll look at code and discuss pros and cons of each approach.  We'll also cover any updates that come with Servlet 3.1 (which will likely still be a work in progress.)  We'll look briefly at possible mitigation approaches when you find yourself bound to a particular approach.  This session assumes at least a passing familiarity with the concepts as there won't be too much time to deep dive into each approach.
+
+
+
+Complexity Theory and Software Development
+
+
+Some systems are too large to be understood entirely by any one human mind. They are composed of a diverse array of individual components  capable of interacting with each other and adapting to a changing environment. As systems, they produce behavior that differs in kind from the behavior of their components. Complexity Theory is an emerging discipline that seeks to describe such phenomena previously encountered in biology, sociology, economics, and other disciplines.
+
+
+Beyond new ways of looking at ant colonies, fashion trends, and national economies, complexity theory promises powerful insights to software development. The Internet—perhaps the most valuable piece of computing infrastructure of the present day—may fit the description of a complex system. Large corporate organizations in which developers are employed have complex characteristics. In this session, we'll explore what makes a complex system, what advantages complexity has to offer us, and how to harness these in the systems we build.
+
+
+
+Context awareness with Android
+
+
+Context aware applications allow simpler user interaction by automatically adapting to the user's current situation. Simple user interaction is very important for smart phone applications, since they are used on small screens by people on the run.
+The Android SDK includes a rich java API for using GPS, motion sensors etc.
+How can this be used to create context aware mobile front ends to modern information system architecture?
+This presentation gives an introduction to the Android programming model with emphasis on APIs for allowing context awareness and commutation with the web.
+
+
+
+Continous delivery
+
+
+Continous delivery best practices
+
+
+
+Cool Code
+
+
+In most disciplines built on skill and knowledge, from art to architecture, from creative writing to structural engineering, there is a strong emphasis on studying existing work. Exemplary pieces from past and present are examined and discussed in order to provoke thinking and learn techniques for the present and the future. Although programming is a discipline with a very large canon of existing work to draw from, the only code most programmers read is the code they maintain. They rarely look outside the code directly affecting their work. This talk examines some examples of code that are interesting because of historical significance, profound concepts, impressive technique, exemplary style or just sheer geekiness.
+
+
+
+Cucumber now with JVM improvements
+
+
+Cucumber-jvm is a rewrite of the JVM support. It is now written in a native Java-API, which compiles down to fast JVM bytecode. It enables many JVM capabilities and makes it even easier to integrate with your Java applications.
+
+
+
+Deklarativ konfigurasjonsstyring med Puppet
+
+
+Det er mye buzz rundt konfigurasjonsstyring i DevOps-sfæren. Puppet er fri programvare for å deklarativt styre konfigurasjon av servere, miljøer og infrastruktur. Vi går gjennom sentrale konsepter, Puppets arkitektur, infrastruktur som kode, automatisere oppsett og reproduserbar konfigurasjon av servere og applikasjoner, forbedret feilsøking og reduksjon av feilkilder; og ikke minst hvordan reproduserbar konfigurasjon av infrastruktur kan føre til mer effektiv styring. Etter foredraget vil du forhåpentligvis ha grunnlag nok til å starte prosessen for implementasjon konfigurasjonsstyring på ditt prosjekt. Foredraget er generelt og baserer seg på konkrete erfaringer fra bruk i store bedrifter og åpne nettløsninger.
+
+
+
+Dependency Injection Options in Scala
+
+
+This session will explore the dependency injection options available to developers using Scala. It will cover several options including Java frameworks like Spring and Guice, and Scala language approaches such as the Cake pattern.
+
+
+Along the way, the pros and cons of each option will be discussed, for example Guice provides a nice binding DSL, but also relies on annotations and factories, leaving a non-Scala taste in your mouth when using it. Meanwhile the Cake pattern is all Scala, but self types can be confusing for people new to Scala, as can any kind of guidance for binding injections to variables.
+
+
+The culmination of the talk will focus on a new open source library for dependency injection which has been developed for Scala in a real world application setting, based on picking the best of the Java and Scala approaches.
+
+
+The talk will be technical in nature, with plenty of code examples and a cookbook of recipes for different dependency injection usages.
+
+
+
+Dependency injection when you only have one dependency
+
+
+If you're like most projects these days, you probably use Spring, Guice or another dependency framework. But how many dependencies do you really have? By exploiting the fact that you probably only have a very few number of real dependencies in your project, you can greatly simplify your application.
+
+
+
+Deploying Apps on Heroku
+
+
+Heroku provides a Cloud Application Platform where app deployment is just a "git push" away. Through code and demos you will learn how to deploy apps on Heroku, scale them, and manage them.
+
+
+
+Derfor er GUI-design en lagøvelse
+
+
+Brukervennlighetserfaringer fra et smidig prosjekt:
+
+
+Hva gjør man når brukergrensesnittet ikke forankres godt nok, det er for mange uavklarte detaljer, fremdriften er for lav og kvaliteten for dårlig?
+
+
+Til tross for gode hensikter ble ikke designet av UI godt nok forankret hos prosjektdeltakerne. Det dukket opp for mange endringer i løpet av hver enkelt sprint som resulterte i lav utviklingsfart og mye frustrasjon blant utviklerne.
+
+
+Konsekvensen var at vi etablerte en åpen og mer formell GUI prosess. Vi inkludert et bredere spekter av prosjektdeltakerne og oppmuntret dem til å tegne, skisse, diskutere og kritisere ulike løsninger for brukergrensesnittet.
+
+
+Ved å gjøre det på denne måten distribuerer vi bedre eierskap og engasjement til skjermbildedesignet, og brukergrensesnittet blir både bedre forankret og spesifisert. Målet er å redusere frustrasjon blant designere (for ikke å vite hvilke behov som faktisk gjelder) blant utviklerne (for ikke å vite hva de skal utvikle), og blant prosjektledere, produkteiere etc. på grunn av dårlig fremdrift og lav kvalitet.
+
+
+
+Do I still hate SOA?
+
+
+At JavaZone 2005, I gave a talk with the title "Why I hate SOA". In the talk, I outlined several weaknesses with the then much-hyped term Service Oriented Architecture. Six years have passed, and I have learned much. The question is: Has SOA learned the same things?
+
+
+In this talk, I will outline the real value proposition of Service Oriented Architecture: That of focusing on the services your business provides, both to human and computer users. By focusing on the business services, small, feature-oriented teams can deliver value. The thinking and tools of SOA can be used to serve the customers of the business or they can distract a project for its real goals.
+
+
+I will examine three shortcomings in many approaches to SOA: The focus on tools, the focus on reuse, and the use of SOA as an application architecture. Tools, reuse and application architecture have their place, but once they take the driver seat instead of delivering services to the user of the business, things can go wrong.
+
+
+The integration tools of SOA, when applied wrong, conceal the reality of most projects: 90% of integration problems can only be solved by people talking together. The reuse vision of SOA, when applied wrong, conceal the reality of most projects: Reuse is a most often trap, not an opportunity. Using SOA as an application architecture conceal the reality of most projects: Organizing developers as mindless cogs will force them to behave mindlessly.
+
+
+The talk will be filled with real world examples.
+
+
+
+Do distribute! Fallacies of Distributed Computing meets the Cloud...
+
+
+In 1994 Peter Deutsch (Sun Microsystems) published the first 7 Fallacies of Distributed Computing. In 2009 Tim Bray published a discussion about how these fallacies apply to the Web. In this talk, I'll attempt to continue this discussion in terms of Cloud Computing, recently made relevant by the long Amazon AWS failure. The talk will also provide example Cloud architectures (exemplified by a set of AWS services) to discuss the different fallacies so the audience will know how to build resilient systems.
+
+
+
+Domain Driven Security Code Kata
+
+
+Since 2004 Injection Flaws and Cross-Site Scripting (XSS) has topped the OWASP Top Ten of most harmful vulnerabilities. Time to do something about it. In this code kata we address both Injection Flaw as well as XSS by applying techniques from Domain Driven Design - thus Domain Driven Security. In specific we use DDD context mapping to understand what the problem really is and DDD value objects to shape up our module APIs to make these vulnerabilities go away by enforcing indata validation and outdata encoding in a way that feels natural for the developers.
+
+
+
+Er Apache Camel riktig valg for deg? Lytt til erfarne Camel spotters.
+
+
+I fjor høst bestemte vi oss etter mye vurdering å bruke apache camel i noen av våre (nye) produkter. Vi vil gjerne fortelle litt om hvorfor, hvordan og ikke minst hva vi har lært av å implementere reelle systemer med camel.
+
+
+Camel er et integrasjonsrammeverk basert på enterprise integration patterns. Camel har en java DSL og en enkel spring integrasjon. Camel gir svært mye kraft i lite kode, det gjør det lett å implementere enkle og kompliserte integrasjonsløsninger, men det gjør det også lett å gjøre betydelige feil som kan koste deg dyrt. Hva skjer når du skal angripe reelle problemer som ikke passer like godt med mikkemuseksemplene i camel tutorials, eller når du trenger ekte infrastruktur og ikke tåler at data mistes ved en strømstans? Hva med transaksjoner, asynkronitet og tråder, ytelse og minnebruk?
+
+
+Vi vil bruke en problemløsende fremgangsmåte med delvis live koding for å presentere integrasjonsrammeverket Camel brukt i reelle problemstillinger, samt gi en inføring i enterprise utvikling og integrasjon. Presentasjonen bygges naturlig opp gjennom å utvikle et konkret eksempelsystem  hvor vi starter enkelt og gradvis kommer innom flere vanskelige problemer underveis.
+
+
+
+Erfaringer med Scala i en Java-stack
+
+
+Vi i Basefarm startet i 2010 å utvikle vårt nye fagsystem.  Etter å ha vurdert flere programmeringsspråk falt valget på Scala.  Vi valgte Scala blant annet fordi Scala er typesikkert og vi må skrive mye mindre boilerplate-kode enn i  Java, samtidig som man kan dra nytte av de tallrike og velutprøvde Java-bibliotekene som allerede finnes.
+
+
+Av rammeverk endte vi opp med Hibernate, Spring og Spring MVC, som alle Java-programmerere er kjent med.  I tillegg bruker vi Akka, som er et Scala-bibliotek som hjelper oss å håndtere concurrency, bl.a. ved hjelp av actors. Vi fant raskt ut at selv om det fungerer bra å bruke Java-rammeverkene fra Scala, så kan det oppleves som en skikkelig kulturkrasj fordi Scala gjerne lener seg mer mot funksjonell programmering enn Java.
+
+
+I dette foredraget får du et innblikk i hvordan det fungerer å bruke Scala og Java sammen, hvilke fordeler det gir oss å bruke Scala, hvilke hindre vi har møtt på og hva vi ville gjort annerledes dersom vi skulle gjort dette om igjen.
+
+
+
+Extreme Cleverness: Functional Data Structures in Scala
+
+
+This talk will cover the theory and implementation of 6 unique functional data structures in Scala.  We'll start out with the concept of functional persistence and then dive right into actual data structures.  Each data structure will be motivated and built up by the associated theory and ideas.  All of these will be illustrated (with requisite colorful diagrams) and implemented with the necessary trappings to be a first-class Scala Collection.  Finally, we'll look at some of the real-world constraints imposed by hardware architecture and the JVM itself, touching on how these constraints affect data structure design in ways that the theory doesn't show.
+
+
+
+Extreme Performance Testing
+
+
+XP developers follow a certain way of life. Take something good and turn it up to the extreme. Extreme Performance Testing is born out of ten years experience working with XP, with the goal of further integrating performance testing into a normal XP development process. No longer will you need to treat performance testing as just another stage towards production. Taking performance testing to the extreme is often viewed as difficult requiring special skills, extra resources, and much more time.
+
+
+In this talk, we'll look at Extreme Performance Testing's key practices, effectively translating the agile values and principles into a different set of practices. We'll look at real world examples that demonstrate these practices in action, understanding their positive impact on projects. We'll also explore the prerequisites for making Extreme Performance Testing most effective, and the reinforcing practices that amplify their positive effects.
+
+
+You'll come away from this talk with concrete advice on how to better integrate performance testing into classic agile methods and how to apply Extreme Performance Testing to your projects.
+
+
+
+Facts and speculation about noSQL
+
+
+The “no-SQL” movement seems to be growing in popularity worldwide; especially as cloud computing is becoming more widespread. It seems that many developers believe we are facing a paradigm change in respect to how we store the information from our applications. But it is quite clear that the opportunities and consequences are not quite clear for everyone as this topic is becoming more hyped up. So what is the deal about “no-SQL”?
+First of all, we need to understand what a database is, and what kind of services the database provides us with. Also we need to apply lessons from history to many of the claims regarding non-SQL databases such as; you don’t need a schema when you’re not using SQL. But is this true?
+In this short presentation we will analyze what a database actually is and put this up towards various claims, facts and speculation surrounding the SQL/no-SQL debate
+
+
+
+Forbedre brukeropplevelsen ved hjelp av sensorlyttere
+
+
+Vi forventer i dag å få servert enkle og intuitive brukergrensesnitt. I løpet av de siste årene er dette ofte realisert ved å ta bruk av touch-teknologi. Ved å innlemme fysisk sensorlyttere, er det mulig å introdusere ny intuitiv atferd for å forbedre brukeropplevelsen enda mer. Androidtjenester gjør det svært enkelt å legge til denne funksjonaliteten. Denne talen er en introduksjon til Androids sensortjenester og hvordan man, ved å ta i bruk dette enkle verktøyet, kan berike brukeropplevelsen.
+
+
+
+Fra 1 uke til 16 timer: Ytelsesforbedringer med Spring Batch
+
+
+I forbindelse med pensjonsreformen har Statens pensjonskasse (SPK) skrevet om batchen som reberegner alle ytelser i forbindelse med regulering av folketrygdens grunnbeløp. Den tidligere batchen var skrevet i C og brukte en uke på kjøringen. I denne presentasjonen vil jeg vise hvordan den nye versjonen skrevet med java og med Spring Batch gjør beregningen på godt under et døgn. I tillegg til Spring Batch står Hibernate og Jdbc sentralt i batchen, noe som fører til en del utfordringer. I jakten på bedre ytelse stod vi stadig fast i problemer knyttet til for eksempel deadlocks og retries, hibernate og misforstått feilhåndtering. Presentasjonen fokuserer først og fremst på endringene som ble gjort på javasiden, men vil også nevne endringer gjort på databasesiden for å bedre ytelsen.
+
+
+
+Functional Thinking
+
+
+Learning the syntax of a new language is easy, but learning to think under a different paradigm is hard. This session helps you transition from a Java writing imperative programmer to a functional programmer, using Java, Clojure and Scala for examples. This session takes common topics from imperative languages and looks at alternative ways of solving those problems in functional languages. As a Java developer, you know how to achieve code-reuse via mechanisms like inheritance and polymorphism. Code reuse is possible in functional languages as well, using high-order functions, composition, and multi-methods. I take a variety of common practices in OOP languages and show the corresponding mechanisms in functional languages. Expect your mind to be bent, but you’ll leave with a much better understanding of both the syntax and semantics of functional languages.
+
+
+
+Fungerer IPv6 og Java?
+
+
+IPv4 er på overtid, og IPv6 kommer for fullt. Den 8. juni 2011 hadde Google, Facebook og en rekke andre store internettaktører en 24-timers testflight på IPv6, og det er all grunn til å tro at også Javaprogrammerere vil komme til å få stadig mer kontakt med IPv6 i hverdagen.
+
+
+Java skal i prinsippet støtte IPv6, men etter å ha jobbet på et prosjekt hvor det var et krav at IPv6 skulle støttes, så jeg at det ikke alltid stemmer. Enhver som antar at "it just works", vil fort kunne få en overraskelse.
+
+
+Jeg vil presentere hva jeg lærte.
+
+
+
+Git deploy!
+
+
+Git er etterhvert et kjent og kjært versjonskontrollsystem for mange, men mulighetene med Git er mange.
+Vi har tatt i bruk Git som repository for distribusjon av artefakter til en JBoss ESB server.
+Aldri mer overføring til FTP-servere, utpakking og konfigurasjon på andre siden som feiler, osv. - bare push og pull!
+
+
+Dette lar oss blant annet enkelt skille mellom release og distribusjon av endringer på ene siden og
+aktivering av disse på den andre, ved hjelp av spesialtilpassede server-scripts.  Samtidig kan
+driftsansvarlige lett rulle tilbake til tidligere versjoner ved behov, da all historikk ligger lokalt.
+
+
+
+Goal-directed web applications with Scala
+
+
+Prototypical applications found in industry today are heavily orientated toward solving the relevant problem, with a UI that is designed for simply satisfying input to the domain objects; resulting in UIs that often leave the user with little specific information on what the primary intent of the display is.
+
+
+Goal-directed design however can greatly assist in these scenarios by placing the user experience in a central place during the inception of any given system. Goal-directed design is orientated toward capturing user intention and sending messages (or commands) back to the server, rather than mutated transformation objects (DTOs) that are simply persisted by the system, with little appreciation for what specifically changed or what the user was achieving.
+
+
+This notion of sending messages has a strong synergy with actor based messaging. This session shows you how to model goal direction and task definition as small, manageable chunks of application functionality which are both far easier to reason about and far more convenient to scale compared to the mass of plumbing found in many enterprise applications.
+
+
+
+Groovy.DSLs(from: beginner, to: expert)
+
+
+There have been many attempts to create languages which allow us to express our problems in higher-level languages: from COBOL to Object-Oriented languages, from Logic processing languages and SQL to rules engines. All have taken us forward in leaps and bounds but have failed to get very close to the language of the subject matter expert. This talk looks mostly at Groovy's features to see how far we have come with a general purpose programming language for writing DSLs.
+
+
+
+HTML 5 Fact and Fiction
+
+
+For the last few years, the web has been all a-twitter about web 2.0 (and even the occasional reference to web 3.0.) Yes, the days of static web applications are officially over and while libraries like jQuery and Prototype make it easier to build modern applications, ultimately they are papering over issues in the web standards (and the browsers that implement them.) Today we're building to standards that are from the paleolithic era of web design but that's changing - and HTML 5 is a large part of that. In this talk, we'll discus just what HTML 5 is and why it matters. We'll show how you can build to HTML 5 today and which browsers support what. Thankfully, after many years of stagnation, the future of web applications looks bright!
+
+
+
+HTML5 an introduction - What can HTML5 be used for and how HTML5 can solve real problems.
+
+
+HTML5 are here with a big bunch of sister and brother specifications and a lot of these can be used already today. A lot of these specifications will also change a lot of the way we design our web solutions and it does also open completely new doors for web development and how we do architecture.
+
+
+The attendee will be take on a tour trough the history of HTML5, the HTML5 specification and its sister and brother specifications.
+
+
+
+Hacking - in the real world
+
+
+Hackers can pose a serious threat to businesses if the threats they pose are left unhandled. We will show a scenario where a malicious hacker attacks a website and how he leverages the advanced techniques available to him in order to get what he wants while remaining undetected. We will explore what an attack may consist of and look at the different stages of a given targeted attack. The purpose of this presentation is to give the audience insight into the parts that make up an attack on a website.
+
+
+
+Hibernate should be to programmers what cake mixes are to bakers: beneath their dignity.
+
+
+Cake mixes consist of a mix of things you already have in your cupboard plus a load of unnecessary, potentially harmful preservatives. They cost more than making cake from scratch, the resulting cake tastes worse, they take away people's confidence in their ability to make their own cakes, and they don't even save you any time.  Hibernate has the same misperceived benefits and the same draw-backs.
+Gordon Ramsay wouldn't be caught dead using any cake mix. As professional programmers, we should be more sceptical of generic frameworks like hibernate.
+
+
+
+High Five Driven Development!
+
+
+Lyst til at jobben skal være en lek? Dårlig motivasjon på jobben? Lyntalen kommer til å kort gå inn på hva High Five Driven Development er og hvordan den utføres, samt andre enkle metoder for å øke motivasjonen på jobb. Dette er enkel coaching for ikke-coachere.
+
+
+
+High Wizardry in the Land of Scala
+
+
+Scala is an intensely powerful language. One of the most obvious ways in which this manifests is the syntax, which is wonderfully amenable to internal DSLs and flexible APIs (not to mention endless reams of obfuscated sources and fanciful operators). However, despite the superficial flash of Scala’s syntactic skin, its true power lies in the type system and in the language’s deep semantic constructs.
+
+
+This talk will dive into some of the more remote regions of the kingdom of Scala. Specifically, we will cover the following topics:
+
+
+Higher-Kinds (what they are and how they can be applied)
+Type-Level Encodings (really exploiting Scala’s type system)
+Typeclasses (just like Haskell...except not)
+Delimited Continuations (and you thought kinds were confusing!)
+
+
+Please note that this is an advanced talk targeted at the Scala practitioner who is already fairly comfortable with the language. With that said, we hope the talk will remain reasonably accessible to the Scala beginner – so long as they don’t object to the presentation of odd and esoteric language features with disturbing enthusiasm.
+
+
+
+How Java will not die
+
+
+In the context of a number of high profile additions to the choices of programming language in the developers arsenal, some recent surveys have seen the Java language's lead over other languages erode in recent years. In addition, the days of the rapid buildout of the platform APIs is over.
+
+
+How will Java avoid the fate of becoming the Cobol of the 20-teens ? What trends in hardware and systems technology is being factored into the ongoing evolution of the Java platform to stave off its untimely death ?
+
+
+What are the key technologies that are going to keep Java at the top of the heap for the next 25 years ?
+
+
+In this session, we will take a look at the major trends in application and systems development, such as multiple languages, parallel programming, application frameworks, and see successfully Java is staying ahead of the curve.
+
+
+
+How to make your own nosql cloud
+
+
+Whether it's HBase, Cassandra or one of the many others, you've probably already hears about NoSQL. Perhaps you've wanted to try it out, but don't have the infrastructure or expertise to setup an elaborate clustered environment.
+During this talk, you'll see how to make your own NoSQL platform using infrastructure clouds such as Amazon EC2 or GoGrid. We'll demonstrate how you can use Whirr to start up your own configurable cluster with just a couple of commands, and how you can integrate this into your automation for to achieve, for example, continuous testing flows.
+We'll also show how Whirr uses jclouds for node management, and how you can easily add additional services using the underlying jclouds ComputeService interface.
+
+
+
+Hva alle utviklere må vite om tegnsettenkoding
+
+
+Tegnsettenkoding er noe du finner i alle lag av enhver applikasjon. Har du strenger, så har du enkoding. Hvis du ikke har kontroll på enkoding vil du ofte ende opp med rare tegn på websiden, databasen vil ikke sortere norske tegn rett, og du ender av og til opp med filer med en god blanding av enkodinger som føles umulig å nøste opp i uten å fikse alle de rare tegnene manuelt.
+
+
+Etter denne lyntalen skal du ha en god forståelse av tegnsettenkoding, slik at du ikke må strø "charset=utf-8" tilsynelatende tilfeldig utover kodebasen din i håp om å få rett sluttresultat.
+
+
+
+Hva skal bli mitt neste programmeringsspråk?
+
+
+Leter du etter et nytt programmeringspråk, men vet ikke helt hva du skal velge? Da er dette lyntalen for deg! I denne lyntalen vil jeg presentere det jeg mener er de viktigste kriteriene for å velge sitt neste språk. Overraskende nok er det ikke nødvendigvis Scala!
+
+
+
+Hvis du ikke leverer kontinuerlig, så er du ikke smidig!
+
+
+Manifestet for smidig programvareutvikling sitt første prinsipp sier at; det å levere programvare av verdi kontinuerlig, er vår høyeste prioritet. Dette er ofte lettere sagt enn gjort, fordi det forutsetter masse hard jobbing med å komme frem til en infrastruktur og en prosess som støtter en rask flyt fra idé til produksjon.
+
+
+Jeg vil gi et innblikk i hvordan teamet som utvikler Digipost gradvis har utviklet evnen til å kontinuerlig levere programvare av høy kvalitet til produksjon når vi vil, og ekstremt raskt. Du vil også få vite hvilke fordeler dette gir, utover rask ledetid fra idé til produksjon, og hvorfor det er smidigere. Det er ganske sikkert flere grunner enn du tror.
+
+
+
+Hvordan bruke @Rules til å forbedre din teststrategi
+
+
+Sliter dere med å få rask feedback fra tester ? Har dere prøvd å kategorisere tester men endt opp med å flytte de vekk fra kildekoden de hører sammen med ?
+
+
+Rune vil med denne lyntalen bringe fokus på en ny funksjonalitet i Junit som gjør deg i stand til med enkle grep å kategorisere dine tester uten at det går på bekostning av ansvarsflytting, oppdeling av prosjekter eller massiv konfigurasjon i byggeskript
+
+
+
+Hvordan gjøre alle fornøyd? Lever kvalitet til alle.
+
+
+Systemutviklingsprosjekter har tradisjonelt vært flinke til å fokusere på, og levere, kvalitet til sluttbrukeren. De siste årene er det i tillegg blitt et økt fokus på hva driftspersonell ønsker fra et system. Men sluttbrukere og driftere er ikke de eneste interessentene som har en oppfatning av hva kvalitet er. Det finnes overraskende mange interessenter i et systemutviklingsprosjekt og de har alle hver sin oppfatning av kvalitet. Hvordan kan man sikre at du selv, alle interessenter og organisasjonen som helhet blir fornøyd med det du har vært med på å lage?
+
+
+
+Hvordan mislykkes med Drools
+
+
+Vi innførte Drools for å erstatte en "hjemmesnekret" regelmotor.
+Motivasjonen for å ta i bruk en regelmotor var time2marked, gjøre det enklere å skrive forretningslogikk, erstatte 
+hjemmelaget med kommersiell tredjeparts-kode, og et ønske om å kunne bruke reglene på tvers av produktsystemene.
+
+
+I dette lynforedraget går jeg igjennom våre erfaringer med 
+innføring av Drools i et prosjekt.  Jeg snakker også om hvorfor vi 
+til slutt valgte å gå helt bort ifra regelmotorer og hva vi gjør nå.
+
+
+
+Hvordan programmere som en Mann
+
+Feigheten rår.
+
+Allment adopterte konvensjoner for hvordan vi skriver kode er feige, og reduserer oss til et minste felles multiplum av hva vi tror andre programmerere kan. Vi skal sprekke hull på feighetsbyllen, og se hva slags deilig kode som kommer krypende ut.
+
+
+
+Hvordan tjene penger på annonser i mobil apps?
+
+
+Har  du laget en app men er usikker på hvordan tjene penger på den? Et alternativ er å vise annonser i appen. Google, Microsoft og Apple har alle egne annonsenettverk som enkelt lar seg integrere i appen din. I denne lyntalen får du en introduksjon til begreper som eCPM, CTR, fill rate og impressions. Du vil og få en oversikt over likheter og forskjeller mellom de forskjellige annonsenettverkene. Jeg vil og dele egne erfaringer med bruk av annonser i mobile apps på WP7, iOS og Android.
+
+
+
+Hvorfor Gradle gjorde oss til lykkeligere utviklere
+
+
+Gradle er et fleksibelt og kraftig byggesystem hvor byggescript skrives i Groovy. Hvordan gjøre overgangen fra ditt gamle byggsystem så smidig som mulig?
+
+
+Vi har tatt i bruk Gradle som en erstatter for Maven. Dette foredraget tar for seg noen av utfordringene vi møtte ved å bytte ut Maven med Gradle, og hvordan vi løste disse. Foredraget tar også for seg det vi har erfart er de største styrkene og svakhetene ved Gradle. Vi vil også fokusere på hva vi som utviklere har vunnet på å ta i bruk Gradle.
+
+
+
+Hypermedia Design and REST
+
+
+What is a hypermedia format? This talk will define what a hypermedia format is.
+We will look at different types of formats, and try to create our own using design patterns commonly found in existing formats. We will also look at how the 7th constraint of REST applies (HATEOAS or the hypermedia constraint) to hypermedia and its use.
+
+
+
+Hyppige produksjonssettinger i forvaltningsprosjekter er mulig!
+
+
+Hvis du starter med blanke ark, er hyppige produksjonssettinger greit å få til. Men hva om applikasjonen har vært i produksjon en stund, og muligheten til å gjøre endringer er begrenset? Denne lyntalen tar for seg noen enkle grep du kan gjøre i ditt prosjekt for å komme nærmere visjonen om kontinuerlig leveranse. Det handler ikke bare om automatisering, men også hvordan du ved å tenke gjennom hvordan applikasjonen brukes kan gjøre det mulig å endre den uten å påvirke brukerne. Resultatet er hyppigere og tryggere produksjonssettinger – i vanlig arbeidstid!
+
+
+
+Ikke stol på kravspesifikasjonen!
+
+
+De siste tiårene er det blitt gjort store forbedringer innen programmeringsspråk, testing,  systemutviklingsmetoder, m.m. Likevel er restulatet av sytemutviklingsprosjekter ofte skuffende. Løsningene virker ikke som forventet, de er unødig dyre og noen ganger tilogmed farlige å bruke.  Vitenskapelige studier viser at underliggende årsker til at prosjekter feiler ofte kan spores tilbake til  kravene, dette trass i et stadig økende fokus på områder som smidig utvikling, prototyping, kommunikasjon med klienter og inkrementell utvikling. I dette foredraget ser vi på noen sentale problemstillinger innenfor kravspesifisering og går gjennom prinsipper og teknikker som er vi har funnet nyttige, blant annet innovation games og user story mapping. Foredraget er basert på egne erfaringer, “best practise” og forskningsresultater.
+
+
+
+Information Alchemy: Presentation Patterns & Anti-Patterns
+
+
+Creating and delivering technical presentations is not just the realm of conference speakers anymore. Let’s face it: if you have to give a technical presentation and it’s boring, you’re not going to make much of an impact. However, if you can make it entertaining and informative, you sell your ideas much better. This session takes a different approach to how to build presentations, by providing patterns and anti-patterns you can use to make sure you’re getting the most leverage from your presentations. Don’t take a knife to a gunfight! The ability to create compelling presentations that explain your point is one of the things that keeps your job from disappearing.
+
+
+
+Introducing Apache Wicket
+
+
+Apache Wicket is a component oriented Java web framework. With proper mark-up/logic separation, a POJO data model, and a refreshing lack of XML, Wicket makes developing web-apps simple and enjoyable again.
+
+
+This talk provides a short introduction to the framework's concepts: components, behaviors and models. We'll take a short look at integrating with Spring and integrating with JQuery. For the test infected we'll cover testing your web pages with Wicket's internal test framework. But most importantly we'll take a look at the new Wicket release 1.5 and see what has changed for the better and worse.
+
+
+
+Java 8 - Closures, Extension Methods, SAMs, Method Handles, Oh My!
+
+
+Vi gjennomgår et enkelt standardproblem i Java - hvordan sortere en liste? - og ser hvordan vi kan gjøre det mye mer konsist og lettere å lese via de nye språkmekanismene som kommer i Java 8.
+
+
+
+Java Concurrent Animated
+
+
+This presentation consists of a series of animations that visualize the functionality of the components in the java.util.concurrent library.
+
+
+  Each animation features buttons that correspond to the method calls in that component. Each click of a button shows how the threads interact in real time. The animations are controlled by the actual Java concurrent component they are illustrating, so the animation is not only a visual demonstration, it's also a code sample.  
+
+
+Key points covered will be
+ - An explanation of the use case for each of 14 concurrent components.
+ - Description of the design pattern handled by the component
+ - How the concurrent component handles the use case 
+- Visualization through animation of the use case.  
+
+
+Components covered include
+ - Executors (non-fair &amp; fair) 
+- Runnable/Callable 
+- Semaphore 
+- Future
+ - Reentrant Lock
+ - ReadWriteLock
+ - Condition
+ - BlockingQueue
+ - CyclicBarrier
+ - CountDownLatch
+ - CompletionService
+ - ConcurrentHashMap
+ - Fork &amp; join
+ - Compare &amp; Swap
+
+
+  If you’re still using constructs like Thread.start or wait/notify, you'll want to attend this meeting.  
+
+
+The presentation is packaged as a self-executable Java Archive (JAR) file and is available for download. It'll serve as a valuable reference for any Java practitioner.
+
+
+
+Java i Azure
+
+
+Presentasjonen gir en praktisk innføring i javautvikling på Microsofts Azure platform. I løpet av sesjonen utvikler vi en java applikasjon som vi bygger og deployer til Microsoft Azure. Det vil bli presentert nyttige tips og triks for de som ønsker å utvikle Java-applikasjoner som skal kjøre i nettskyen til Microsoft.
+
+
+
+JavaScript design and architecture
+
+
+Increasingly complex web applications require proper planning and design to work well. In this session I will walk you through a selection of idiomatic JavaScript design patterns that emphasise testability, performance and extensibility. Leave your Java tunnel vision at the door and join me in discovering designs that play to JavaScript's strengths rather than poorly emulate SDK's of the nineties.
+
+
+
+Jeg er møkk lei utviklere som ikke kan skrive ordentlige tester!
+
+
+"Enhetstester er lett. Integrasjonstester er vanskelig." er en vanlig holdning blant norske utviklere. Det reelle problemet er egentlig ikke hvorvidt man tester enheter eller integrasjoner, men at mange utviklere ikke har peiling på hvordan de skal gå frem for å skrive skikkelige tester.
+
+
+Erfaringsmessig har det vist seg viktigere å bygge kompetanse på problemanalyse enn å pugge konkrete oppskrifter. Fremgangsmåte og prioriteringene som må gjøres for å skrive gode tester står derfor i sentrum, men også teknologi- og verktøyalternativer vil bli diskutert.
+
+
+Foredraget vil være case-orientert, med utgangspunkt i testing av et større logistikksystem.
+
+
+
+Jobbe i skyen,  hva kan verden gjøre med din WAR app?
+
+
+Utvikling skaper verdi, hvorfor kommer driftsoppgaver i veien for at du kan gjøre nok av det?
+
+
+Dette er en praktisk presentasjon av våre erfaringer med utvikling, utrulling, forvaltning og drift av 3 applikasjoner i skyen. Ikke noe salg kun våre egne erfaringer. I denne presentasjonen kommer jeg til å gå gjennom  prosessen fra valget av skyleverandør, gjennom utvikling, første utrulling, forvaltning og drift applikasjonene.
+Jeg kommer til å sette de forskjellige leverandørene opp mot hverandre på egenskaper som utrulling, skalering av ytelse, økonomi, åpenhet/innsyn og monitorereing. Jeg kommer så med våre erfaring med å leve i og utvikle for skyen. Erfaringene kommer fra 3 ruby on rails applikasjoner.  Erfaringene er generelle innenfor bruk av PaaS og er lett overførbare til WAR og Jvm.
+
+
+Presentasjonen avsluttes med en introduksjon til hvordan du kan flytte inn i skyen og leve der. Dette gjøres gjennom en introduksjon til WAR-formatet og hvorfor dette er en styrke for Jvm og Java. Når man nå har en WAR ønsker jeg å vise hvordan de forskjellige leverandørene lar deg rulle denne ut på deres tjenester. Dette er en rask introduksjon på hvordan komme igang i skyen.
+
+
+Har du en WAR kan skyen kjøren den!
+
+
+
+Kjenn ditt domene - bruk av verdiobjekter
+
+
+Å ha en god forståelse for forretningsdomenet en jobber med er essensielt i forhold til å greie og levere gode løsninger for kunden.
+
+
+Som en byggekloss i domenet ditt, kan du benytte verdiobjekter. Det gir deg en rekke fordeler, både når det gjelder det funksjonelle (forståelsen av domenet) og det tekniske.
+Dessverre virker det som om få vet hva et verdiobjekt er, og ser mulighetene de gir.
+
+
+Jeg vil i min presentasjon gi en kort introduksjon til hva et verdiobjekt er, og deretter bruke resten av tiden til å overbevise deg om hvorfor du bør sjekke ut verdiobjektet nærmere.
+
+
+
+Kontinuerlige leveranser krever kontinuerlig testing
+
+
+TBA
+
+
+
+Living with Git and Subversion in Parallel
+
+
+Our company Subversion repository recently rounded 100.000 revisions. Our main product now counts over 50.000 files, in a workspace of several gigabytes.  The pains of tending to a project of this size is made worse by Subversion. Updates and commits take a long while, working with branches is unbearable, and the workspace itself is immensely slowed down by the thousands of miniscule .svn folders powdered around in each directory.
+
+
+At the same time, we haven't been able to make the switch to Git, for the same reason as many others: Lack of tooling, Windows-friendliness, learning curve - these are all excuses that can and will be overcome, some day. But for now, we had to come up with something different..
+
+
+We decided that those of us who want to make the switch to distributed SCM should not have to wait for it. For over a year, more and more of the development team have joined in on doing SCM via our Git-SVN mirror. Setting up this kind of infrastructure is not trivial, but in this talk I’ll guide you through all the steps, as well as a few more you should make when you finally want to leave SVN behind.
+
+
+This talk is slide free! Be prepared for a lot of command-line action!
+
+
+
+Long term value of acceptance tests
+
+
+Most of the discussion on automated acceptance tests focuses on
+immediate benefits in development and defect detection or regression
+testing. But that's not nearly all you can get from your tests. While
+working on his new book, Gojko interviewed more than 50 teams that got
+big pay-offs from automated acceptance tests, including some that have
+been using agile acceptance testing for six or seven years. In the
+long term, most of these teams got quite unexpected benefits, such as
+being able to support their system easier, significantly change their
+business models or survive the absence of key business people. Gojko
+will talk about these long term benefits of acceptance tests and what
+you need to do to get them.
+
+
+
+Meet the Java Posse
+
+
+This year Dick Wall and Carl Quinn of the Java Posse podcast will visit JavaZone. They will do a Java Posse recording during the last slot on Wednesday, just before AweZone. The session will cover the top topics and questions suggested at their webpage.
+
+
+Be early – there’s refreshing liquid surprises to the first 300+ attendees!
+
+
+
+Men så hør da! Du bruker det feil (dust)
+
+
+"Du bruker det feil!" - er kanskje en av de mest brukte, og minst nyttige forklaring på hvorfor akkurat du sliter med å få det skinnende nye rammeverket til å fungere i din applikasjon.
+Er det slik at det er vi som bruker rammeverket som er mindre begavet? eller er det utviklerene av rammeverkene som er det ?
+
+
+Skal vi være ærlige med oss selv så må vi vel inrømme at det ofte er en kombinasjon.
+
+
+Hva kan vi så gjøre for å redusere risikoen for å få problemer med rammeverkene vi bruker ?
+
+
+Svaret ligger i historien. Ved analyse av konsekvensene av tidligere valg, kan vi identifisere en del suksesskriterier og
+risiko oppførsel.
+
+
+Dette fordraget vil oppsummere hva jeg har konkludert etter å ha opparbeidet mye egen erfaring, samt det jeg har samlet av andres erfaringer i bruk av diverse rammeverk og verktøy.
+
+
+
+MongoDB and the JVM: Bringing NoSQL and the Java Platform Together
+
+
+MongoDB is a scalable, high-performance, open source, document-oriented NoSQL database. It features document-oriented, JSON-based document storage and dynamic schemas providing simplicity, power and flexibility, combined with full indexes similar to what a traditional RDBMS user would expect. MongoDB also provides solid replication &amp; high availability features as well as an auto-sharding system for transparent horizontal scalability.
+
+
+This talk introduces MongoDB for developers who aren't familiar with it, and discusses various integration points for MongoDB &amp; the JVM including Spring's "Spring Data" component for MongoDB, the Morphia Object Mapper for Java, MongoDB's Scala Drivers (Casbah, as well as a new experimental Asynchronous driver), Akka Durable Mailboxes, Lift's MongoDB Active-Record integration, and MongoDB's Hadoop integration.
+
+
+
+Moving Java Forward: Java SE 7 has been released, what about Java SE 8?
+
+
+Java SE 7 was launched officially on 28th of July this year; the first new version of the Java platform in nearly five years.  Now that various issues have been resolved, Oracle are keen to maintain the momentum of Java as a platform.  In this session we'll talk briefly about Java SE 7 before discussing some the changes being made to the JCP to provide a more transparent development of new Java specifications.  We'll then talk about the planned features for Java SE 8 discussing modularity and lamba expressions as well as other ideas that are being proposed for inclusion.
+
+
+
+Mythbusters: JavaScript edition
+
+
+JavaScript is in an unfortunate position. Everywhere, people spread bad, misinformed advice about the language and how to apply it to browser scripting/web applications. We'll debunk some common myths about JavaScript programming and learn more suitable alternatives. Expect to gain insight in what makes JavaScript such a unique and beautiful programming language and learn how to better your client-side code.
+
+
+
+Nagios i norges største SOA-prosjekt
+
+
+Mange organisasjoner bruker overvåkningsverkøyet Nagios fordi det er open source og lett å komme i gang med. Det har også blitt brukt for overvåkning av servere og tjenester i norges største SOA-prosjekt, Pensjonsprogrammet, og her presenteres noen erfaringer med Nagios i denne sammenhengen.
+
+
+Nagios har overvåket helsen til over 3000 målepunkter fordelt på over 150 servere, fordelt på rundt 20 separate test- og utviklingsmiljøer. Nagios har også blitt utvidet med egenutviklede plugins som gjør det mulig å teste webservices og andre typer tjenester, mot tjenestebuss eller direkte mot baksystemer.
+
+
+
+Oracle JVM Convergence: 1 + 1 = 1
+
+
+As a result of the merge between Sun Microsystems and Oracle the
+combined company has got not one but two industrial-strength Java
+Virtual Machines (JVMs). What will Oracle's future JVM be like?
+
+
+Over the past few years HotSpot has released a number of new
+innovative features: NUMA-aware GC, string concatenation optimization,
+Garbage-First GC, SSE 4.2 support that is particularly useful in array
+data manipulations, effective escape analysis, etc.
+
+
+In the meantime JRockit is well known for its speed, innovative
+Deterministic GC, and impressive monitoring tools such as Mission
+Control, Flight Recorder, improved JMX agent, native memory tracking, etc.
+
+
+There were many possibilities considered for Oracle's future JVM. The
+path that was chosen should make happy both the existing as well as
+any new JVM users. Oracle has been assembling a single JVM taking the
+best features and characteristics from HotSpot and JRockit. The future
+converged JVM will have a source base derived from Hotspot but heavily
+enhanced with all the important and popular JRockit features: Mission
+Control and Flight Recorder support, native memory tracking, soft
+real-time GC, and many many more.
+
+
+
+Persistens i Scala
+
+
+I Scala "funker" alle rammeverkene vi kjenner fra Java. Men ikke alle fungerer like bra, og vi mister en del på veien.  I java-verden er det en "opplest og vedtatt sannhet" at man bruker JPA når man jobber mot en database. Men liker vi egentlig de begrensingene som JPA setter? Hva om vi vil ha mer kontroll på når - og hvordan SQL kjøres? Må vi virkelig bruke tekstlige spørringer som gir oss feil først i kjøretid? Hva om vi vil ha _mer_?
+
+
+Denne presentasjonen vil kikke på ulike måter å jobbe mot en database fra Scala, fra rå JDBC via JPA og JPA med scala-overbygg til rene Scalarammeverk i form av Squeryl og ScalaQuery.
+
+
+
+Play! Framework: to infinity and beyond
+
+
+The Play! framework is more than just yet another web framework in the Java eco-system: it is also another way of developing web applications. Like RoR, Django, it encourages fast and expressive development, with a clean and pragmatic API. Most importantly, perhaps, it brings simplicity and fun to the Java world. However, simplicity does not mean being limited to simple web applications. The framework gives you  enough power to actually create just anything you can think off: with continuation, web socket support, asynchronous call it is one of the first framework to empower you. We will dive into details on how to use those features and realize that it is actually quite simple, Scala might even be part of the program... Infinity and beyond are now reachable to Java Web developers!
+
+
+
+Polyglot persistence for Java developers - moving out of the relational comfort zone
+
+
+Relational databases have long been considered the one true way to persist enterprise data. But today, NoSQL databases are emerging as a viable alternative for many applications. They can simplify the persistence of complex data models and offer significantly better scalability, and performance. But using NoSQL databases is very different than the ACID/SQL/JDBC/JPA world that we have become accustomed to. They have different and unfamiliar APIs and a very different and usually limited transaction model. In this presentation, we describe some popular NoSQL databases – Redis, MongoDB, and Cassandra. We will compare and contrast each database’s data model and Java API using NoSQL versions of a use case from the book POJOs in Action. We describe the benefits and drawbacks with using NoSQL databases. Finally, you will learn how the Spring Data project simplifies the development of Java applications that use NoSQL databases.
+
+
+
+Polyglot-JVM-programmerere, slutt å sutre!
+
+
+Java-språket får hard medfart og utallige sleivspark i Twitter-sfæren fra utviklere som ønsker like mye frihet og uttrykkskraft som tilbys av andre språk. Jeg vil vise hvordan man med et Collections-bibliotek kan bruke funksjonell stil også i Java, og oppnå snasen, lesbar og gjenbrukbar kode.
+
+
+
+Programmer's Survival Kit: Code Injection for Troubleshooting
+
+
+This presentation is aimed at giving you the knowledge of code injection that you may (or I should rather say "will") need and at persuading you that learning basics of code injection is really worth the little of your time that it takes. I'll present three different real-world cases where code injection came to my rescue, solving each one with a different tool, fitting best the constraints at hand. I'll also provide you with resources to learn the basics and tools easily and quickly.
+
+
+This is a practical presentation; we won't introduce AOP and will explain code injection only briefly, plunging right into the tools and how they can help you.
+
+
+
+Pump It Up: Maximizing the Value of an Existing Investment in Java with Ruby
+
+
+With half a million Ruby developers worldwide, there’s no denying the success and speed of development this language provides. In this interactive session, Thomas Enebo, JRuby developer at Engine Yard, will present how to tap into Ruby to complement an existing investment in Java. It will offer attendees a deep-dive of JRuby, a Java implementation of the Ruby programming language, which allows organizations to build secure, high-performance application functionality with Ruby while utilizing existing Java code and the JVM. Learn how adding JRuby to your development environment will not only help you build applications faster but will also be a fun experience. Find out why Ruby and Rails are grabbing the attention of enterprise developers.
+
+
+
+Push for Android - Sett fra et fugleperspektiv
+
+
+Informasjon levert på sekundet er noe brukere forventer i større grad enn før. På mobile enheter løses dette gjennom push-teknologi. Det er flere mulige måter å implementere pushteknologi til Android-plattformen, fra helt hjemmesnekra kommunikasjon over protokoller som XMPP og MQTT, til tredjepartsløsninger og Googles egen push-løsning C2DM. Lyntalen vil gi en konsis oversikt over muligheter som ligger i de ulike implementasjonene, hvordan de fungerer, og hva de egner seg til.
+
+
+
+På tide å utfordre Prosjektet
+
+
+Smidig begynner å bli veletablert, men for å komme videre må fortsette å utfordre det etablerte. Vår default mentale modell er fremdeles "Prosjekt" - og her ligger også den største hindringen for å bli smidige. Her ligger også synderen som fører til dårlig kvalitet og misfornøyde brukere. Er Smidig Prosjektstyring egentlig en selvmotsigelse?
+
+
+
+REST + sikkerhet = sant
+
+
+Posten Norge lanserte Digipost våren 2011. I tiden etter dette har det blitt jobbet mye med ulike integrasjonsløsninger for bedrifter. Sist ut av løsningene er et flunkende nytt REST-API som ble lansert i august. I denne lyntalen ser vi på hvordan vi har designet og implementert en sikkerhetsmekanisme som lar API’et håndtere innhold med høyeste sikkerhetskrav. Vi ser også på hvordan denne sikkerhetsmekanismen lar seg implementere uten at det går på bekostning av prinsippene bak et RESTful design.
+
+
+
+RIA Security - Broken By Design
+
+
+Rich Internet Applications (RIA) provide desktop-like usability with web deployment model. The benefits of this combination are obvious and RIA is now common a choice for the presentation layer in many applications. Unfortunately, moving logic from the server to an untrusted client may open up security holes that would not be present in the page-oriented "Web 1.0" architecture. In this presentation we will take a look at client- and server-side RIA architectures from the security angle, identify some of the most common security problems and discuss strategies for avoiding them. We'll go through an example application implemented in both architectures and demonstrate the problems. Java-based RIA frameworks, Google Web Toolkit and Vaadin, are used in the examples, but the demonstrated principles are applicable to most other frameworks and languages as well.
+
+
+
+Radical NoSQL Scalability with Cassandra
+
+
+Want to go deep on a popular NoSQL database? Cassandra is a scalable, highly available, column-oriented data store in use at Facebook, Twitter, Reddit, Rackspace, and other web-scale operations. It offers a compelling combination of a rich data model, a robust deployment track record, and a sound architecture. Get to know NoSQL better by studying this leading solution.
+
+
+In this session, we'll talk about Cassandra's data model, work through its API in Java and Groovy, talk about how to deploy it, and look at use cases in which it is an appropriate data storage solution. We'll study its origins in the Amazon Dynamo project and Google's BigTable, and learn how its architecture helps us achieve the gold standard of scalability: horizontal scalability on commodity hardware. You'll leave prepared to begin experimenting with Cassandra immediately and planning its adoption in your next project.
+
+
+
+ReKu - Erfaringer fra moderniseringen av verdens mest komplette storfedatabase
+
+
+Mange systemer står i dag ovenfor store moderniseringsbehov. Gamle systemer hvor både dokumentasjon og kjennskap til språk er mangelvare.
+
+
+Denne presentasjonen vil ta for seg hvordan Tine har startet en stor modernisering av ett av kjernesystemene for rapportering av storfe-opplysninger.
+
+
+Det eksisterende systemet er et filbasert batch-system, skrevet i Cobol, som kjører inn opplysninger i databasen en gang om dagen. Målet er et system, skrevet i Java, som løpende oppdaterer og gir tilbakemeldinger. Men det å erstatte alt i en stor klump var et alternativ ingen likte.
+
+
+Vi vil vise hvordan vi har stykket opp problemstillingen, og klart å rulle ut deler av systemet som gradvis skal erstatte det gamle.
+
+
+
+Real Architecture: Engineering? or Pompous Bullshit?
+
+
+What should software architecture be? How is it related to major critical software qualities and performance, to costs and constraints? How do we decide exactly what to propose, and how do we estimate and prove it is justified. How can an organization qualify their own architects, and know the difference between the frauds and the experts? Would ‘real’ architects recognize what software architects know and do?
+We believe that most activity, going under the name architecture, is NOT – ‘fail’.   Current ‘Software achitecture’ is no more real ‘architecture’ than ‘hackers’ are ‘software engineers’.
+If we are just informally throwing out nice ideas, let us call ourselves ‘Software Brainstormers’. But if we are dealing with large scale, serious, and critical systems, then we need to stop using cabin-building methods and start using skyscraper designing methods – we need a serious architecture and engineering approach.
+
+
+
+Regex - The future programming
+
+
+Join us on a journey that lands in advanced regex in Java. We start in the 1940s AI research, passing the 1970's Unix pioneers, and soon end up in pattern matching of text in modern programming languages like Java.
+
+
+Regex is the often forgotten super tool, that you can benefit from every day -- on the command line, in your code editor and in your programs.
+
+
+This introduction will teach you both the three compulsory operators and some more advanced concepts like lookaroands.
+
+
+
+Revitalisering og reinkarnasjon: Hvordan gi nytt liv til gamle forretningssystemer
+
+
+I et serverrom i en større norsk virksomhet har et sett med tjenester kjørt stabilt i 9 år, og sørget for bl.a. autentiserring, autorisasjon og single sign-on for både kunder og ansatte. Dette systemet har nærmere 50 klienter, og klient-API'en har vært bakover-kompatibel de siste 7 årene. Innenfor slike rammer er ikke endringer enkelt å få til, men nå tar vi sats for å revitalisere denne platformen og kommer med en oppgradert API og en solid utrensking på server-siden.
+
+
+Med så mange berørte parter må vi tenke nøye gjennom hva slags endringer vi gjør, men også hvordan vi kan lage rammer som gir både en stabil API og mulighet for endring de neste årene.
+Dette foredraget oppsummerer de erfaringene vi har gjort oss, hva slags typer endringer som ble gjort i gammel API og hvorfor.
+
+
+
+Ryddig kode og trivelig testing ved å wrappe ajaxen din
+
+
+Jeg viser deg et enkelt grep du kan gjøre med Ajax-kallene dine som gir deg tydeligere kode, bedre feilhåndtering, og gjør det lettere å teste. For du tester vel JavaScripten din?
+
+
+
+SOA uten ESB
+
+
+I en av norges største bedrifter, Oslo kommune, blir tjenestene og plattformen etablert etter hvert som behovene oppstår, noe som har resultert i en omfattende tjenesteorientert arkitektur uten et konkret ESB-produkt. Tjenestene kjører uten applikasjonsserver, kun på  Apache HTTP-servere, mange Java- og spring-containere og ActiveMQ som meldingsbærer.
+
+
+Dette erfaringsforedraget beskriver den tekniske arkitekturen, og gir en rask oversikt over hvordan nye integrasjoner implementeres. Du får også vite hvordan deployment, lastbalansering, overvåkning og organisering av tjenester foregår.
+
+
+
+Scalability through Streaming
+
+
+Modern frameworks and libraries make it easy to expose application features as services. However, if used naively, the resulting services are often severely limited in the size of data they can accept. If clients try to pass even moderately large documents, such systems will lag, hang, or crash hard with an OutOfMemoryError.
+
+
+This talk describes how to design your applications so that they can reliably handle documents and data sets of any size without choking, and without blowing your entire hardware budget on memory. Areas covered:
+
+
+Designing your APIs for streaming
+Streaming patterns
+Streaming services (web services and REST)
+Handling large XML and JSON files
+Handling large data sets with JDBC and JPA
+Parallelizing streams
+Connecting streams, with or without helper threads
+
+
+
+Skru CI-serveren til 11: deployment pipelines
+
+
+Utnytter du egentlig potensialet i CI-serveren? Eller bare sitter den der og kompilerer koden, kjører noen tester og en og annen metrikk? Er det bare utviklerne som har et forhold til den? I dette foredraget får du en innføring i konseptet deployment pipelines, og innføring i hvordan sette opp pipelines i Jenkins CI.  Og hva dette kan gjøre med organisasjonen din. Skru CI-serveren opp til 11, involver større deler av teamet og gjør hele utviklingssløpet kontinuerlig, ikke bare integrasjonen.
+
+
+
+Slik virker testdekningsverktøy
+
+
+De fleste Javautviklere bruker i dag et testdekningsverktøy av typen Cobertura, Emma eller Clover. Men har du noen gang lurt på hvordan slike verktøy er laget? I dette foredraget løfter vi på panseret og viser hvordan kodedekning er implementert. Måling av kodedekning er nemlig ikke er så avansert som du kanskje tror. Med litt kunnskap om bytekodeformat, bytekodeanalyse og transformasjon har vi byggeklossene vi trenger for å lage et enkelt verktøy for analyse av kodedekning. Foredraget viser to eksempler på slike verktøy laget av foredragsholderen, men gir deg også nok kunnskap til at du kan lage ditt eget. Vi viser også hvorfor testdekning i seg selv er en lite meningsfull metrikk og hvordan mutasjonstesting kan hjelpe oss å lage mer relevant tester.
+
+
+
+Smashing Your Java Web Application For Fun And Profit
+
+
+Det finnes enkle tjenestenektangrep (Denial of Service- / DoS-angrep) som vil få mange webapplikasjoner til å gå over ende. Denne lyntalen viser noen av de enkleste og mest effektive angrepene som kanskje også fungerer mot din applikasjon.
+
+
+Og har du noen gang tenkt over at en et DoS-angrep kan koste bedriften din dyrt? Ikke nødvendigvis bare i tapte inntekter, men også i direkte utgifter.
+
+
+
+Software G Forces: The Effects of Acceleration
+
+
+Reducing the deployment cycle introduces fundamental changes in what constitutes effective software development. This talk sketches the changes from quarterly to monthly, then weekly, daily, and hourly deployment.
+
+
+
+Strukturert refaktorering
+
+
+"I really hope that refactoring becomes popular again. Many people nowadays seem to think that refactoring is a set of menu items in the IDE, but it's really much more than that."
+-- Michael Feathers, Roots 2011
+
+
+Hvem har ikke rotet seg inn i en refaktorering som i utgangspunktet skulle være enkel, men som tok flere timer før man til slutt måtte kaste inn håndkledet, forkaste alle endringer og begynne på nytt? Eller sett at designet til applikasjonen din ikke passer til den neste delen med funksjonalitet du skal implementere, men hacket til en løsning fordi alternativet ville vært timesvis, kanskje til og med dagesvis med kode som ikke kompilerer og tester som ikke kjører? Det må ikke være sånn.
+
+
+Ved hjelp av strukturerte refaktoreringsteknikker kan du gradvis forbedre designet på kodebasen din. Gode evner i refaktorering er en forutsetning for å kunne ha et design som utvikler seg i takt med at vi lærer mer om domenet til applikasjonen vår og miljøet den skal fungere i. Denne presentasjonen vil vise deg teknikker som fjerner noe av smerten ved refaktorering, samtidig som du vil kunne holde tester grønne og koden kompilerbar mesteparten av tiden.
+
+
+
+TBA
+
+Testable Enterprise Development with Arquillian
+
+
+In this session, we'll address the missing link in Enterprise Java development: simple, easy integration testing.
+
+
+Unit tests and mock objects will only take you so far; the only answer which truly ensures that all components are playing nicely is a comprehensive integration suite. Unfortunately, writing integration tests has historically involved manual setup of a heavy, cumbersome test harness. That's time lost, but it doesn't have to be anymore.
+
+
+Here we'll introduce Arquillian, a powerful container-oriented testing framework layered atop TestNG and JUnit. Arquillian manages your runtime, abstracting out deployment and allowing you to focus on real test logic. We'll cover:
+
+
+Transparent container lifecycle management
+Declarative deployments
+Test Enrichment (Dependency injection intotests)
+In-container test execution
+
+
+Attend this talk to learn how the simplified component model of Java EE can be applied to testable development.
+
+
+
+Testdrevet Javautvikling på objektorienterte skinner
+
+
+Java må ikke være vanskelig, tregt og kjipt å jobbe med! Ok, kanskje det ikke er et ekspresstog som Rails, men ihvertfall et lokaltog med fin utsikt. Til tross for mange nye spennende alternativer, er Java fortsatt språket og plattformen mange av oss må forholde seg til i en god stund fremover. Java kan være enklere og morsommere enn mange tror.
+
+
+I dette foredraget vil vi vise deg de elementene vi mener må på plass for å jobbe med Java på en enkel, effektiv og endringsdyktig måte. Vi vil demonstrere hvordan du kan gjøre TDD mot web, holde kontroll på testdata, sikre enhetlig validering og holde koden din objektorientert. 4 ting på en gang!
+
+
+Vi har vært så heldige å få teste teoriene våre i reelle systemer det siste året, og har kommet et godt stykke på vei med teknologier som Spring, Maven, JUnit, WebDriver og Spring MVC. Vi vil forklare konseptene som gjør utviklingen enklere, og jobbe med kode for å illustrere poengene.
+
+
+Det er mulig å skrive ren, enkel og endringsdyktig kode i Java uten at det må gjøre vondt. La oss vise deg noen av triksene våre.
+
+
+
+The Art of Garbage Collector Tuning (for the SUN/Oracle JVM)
+
+
+The JVM developed by Sun Microsystems (now owned by Oracle) has been refined and revised with every
+release of the JDK since the advent of Java in the mid 90ies. Today, Java developers face an abundance of GC
+algorithms - from plain and simple serial stop-the-world collectors with a single reaper thread to highly
+parallelized collectors that run several GC threads concurrently with application threads. Each of these
+collectors can be configured and tuned in various ways in order to control pause times or increase throughput.
+The number of choices a Java developer has for configuring the JVM’s garbage collection for his application is
+overwhelming. Hence, garbage collector tuning for the SUN/Oracle JVM is a daunting task.
+The tutorial aims to shed light onto the garbage collection strategies in the Sun/Oracle JVM by explaining all
+algorithms (including Java 7’s “G1” collector) and discussing strategies for tuning and configuration of the
+various collectors.
+
+
+
+The Cloudy Future of Integration
+
+
+Applications are increasingly facing demands for horizontal scalability and cross-platform interoperability. NoSQL data stores are gaining momentum as a way to address the scalability challenges, but for Java developers, this means we need to explore new territory beyond relational database libraries like JDBC and JPA.
+
+
+Messaging systems are by their very nature able to handle widely distributed deployment models, but for Java developers, the cross-platform challenge suggests we should look beyond JMS. Open protocols such as HTTP and AMQP are attractive language-neutral alternatives.
+
+
+In this session, you will learn how the Spring application platform is evolving to accommodate these trends. We'll briefly explore the Spring Data APIs for working with a variety of NoSQL data stores, and we'll discuss open protocol options for both synchronous and asynchronous messaging via Spring Integration Gateways and Channel Adapters. We will also take a quick tour of Cloud Foundry from an application developer's perspective.
+
+
+The session will be demo-driven, featuring an application that can run on both a local Tomcat instance and Cloud Foundry without requiring any changes to code or configuration. The sample application is specifically designed to demonstrate the characteristics of modularity that allow an application to take advantage of a cloud environment. It will make use of the RabbitMQ and MongoDB services available on Cloud Foundry.
+
+
+
+The Complexity of Complexity
+
+
+Of all the non-functional requirements of software development, complexity receives the least attention and seems to be the most important from a long term standard point.  This talk will look at some of forces that drive complexity at the code level and at a system level and their impact.   We will discuss what causes us to over look complexity, how our perception of it changes over time and what we can do about it?
+
+
+
+The Forgotten Art of Automation - 12 Scripts and Hacks That Will Free Your Energies
+
+
+During this presentation I will present 12 scripts and hacks, ready to be copied and pasted into your project. They may either save you time directly, or help you cut down on the vast number of “TODOs” you have to juggle and keep track of in your mind when being responsible for an application portfolio. This way, you will hopefully have more time focusing on what you should spend most of your time doing: pushing code- or configuration changes into a production environment. Some scripts may be directly applicable to your project “as-is”, whereas others may function as a basis for customization and adaption to similar tasks. A few may even help you identify similar tasks and processes you falsely consider to be a “tedious manual job that I hopefully won’t have to repeat later”.
+
+
+And even if you cannot justify the few couple of hours it takes with a direct ROI within your first week, see these scripting jobs as an exercise to stay sharp. It is like doing ten push-ups before going to bed - you know it is good for you, and that it only takes a couple of minutes - you just conveniently “forget” it. If you are still not convinced, see these small scripting jobs as a way to improve your mental hygiene, by allowing yourself to do boring work in a fun way. If you find writing scripts more boring than creating and following up documents and spreadsheets, then you might be ready for a career change.
+
+
+Many of the example scripts have, by choice, been written in languages that do not need extensive installation procedures, lots of configuration, or big frameworks. The languages include Bash/Cygwin, Windows Command Line / PowerShell, cleartool, SQL, ant, and ”JUAN”; a home-made notification addon to JUnit.
+
+
+
+The Future is Reactive
+
+
+As programming is more and more based on events and asynchronous
+calls, the limitations of the observer pattern are becoming
+obvious. Reactive programming solves this by operating on streams of
+events rather than the events themselves.
+
+
+Frameworks for reactive programming in functional programming
+languages have existed for some time, but Reactive Extensions (Rx)
+from Microsoft marks a breakthrough for this paradigm in imperative
+languages. Reactive programming has also become popular in Scala.
+
+
+This is a practical introduction to reactive programming. Currently,
+this paradigm is less convenient in Java than in Scala or C#, but when
+Java gets lambda expressions (closures) this will improve a lot...
+
+
+
+The Java Memory Model
+
+
+With the increasing availability and use of multicore processors Java developers need to acquire some
+understanding of the Java memory model. This is because multithread applications that work nicely on a
+single-core processor might exhibit "inexplicable" deficiencies when running on a multicore processor
+platform. The reason may be differences in the caching strategies applied by different processors.
+In order to illustrate the issues this tutorial explains the Java features for multithread programming. Key topics
+include: memory model, visibility and reordering issues, volatile and atomic variables, initialisation safety and
+final fields, lock-free programming.
+
+
+
+The Pros and Cons of JPA 2
+
+
+The release of the JPA 2.0 specification heralded a wider array of functionality and a more advanced feature set. This made some developers jump for joy at the prospect of being able to do more and still be compliant with the specification. The problem is that the standard doesn’t often come with a detailed instruction booklet describing when to use the new features, or the specific problems they were meant to solve. For the most part, developers must decide for themselves how and under what circumstances they will apply a given feature to their applications. We will discuss what the new features are and when they should be applied, as well as the conditions that could lead to their misuse. We will offer tips on what the most useful features are and explore some of the more puzzling parts.
+
+
+
+The fun of introducing technology to development projects
+
+
+For designing and implementing systems there are choices like do you use Java or Scala, Spring or Guice,
+Eclipse or Intellij. Equally important are a clear strategy on how to introduce technology into your
+organization, keeping developers productive and integrate new technology into existing projects.
+
+
+Even the great Java-platform needs help from developers, architects and project managers to be as successful as the last evangelist explained to you.
+
+
+This presentation is a collection of advices based on experience from the last 10 years introducing Java-platform technology into new and existing projects. Examples will be given on how to choose language and libraries, how to learn, how to integrate, what is important for developers, how to handle project managers, all with the purpose of explaining how you can use fun and exciting technology to deliver your project.
+
+
+
+Topp 7 aksjonspunkter etter 40 retrospektiv
+
+
+Kontinuerlig forbedring og læring er noe de aller fleste snakker om i forbindelse med smidige metodikker, men mange faller igjennom når retrospektivet skal gjennomføres og aksjonspunkter skal følges opp. Etter 3 år og pluss 40 retrospektiv har vi gjort oss noen erfaringer om hvordan et aksjonspunkt bør se ut, hva det bør inneholde, hvor mange man bør ha og hvorfor noen fører til forbedringer og andre ikke.
+
+
+Dette eksemplifisert gjennom våre topp 7 aksjonspunkter.
+
+
+
+Usability 101
+
+
+Day in and day out we are subjected to poorly designed applications. From those we experience directly to the time we waste waiting on others who are struggling with systems that seem like they were built to hinder the user. It doesn't have to be like this and many users are waking up and demanding better applications. Are you prepared to deliver? After this workshop, you will be. When you're done, you'll have the tools you need to make sure your application helps your users kick ass!
+
+
+Usa-what now? While most developers are schooled in algorithms and programming languages, they often lack a grounding in the fundamentals of usability; we'll start by exploring what usability is dispelling many of the myths surrounding this misunderstood aspect of software. We'll show why usability matters and help you see how it can make the difference on your projects.
+
+
+The who - developing pragmatic personas. We can't build a great UI without knowing who we're building it for. Personas are a time tested technique to help teams understand their users and facilitate building the right interface. While personas are often backed by extensive ethnographic research, they don't require months and months of effort. We'll explore the use of pragmatic personas to see how they can simplify the task of interface design. As an exercise, we'll develop personas for our application.
+
+
+The what - figuring out just what to build. Of course just knowing who we're building for is only part of the picture, we have to know what our users are trying to do. Wether you favor use cases, user stories or more traditional requirements documents, at the end of the day our customers are using our application to further some other goal. In this section we'll discuss tasks and scenarios showing how they contribute to the overall design process. Using story maps, we'll write up a set of user goals expanding them into tasks that will help us design a set of interfaces.
+
+
+The how - designing rocking good interfaces. Want to know the secret to designing great interfaces? We'll talk about the importance of iteration; just as our code is rarely right on the first try, neither are our interfaces. To facilitate the iterative process, we'll discuss the vital importance of paper prototyping. That's right, paper and pencil are your best tools. We'll also talk about why some designs are better than others discussing the heuristics that are second nature to the experienced designer. We'll also discuss design guidelines talking about how to make sure yours aren't just a dusty document sitting in a rarely visited corner of the LAN. We'll sketch up a variety of approaches focussing on quick and dirty designs that allow us to explore a plethora of options.
+
+
+Testing our design - making sure we're on the right path. Just as we test our code, we must test our interfaces. While we may not have UIunit at our disposal, testing our UIs is just as important as testing our code. From recruiting users to preparing the space, we'll discuss how to get ready for a test. We'll talk about the various roles in a user test from the all important moderator to playing computer and taking notes. User tests can be very stressful, we'll discuss ways to put our customers at ease. We'll also discuss the best way to communicate the results of testing to the rest of your team. We'll prepare a deck to test a given scenario. We'll take that deck and test it with our "customers." Of course we can also desk check our interfaces using standard heuristics - we'll look at some existing applications discussing what was done right and what could be done better.
+
+
+
+Using Spring with non relational databases
+
+
+The needs of many enterprises have stretched traditional RDBMS based solutions to the breaking point and as a result, a plethora of new non-relational storage options have appeared: key-value stores, column storages, document and graph databases. This talk will show how the Spring Framework is evolving to support 'NoSQL' databases by bringing traditional Spring values such as portability, productivity and a unified POJO based programming model to this style of data access. During the presentation, the main features of Spring Data will be discussed by taking a tour of the various offerings out there such as Redis, Mongo and Neo4J just to name a few.
+Basic NoSQL knowledge is required.
+
+
+
+Webbit - event driven Java WebSocket server 
+
+
+Webbit is a small and fast pure Java web server with WebSocket and EventSource support. Learn how to stream data to the browser.  http://webbitserver.org/
+
+
+
+What Riding the Camel can do to make integration easier for you
+
+
+Apache Camel, a very popular integration framework, builds on the principles of the EIPs (Enterprise Integration Patterns) and DSLs (Domain Specific Language).
+In this talk we show how integration can become much easier and accessible with Apache Camel.
+By wiring together EIP patterns, processes and transports, integrating becomes as simple as building routes "lego style.", The wiring is done using the Camel DSL.
+This talk includes live demos that show how to get started with Camel and build integration flows in the four DSLs: plain Java, XML,  Groovy and Scala.
+
+
+We will also show you how you can use Eclipse tooling to build routes using a graphical drag'n'drop environment.
+
+
+This talk also describes the options available for running Camel, such as embedding Camel into an existing environment. As well as running Camel with OSGi.
+
+
+After this we shift focus to cover the Camel community showing the rising popularity
+of Apache Camel. As well as briefly touching other open source projects which leverage Apache
+Camel in any way.
+
+
+
+What your boss wants and how you can meet the expectations
+
+
+This lightning talk focus on the expectations of senior executives and how agile frameworks can be used to meet those expectations
+
+
+
+Working with code
+
+
+Using IntelliJ, the talk will give live demonstration of different approaches to the common refactoring operations. This will include deleting code, renaming code, introducing parameters, introducing variables, creating variables, inlining and selecting code.
+
+
+This is the stuff you don't pick up by casual messing around with the "refactor" menu, and is valuable for professionals with 10+ years experience as well as beginners. Everyone will learn something.
+
+
+
+jee6 - Less is more
+
+
+Jee6 har gitt nye muligheter som ikke tidligere har vært mulig. Man kan redusere antall rammeverk da mer er integrert i Java. Feks Spring. Hvor mye kan man presse ut av jee6 før nye rammeverk må inn? Hvordan har det vært å jobbe med Jee6. Det gir også en del intressante utfordringer og det kommer sansynligvis flere av dem. Jeg ønsker å dele mine erfaringer med bruk av Jee6 gjennom et års utviklingsprosjekt på Skatteetaten.
+
+
+
