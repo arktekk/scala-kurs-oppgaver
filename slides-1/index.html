@@ -7,7 +7,7 @@
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/show.js"></script>
         <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
-        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1325628871277" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1325634765376" type="text/css" rel="stylesheet" />
       <script type="text/javascript"><!--
         window.onload=function() { prettyPrint(); };
       --></script>
@@ -402,6 +402,156 @@ jAddr.get // java.util.NoSuchElementException
 </p><p><a href="https://github.com/arktekk/scala-kurs-oppgaver/tree/master/buzzword" >https://github.com/arktekk/scala-kurs-oppgaver/tree/master/buzzword</a>
 </p></div>
       </div><div class="content" id="slide-41">
+       <div class="container"><pre><code class="prettyprint lang-scala">val `class` = ..
+
+var `I can be anything` = ...
+</code></pre></div>
+      </div><div class="content" id="slide-42">
+       <div class="container"><h2>annotations</h2><pre><code class="prettyprint lang-scala">@Component(&quot;helloBean&quot;)
+class Hello @Autowired()(name:String) {
+  ...
+}
+</code></pre></div>
+      </div><div class="content" id="slide-43">
+       <div class="container"><h2>named parameters</h2><pre><code class="prettyprint lang-scala">def setPosition(x:Int, y:Int){
+  ...	
+}
+	
+setPosition(x = 5, y = 10)
+
+setPosition(y = 10, x = 5)
+</code></pre></div>
+      </div><div class="content" id="slide-44">
+       <div class="container"><h2>default parameters</h2><pre><code class="prettyprint lang-scala">def hello(name:String, end: String = &quot;!&quot;) =
+  &quot;Hello &quot; + name + end
+	
+hello(&quot;world&quot;) 
+// Hello world!
+	
+hello(&quot;world&quot;, &quot;, whats up?&quot;) 
+// Hello world, whats up?
+</code></pre></div>
+      </div><div class="content" id="slide-45">
+       <div class="container"><h2>varargs</h2><pre><code class="prettyprint lang-scala">def args(ints:Int*){
+  ints.foreach(println)
+}
+
+args(1, 2, 3)
+
+val list = List(1, 2, 3)
+
+args(list :_*)
+</code></pre></div>
+      </div><div class="content" id="slide-46">
+       <div class="container"><h2>symboler</h2><pre><code class="prettyprint lang-scala">1.0.+(2.0)    &quot;foo&quot;.charAt(0)
+
+1.0 + 2.0     &quot;foo&quot; charAt 0
+</code></pre></div>
+      </div><div class="content" id="slide-47">
+       <div class="container"><h2>symboler</h2><pre><code class="prettyprint lang-scala">val a = BigDecimal(&quot;100.00&quot;)
+val b = BigDecimal(&quot;25.00&quot;)
+	
+a * b  // 2500.0000
+a - b  // 75.00
+a / b  // 4
+a + b  // 125.00
+a &gt; b  // true
+a &lt; b  // false
+a &gt;= b // true
+a &lt;= b // false
+</code></pre></div>
+      </div><div class="content" id="slide-48">
+       <div class="container"><h2>imports</h2><pre><code class="prettyprint lang-scala">import java.util.List
+import java.util._
+
+import java.util.{List, Map}
+
+import java.util.{List =&gt; JList}
+
+import java.util.{List =&gt; _, _}
+
+import java._
+import util.List
+
+import java.{util =&gt; jutil}
+import jutil.List
+
+import _root_.java.util.List
+</code></pre></div>
+      </div><div class="content" id="slide-49">
+       <div class="container"><h2>import også fra objekter</h2><pre><code class="prettyprint lang-scala">object Foo{
+  val hello = &quot;hello&quot;	
+}
+
+import Foo.hello
+import Foo._
+
+class Bar {
+  val meh = &quot;whatever&quot;
+}
+
+val bar = new Bar
+import bar._
+</code></pre></div>
+      </div><div class="content" id="slide-50">
+       <div class="container"><h2>packages</h2><pre><code class="prettyprint lang-scala">package com.foo.bar {
+  class Hello
+}
+
+package com.foo.bar
+
+class Hello
+</code></pre></div>
+      </div><div class="content" id="slide-51">
+       <div class="container"><h2>nested packages</h2><pre><code class="prettyprint lang-scala">package com.foo {
+  package bar {
+    class Hello
+  }	
+}
+
+package com.foo
+package bar
+
+class Hello
+</code></pre></div>
+      </div><div class="content" id="slide-52">
+       <div class="container"><h2>package objects</h2><pre><code class="prettyprint lang-scala">// file a
+package object foo {
+  def say(what:String){
+    println(&quot;Say &quot; + what)
+  }
+}
+
+// file b
+package foo
+
+class Foo {
+  def hi = say(&quot;Hi&quot;)
+}
+</code></pre></div>
+      </div><div class="content" id="slide-53">
+       <div class="container"><h2>type aliases</h2><pre><code class="prettyprint lang-scala">type JMap[A, B] = java.util.HashMap[A, B]
+type Hash[A, B] = java.util.HashMap[A, B]
+	
+val m:JMap[String, String] = new Hash
+</code></pre></div>
+      </div><div class="content" id="slide-54">
+       <div class="container"><h2>protected</h2><pre><code class="prettyprint lang-scala">protected def foo = ...
+	
+protected [mypackage] def foo = ...
+	
+protected [MyType] def foo = ...
+</code></pre></div>
+      </div><div class="content" id="slide-55">
+       <div class="container"><h2>private</h2><pre><code class="prettyprint lang-scala">private def foo = ..
+
+private [mypackage] def foo = ...
+
+private [MyType] def foo = ...
+
+private [this] def foo = ...
+</code></pre></div>
+      </div><div class="content" id="slide-56">
        <div class="container"><h2>functions</h2><pre><code class="prettyprint lang-scala">val length:String =&gt; Int =
   in =&gt; in.length
 
@@ -416,7 +566,7 @@ takesAFun(in =&gt; in.length)
 
 takesAFun(_.length)
 </code></pre></div>
-      </div><div class="content" id="slide-42">
+      </div><div class="content" id="slide-57">
        <div class="container"><pre><code class="prettyprint lang-scala">val noArg:() =&gt; Int =
   () =&gt; 10
 
@@ -429,7 +579,7 @@ takesNoArg(noArg)
 
 takesNoArg(() =&gt; 10)
 </code></pre></div>
-      </div><div class="content" id="slide-43">
+      </div><div class="content" id="slide-58">
        <div class="container"><h2>call by name</h2><pre><code class="prettyprint lang-scala">def callByName(f: =&gt; Int) = {
   val anInt = f
   5 + anInt
@@ -444,7 +594,7 @@ def callByNameIgnore(f: =&gt; Int){
 callByNameIgnore(throw new Exception(&quot;who cares?&quot;))
 // ingen exception kastet
 </code></pre></div>
-      </div><div class="content" id="slide-44">
+      </div><div class="content" id="slide-59">
        <div class="container"><h2>parameter sets</h2><pre><code class="prettyprint lang-scala">def multiple(name:String)(age:Int) {
   println(name + &quot; is &quot; + age + &quot; years old&quot;)
 }
@@ -455,7 +605,7 @@ multiple(&quot;Mr Scala&quot;){
   5 + 10
 }
 </code></pre></div>
-      </div><div class="content" id="slide-45">
+      </div><div class="content" id="slide-60">
        <div class="container"><pre><code class="prettyprint lang-scala">def debug(name:String)(expr: =&gt; String){
   val logger = Logger.getLogger(name)
   if(logger.isDebugEnabled){
@@ -467,7 +617,7 @@ debug(&quot;database&quot;){
   DB.reallyHeavyOperation.mkString(&quot;,&quot;)
 }
 </code></pre></div>
-      </div><div class="content" id="slide-46">
+      </div><div class="content" id="slide-61">
        <div class="container"><h2>partial application</h2><pre><code class="prettyprint lang-scala">def printIt(name:String) = println(&quot;Look, its &quot; + name)
 
 val partiallyApplied:String =&gt; Unit = printIt _
@@ -475,7 +625,7 @@ val partiallyApplied:String =&gt; Unit = printIt _
 partiallyApplied(&quot;pretty cool&quot;)
 // Look, its pretty cool
 </code></pre></div>
-      </div><div class="content" id="slide-47">
+      </div><div class="content" id="slide-62">
        <div class="container"><pre><code class="prettyprint lang-scala font-90">val later = new ListBuffer[() =&gt; Unit]
 
 def register(f: =&gt; Unit){
@@ -496,7 +646,7 @@ java.lang.Exception: Oh noes
   at ....
 */
 </code></pre></div>
-      </div><div class="content" id="slide-48">
+      </div><div class="content" id="slide-63">
        <div class="container"><h2>tuples</h2><pre><code class="prettyprint lang-scala">val twoThings = (5, &quot;A String&quot;)
 
 twoThings._1 // 5
@@ -509,7 +659,7 @@ val aMap = listOfTuples.toMap // Map(5 -&gt; &quot;A String&quot;, 6 -&gt; &quot
 
 val (even, odd) = list.partition(_ % 2 == 0)
 </code></pre></div>
-      </div><div class="content" id="slide-49">
+      </div><div class="content" id="slide-64">
        <div class="container"><h2>traits</h2><pre><code class="prettyprint lang-scala">trait Mult {
  def mult(a:Int, b:Int) = a * b
 }
@@ -522,7 +672,7 @@ object Calc extends Mult with Add
 	
 Calc.mult(4, Calc.add(1, 2))
 </code></pre></div>
-      </div><div class="content" id="slide-50">
+      </div><div class="content" id="slide-65">
        <div class="container"><h2>traits (stackable modifications)</h2><pre><code class="prettyprint lang-scala font-80">trait Rule {
   def convert(int:Int) = int.toString
 }
@@ -543,7 +693,7 @@ trait FizzBuzz extends Rule {
     else super.convert(int)
 }
 </code></pre></div>
-      </div><div class="content" id="slide-51">
+      </div><div class="content" id="slide-66">
        <div class="container"><pre><code class="prettyprint lang-scala">object FizzTest extends Rule with Fizz
 (0 to 15).foreach(i =&gt; println(FizzTest.convert(i)))
 
@@ -556,10 +706,10 @@ object FizzBuzzTest extends Rule with Fizz with Buzz with FizzBuzz
 object BuzzFizzTest extends Rule with FizzBuzz with Fizz with Buzz
 (0 to 15).foreach(i =&gt; println(BuzzFizzTest.convert(i)))
 </code></pre></div>
-      </div><div class="content" id="slide-52">
+      </div><div class="content" id="slide-67">
        <div class="container"><p><img  src="advanced/traits.png" alt="traits" />
 </p></div>
-      </div><div class="content" id="slide-53">
+      </div><div class="content" id="slide-68">
        <div class="container"><h2>pattern matching &amp; case classes</h2><pre><code class="prettyprint lang-scala">sealed trait Tree
 case class Branch(left:Tree, right:Tree) extends Tree
 case class Leaf(value:Int) extends Tree
@@ -575,7 +725,7 @@ val tree = Branch(
 
 sum(tree)
 </code></pre></div>
-      </div><div class="content" id="slide-54">
+      </div><div class="content" id="slide-69">
        <div class="container"><h2>pattern matching &amp; exceptions</h2><pre><code class="prettyprint lang-scala">case class SomeException(why:String) extends Exception(why)
 
 try{
@@ -585,10 +735,10 @@ try{
   case ex:Exception =&gt; ex.printStackTrace
 }
 </code></pre></div>
-      </div><div class="content" id="slide-55">
+      </div><div class="content" id="slide-70">
        <div class="container"><p><img  src="advanced/pimp.png" alt="pimp" />
 </p></div>
-      </div><div class="content" id="slide-56">
+      </div><div class="content" id="slide-71">
        <div class="container"><h2>implicit conversions</h2><pre><code class="prettyprint lang-scala">class PlusMinus(i:Int){
   def +- (o:Int) = i-o to o+i
 }
@@ -598,7 +748,7 @@ def plusMinus(i:Int) = new PlusMinus(i)
 plusMinus(5) +- 2
 //Range(3, 4, 5, 6, 7)
 </code></pre></div>
-      </div><div class="content" id="slide-57">
+      </div><div class="content" id="slide-72">
        <div class="container"><pre><code class="prettyprint lang-scala">class PlusMinus(i:Int){
   def +- (o:Int) = i-o to o+i
 }
@@ -608,23 +758,23 @@ implicit def plusMinus(i:Int) = new PlusMinus(i)
 5 +- 2
 //Range(3, 4, 5, 6, 7)
 </code></pre></div>
-      </div><div class="content" id="slide-58">
+      </div><div class="content" id="slide-73">
        <div class="container"><h2>Oppgavetid :-)</h2><p>Skriv ditt eget testrammeverk!
 </p><p><a href="https://github.com/arktekk/scala-kurs-oppgaver/tree/master/testframework" >https://github.com/arktekk/scala-kurs-oppgaver/tree/master/testframework</a>
 </p></div>
-      </div><div class="content" id="slide-59">
+      </div><div class="content" id="slide-74">
        <div class="container"><h1>Testing</h1><ul><li><a href="http://scalatest.org/" >ScalaTest</a>
 </li><li><a href="http://specs2.org" >Specs2</a>
 </li><li><a href="http://code.google.com/p/scalacheck/" >ScalaCheck</a>
 </li></ul></div>
-      </div><div class="content" id="slide-60">
+      </div><div class="content" id="slide-75">
        <div class="container"><h2><a href="http://scalatest.org/" >ScalaTest</a></h2><ul><li>Et av de eldste scala prosjektene
 </li><li>Støtter en rekke forskjellige test former (junit -&gt; bdd)
 </li><li>Stor utvalg av matchere
 </li><li>JUnit og TestNG integrasjon
 </li><li>IDEA integrasjon
 </li></ul></div>
-      </div><div class="content" id="slide-61">
+      </div><div class="content" id="slide-76">
        <div class="container"><pre><code class="prettyprint lang-scala">import org.scalatest.FunSuite
 
 class FirstSuite extends FunSuite {
@@ -640,7 +790,7 @@ class FirstSuite extends FunSuite {
   }
 }
 </code></pre></div>
-      </div><div class="content" id="slide-62">
+      </div><div class="content" id="slide-77">
        <div class="container"><pre><code class="prettyprint lang-scala">import org.scalatest.FunSuite
 import org.scalatest.matchers.ShouldMatchers._
 
@@ -657,14 +807,14 @@ class FirstSuite extends FunSuite {
   }
 }
 </code></pre></div>
-      </div><div class="content" id="slide-63">
+      </div><div class="content" id="slide-78">
        <div class="container"><pre><code class="prettyprint lang-scala">val s = &quot;hi&quot;
 val thrown = intercept[IndexOutOfBoundsException] {
   s.charAt(-1)
 }
 assert(thrown.getMessage === &quot;String index out of range: -1&quot;)
 </code></pre></div>
-      </div><div class="content" id="slide-64">
+      </div><div class="content" id="slide-79">
        <div class="container"><pre><code class="prettyprint lang-scala font-60">import org.scalatest.{FunSuite, BeforeAndAfter}
 import collection.mutable.ListBuffer
 
@@ -696,7 +846,7 @@ class ExampleSuite extends FunSuite with BeforeAndAfter {
   }
 }
 </code></pre></div>
-      </div><div class="content" id="slide-65">
+      </div><div class="content" id="slide-80">
        <div class="container"><pre><code class="prettyprint lang-scala font-60">import org.scalatest.fixture.FixtureFunSuite
 import java.io.{FileWriter, File}
 
@@ -729,13 +879,13 @@ class ExampleSuite extends FixtureFunSuite {
   }
 }
 </code></pre></div>
-      </div><div class="content" id="slide-66">
+      </div><div class="content" id="slide-81">
        <div class="container"><h2><a href="http://specs2.org" >Specs2</a></h2><ul><li>Etterfølger til Specs
 </li><li>BDD/Spec orientert
 </li><li>Gigantisk sett med matchere
 </li><li>JUnit integrasjon
 </li></ul></div>
-      </div><div class="content" id="slide-67">
+      </div><div class="content" id="slide-82">
        <div class="container"><pre><code class="prettyprint lang-scala">import org.specs2._
 
 class HelloWorldSpec extends Specification { def is =
@@ -753,13 +903,13 @@ class HelloWorldSpec extends Specification { def is =
     def e3 = &quot;Hello world&quot; must endWith(&quot;world&quot;)
   }
 </code></pre></div>
-      </div><div class="content" id="slide-68">
+      </div><div class="content" id="slide-83">
        <div class="container"><h2><a href="http://code.google.com/p/scalacheck/" >ScalaCheck</a></h2><ul><li>Scala port av <a href="http://www.cse.chalmers.se/~rjmh/QuickCheck/" >QuickCheck</a> fra Haskell
 </li><li>property basert testing
 </li><li>genererer testdata for verifisering av properties
 </li><li>Integrert i både <a href="http://scalatest.org/" >ScalaTest</a> og <a href="http://specs2.org" >Specs2</a>
 </li></ul></div>
-      </div><div class="content" id="slide-69">
+      </div><div class="content" id="slide-84">
        <div class="container"><pre><code class="prettyprint lang-scala font-80">import org.scalacheck._
 
 object StringSpecification extends Properties(&quot;String&quot;) {
@@ -781,7 +931,7 @@ object StringSpecification extends Properties(&quot;String&quot;) {
   )
 }
 </code></pre></div>
-      </div><div class="content" id="slide-70">
+      </div><div class="content" id="slide-85">
        <div class="container"><pre><code>+ String.startsWith: OK, passed 100 tests.                                    
 + String.endsWith: OK, passed 100 tests.                                      
 ! String.concat: Falsified after 0 passed tests.                              
