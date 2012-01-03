@@ -5,7 +5,7 @@ I `src/main/scala/lst/Lst.scala` finner du en single linket liste bestående av 
 
 Oppgaven er å implementere alle metodene slik at testene i `src/test/scala/lst/LstTest.scala` kjører grønt
 
-Testene kjøres enten direkte fra IntelliJ eller fra sbt med kommandoen test
+Testene kjøres enten direkte fra IntelliJ eller fra sbt med kommandoen `test`
 
     > [info] LstTest:
       [info] - isEmpty
