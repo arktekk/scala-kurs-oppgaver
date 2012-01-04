@@ -7,7 +7,7 @@
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/show.js"></script>
         <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
-        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1325635551755" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1325672782122" type="text/css" rel="stylesheet" />
       <script type="text/javascript"><!--
         window.onload=function() { prettyPrint(); };
       --></script>
@@ -241,7 +241,7 @@ abc._3 == List(1, 2, 3)
 </p></div>
       </div><div class="content" id="slide-25">
        <div class="container"><h2>“literals“</h2><pre><code class="prettyprint lang-scala">val list  = List(1, 2, 3)
-val map   = Map(1 -&gt; a&quot;, 2 -&gt; &quot;3)
+val map   = Map(1 -&gt; &quot;a&quot;, 2 -&gt; &quot;3&quot;)
 val set   = Set(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
 val array = Array(1, 2, 3)
 val range = 1 to 10
@@ -335,10 +335,10 @@ val familier:Map[String, List[Person]] =
   personer.groupBy(_.etternavn)
 
 val fornavn:Map[String, List[String]] = 
-  familier.mapValues(_.fornavn)
+  familier.mapValues(personer =&gt; personer.map(_.fornavn))
 
 val sortert:Seq[(String, List[String])] =
-  fornavn.toSeq.sortBy(_.1.size)
+  fornavn.toSeq.sortBy(_._1.size)
 
 List(1, 2, 3).contains(2) == true
 </code></pre></div>

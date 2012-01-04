@@ -236,7 +236,7 @@ abc._3 == List(1, 2, 3)
 ## "literals" ##
 ```scala
 val list  = List(1, 2, 3)
-val map   = Map(1 -> a", 2 -> "3)
+val map   = Map(1 -> "a", 2 -> "3")
 val set   = Set("a", "b", "c")
 val array = Array(1, 2, 3)
 val range = 1 to 10
@@ -350,10 +350,10 @@ val familier:Map[String, List[Person]] =
   personer.groupBy(_.etternavn)
 
 val fornavn:Map[String, List[String]] = 
-  familier.mapValues(_.fornavn)
+  familier.mapValues(personer => personer.map(_.fornavn))
 
 val sortert:Seq[(String, List[String])] =
-  fornavn.toSeq.sortBy(_.1.size)
+  fornavn.toSeq.sortBy(_._1.size)
 
 List(1, 2, 3).contains(2) == true
 ```
