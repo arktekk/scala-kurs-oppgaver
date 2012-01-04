@@ -7,7 +7,7 @@
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/show.js"></script>
         <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
-        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1325634765376" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1325635551755" type="text/css" rel="stylesheet" />
       <script type="text/javascript"><!--
         window.onload=function() { prettyPrint(); };
       --></script>
@@ -402,7 +402,7 @@ jAddr.get // java.util.NoSuchElementException
 </p><p><a href="https://github.com/arktekk/scala-kurs-oppgaver/tree/master/buzzword" >https://github.com/arktekk/scala-kurs-oppgaver/tree/master/buzzword</a>
 </p></div>
       </div><div class="content" id="slide-41">
-       <div class="container"><pre><code class="prettyprint lang-scala">val `class` = ..
+       <div class="container"><h2>string literal identifiers</h2><pre><code class="prettyprint lang-scala">val `class` = ..
 
 var `I can be anything` = ...
 </code></pre></div>
@@ -479,7 +479,7 @@ import jutil.List
 import _root_.java.util.List
 </code></pre></div>
       </div><div class="content" id="slide-49">
-       <div class="container"><h2>import også fra objekter</h2><pre><code class="prettyprint lang-scala">object Foo{
+       <div class="container"><h2>import fra alle objekter</h2><pre><code class="prettyprint lang-scala">object Foo{
   val hello = &quot;hello&quot;	
 }
 
@@ -532,8 +532,11 @@ class Foo {
       </div><div class="content" id="slide-53">
        <div class="container"><h2>type aliases</h2><pre><code class="prettyprint lang-scala">type JMap[A, B] = java.util.HashMap[A, B]
 type Hash[A, B] = java.util.HashMap[A, B]
+
+type JIntMap[B] = JMap[Int, B]
 	
 val m:JMap[String, String] = new Hash
+val i:JIntMap[String] = new Hash
 </code></pre></div>
       </div><div class="content" id="slide-54">
        <div class="container"><h2>protected</h2><pre><code class="prettyprint lang-scala">protected def foo = ...

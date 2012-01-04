@@ -1,4 +1,5 @@
 !SLIDE
+## string literal identifiers ##
 ```scala
 val `class` = ..
 
@@ -98,7 +99,7 @@ import _root_.java.util.List
 ```
 
 !SLIDE
-## import også fra objekter ##
+## import fra alle objekter ##
 ```scala
 object Foo{
   val hello = "hello"	
@@ -165,8 +166,11 @@ class Foo {
 ```scala
 type JMap[A, B] = java.util.HashMap[A, B]
 type Hash[A, B] = java.util.HashMap[A, B]
+
+type JIntMap[B] = JMap[Int, B]
 	
 val m:JMap[String, String] = new Hash
+val i:JIntMap[String] = new Hash
 ```
 
 !SLIDE
