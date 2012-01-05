@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<getArtistResponse>
+    <artist>The Ting Tings</artist>
+    <albums>
+        <albumResult>
+            <album>We Started Nothing</album>
+            <year>2008</year>
+            <amazonLink>http://www.amazon.com/exec/obidos/redirect?link_code=ur2&amp;tag=wikia-20&amp;camp=1789&amp;creative=9325&amp;path=external-search%3Fsearch-type=ss%26index=music%26keyword=The%20Ting%20Tings%20We%20Started%20Nothing</amazonLink>
+            <songs>
+                <item>Great DJ</item>
+                <item>That&#039;s Not My Name</item>
+                <item>Fruit Machine</item>
+                <item>Traffic Light</item>
+                <item>Shut Up And Let Me Go</item>
+                <item>Keep Your Head</item>
+                <item>Be The One</item>
+                <item>We Walk</item>
+                <item>Impacilla Carpisung</item>
+                <item>We Started Nothing</item>
+            </songs>
+        </albumResult>
+        <albumResult>
+            <album>Other Songs</album>
+            <year></year>
+            <amazonLink>http://www.amazon.com/exec/obidos/redirect?link_code=ur2&amp;tag=wikia-20&amp;camp=1789&amp;creative=9325&amp;path=external-search%3Fsearch-type=ss%26index=music%26keyword=The_Ting_Tings%20Other%20Songs</amazonLink>
+            <songs>
+                <item>Hands</item>
+                <item>Hand</item>
+                <item>Happy Birthday</item>
+                <item>Hey</item>
+                <item>We&#039;re Not The Same</item>
+            </songs>
+        </albumResult>
+    </albums>
+</getArtistResponse>
