@@ -1,0 +1,886 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <title>Dag 2</title>
+        <link href="assets/css/show.css" type="text/css" rel="stylesheet" />
+        <link href="assets/css/prettify.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="assets/js/show.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1325726919534" type="text/css" rel="stylesheet" />
+      <script type="text/javascript"><!--
+        window.onload=function() { prettyPrint(); };
+      --></script>
+      </head>
+      <body>
+        <div id="slides">
+          <div id="reel">
+            <div class="content" id="slide-0">
+       <div class="container"><h1>for-comprehensions</h1></div>
+      </div><div class="content" id="slide-1">
+       <div class="container"><h2>for-comprehensions</h2><ul><li>konsis måte å jobbe med “collections” og lignende
+</li><li>haskell, python, erlang og mange andre har varianter
+</li><li><p>syntax sukker (macro) for 
+</p><ul><li><code>foreach</code>
+</li><li><code>map</code>
+</li><li><code>flatMap</code>
+</li><li><code>withFilter</code>
+</li></ul></li><li>lettere ?
+</li></ul></div>
+      </div><div class="content" id="slide-2">
+       <div class="container"><h2>foreach</h2><pre><code class="prettyprint lang-scala">for {
+  a &lt;- List(1, 2)
+  b &lt;- List(3, 4)
+} println(a + b)
+
+List(1, 2).foreach {
+  a =&gt; List(3, 4).foreach {
+    b =&gt; println(a + b)
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-3">
+       <div class="container"><h2>map</h2><pre><code class="prettyprint lang-scala">for {
+  a &lt;- List(1, 2)
+} yield a + 1
+
+List(1, 2).map(a =&gt; a + 1)
+</code></pre></div>
+      </div><div class="content" id="slide-4">
+       <div class="container"><h2>flatMap</h2><pre><code class="prettyprint lang-scala">for {
+  a &lt;- List(1, 2)
+  b &lt;- List(3, 4)
+  c &lt;- List(5, 6)
+} yield a + b + c
+
+List(1, 2).flatMap {
+  a =&gt; List(3, 4).flatMap {
+    b =&gt; List(5, 6).map {
+      c =&gt; a + b + c
+    }
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-5">
+       <div class="container"><h2>withFilter</h2><pre><code class="prettyprint lang-scala">for {
+  a &lt;- List(1, 2)
+  b &lt;- List(3, 4)
+  if a + b &lt; 5
+} yield a * b
+
+List(1, 2).flatMap {
+  a =&gt; List(3, 4).withFilter {
+    b =&gt; a + b &lt; 5
+  }.map{
+    b =&gt; a * b
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-6">
+       <div class="container"><h2>pattern matching</h2><pre><code class="prettyprint lang-scala">val R = &quot;\\d+&quot;.r
+for {
+  R(a) &lt;- List(&quot;123&quot;, &quot;abc&quot;, &quot;321&quot;)    
+} yield a
+
+List(&quot;123&quot;, &quot;abc&quot;, &quot;321&quot;).withFilter {
+  case R(a) =&gt; true
+  case _ =&gt; false
+}.map{
+  case R(a) =&gt; a
+}
+</code></pre></div>
+      </div><div class="content" id="slide-7">
+       <div class="container"><h2>inline variabler</h2><pre><code class="prettyprint lang-scala">for {
+  a &lt;- List(1, 2)
+  b = a + 1
+  c &lt;- List(3, 4)
+} yield a + b + c
+
+List(1, 2).map { a =&gt;
+  val b = a + 1
+  (a, b)
+}.flatMap { case (a, b) =&gt;
+  List(3, 4).map {
+    c =&gt; a + b + c
+  }
+}
+</code></pre></div>
+      </div><div class="content" id="slide-8">
+       <div class="container"><h2>fordeler og ulemper ?</h2><ul><li>skrive
+</li><li>lese
+</li><li>forstå
+</li><li>forstå logikken
+</li></ul></div>
+      </div><div class="content" id="slide-9">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.package" >collections</a></h1><p><img  src="collections/collections.png" alt="collections" />
+</p></div>
+      </div><div class="content" id="slide-10">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.Traversable" >Traversable</a></h1><ul><li>base trait for all scala collections
+</li><li>implementerer <strong>masse</strong> felles metoder kun via <code>foreach</code> (over 50)
+</li></ul><br>
+<pre><code class="prettyprint lang-scala">trait Traversable[+A]{
+  def foreach[U](f:A =&gt; U):Unit	
+}
+</code></pre></div>
+      </div><div class="content" id="slide-11">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.Iterable" >Iterable</a></h1><pre><code class="prettyprint lang-scala">trait Iterable[+A] extends Traversable[A]{
+  def iterator:Iterator[A]
+}
+</code></pre></div>
+      </div><div class="content" id="slide-12">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.Seq" >Seq</a></h1><ul><li>ordnet
+</li><li>indeksert
+</li><li><code>IndexedSeq</code>: optimalisert random access &amp; length
+</li><li><code>LinearSeq</code>: optimalisert head / tail
+</li></ul><br>
+<pre><code class="prettyprint lang-scala">trait Seq[+A] extends Iterable[A]{
+  def apply(idx:Int):A
+  def length:Int
+  def iterator:Iterator[A]
+}
+</code></pre></div>
+      </div><div class="content" id="slide-13">
+       <div class="container"><h1>companion objects m/magisk “apply“</h1><pre><code class="prettyprint lang-scala">object List {
+  def apply[A](elems:A*):List[A] = ...
+}
+
+List(1, 2, 3)
+
+object Map {
+  def apply[A, B](elems:(A, B)*):Map[A, B] = ...
+}
+
+Map(1 -&gt; &quot;a&quot;, 2 -&gt; &quot;b&quot;)
+</code></pre></div>
+      </div><div class="content" id="slide-14">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.Set" >Set</a></h1><ul><li>ingen duplikate elementer
+</li><li><code>SortedSet</code>: sortert
+</li><li><code>BitSet extends Set[Int]</code>: raskt og bruker lite minne
+</li></ul><br>
+<pre><code class="prettyprint lang-scala">trait Set[A] extends Iterable[A] {
+  def +(elem:A):Set[A]
+  def -(elem:A):Set[A]
+  def contains(elem:A):Boolean
+  def iterator:Iterator[A]
+}
+</code></pre></div>
+      </div><div class="content" id="slide-15">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.Map" >Map</a></h1><pre><code class="prettyprint lang-scala">trait Map[A, +B] extends Iterable[(A, B)]{
+  def +[B1 &gt;: B](kv:(A, B1)):Map[A, B1]
+  def -(key:A):Map[A, B]
+  def get(key:A):Option[B]
+  def iterator:Iterator[A]
+}
+</code></pre></div>
+      </div><div class="content" id="slide-16">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.mutable.package" >mutable</a></h1><p><img  src="collections/mutable.png" alt="mutable" />
+</p></div>
+      </div><div class="content" id="slide-17">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.mutable.package" >mutable</a></h1><ul><li>Stooooort utvalg med forskjellige optimaliseringer
+</li><li>Synkronisering via traits (stackable modifications)!
+</li></ul><br>
+<pre><code class="prettyprint lang-scala">import collection.mutable._
+
+val myMap = new HashMap[Int, String] with SynchronizedMap[Int, String]
+val myBuffer = new ListBuffer[String] with SynchronizedBuffer[String]
+val mySet = new HashSet[String] with SynchronizedSet[String]
+</code></pre></div>
+      </div><div class="content" id="slide-18">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.package" >immutable</a></h1><p><img  src="collections/immutable.png" alt="immutable" /> 
+</p></div>
+      </div><div class="content" id="slide-19">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.package" >immutable</a></h1><ul><li><a href="http://vimeo.com/28760673" >Persistent</a> &amp; immutable
+</li><li><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List" >List</a>
+</li><li><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Vector" >Vector</a> &amp; <a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.HashMap" >HashMap</a>
+</li></ul></div>
+      </div><div class="content" id="slide-20">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List" >List</a></h1><ul><li>single linket liste
+</li><li><code>LinearSeq</code>
+</li><li>O(1) head / prepend / tail
+</li><li>O(n) random access
+</li><li>Nil og :: (Cons)
+</li></ul></div>
+      </div><div class="content" id="slide-21">
+       <div class="container"><h1><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.Vector" >Vector</a> &amp; <a href="http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.HashMap" >HashMap</a></h1><ul><li><code>Vector extends IndexedSeq</code>
+</li><li>Hash tries (tre-struktur)
+</li><li>Clojure / Rich Hickey / Phil Bagwell
+</li><li>O(log32(n))
+</li><li>Ekstremt god general-purpose datastruktur
+</li></ul></div>
+      </div><div class="content" id="slide-22">
+       <div class="container"><h1>Stream</h1><ul><li>lazy list
+</li><li>tail er evaluert kun når den er aksessert
+</li><li>muligjør uendelige lister !!
+</li></ul><p><br>
+sieve of eratosthenes
+</p><pre><code class="prettyprint lang-scala">def from(n: Int): Stream[Int] =
+  Stream.cons(n, from(n + 1))
+
+def sieve(s: Stream[Int]): Stream[Int] =
+  Stream.cons(s.head, sieve(s.tail filter { _ % s.head != 0 }))
+
+def primes = sieve(from(2))
+</code></pre></div>
+      </div><div class="content" id="slide-23">
+       <div class="container"><h1>Oppgavetid :-)</h1><p>Implementer metodene i <code>List</code> selv
+</p><p><a href="https://github.com/arktekk/scala-kurs-oppgaver/tree/master/list" >https://github.com/arktekk/scala-kurs-oppgaver/tree/master/list</a>
+</p></div>
+      </div><div class="content" id="slide-24">
+       <div class="container"><h1><a href="http://eed3si9n.com/revisiting-implicits-without-import-tax" >implicits</a></h1><ul><li>conversions
+</li><li>parameters
+</li></ul></div>
+      </div><div class="content" id="slide-25">
+       <div class="container"><h2>bruk/patterns</h2><ul><li>pimp-my-library
+</li><li>adapters
+</li><li>type-classes
+</li><li>constraints
+</li><li>JavaConversions &amp; JavaConverters
+</li><li>Manifests
+</li></ul></div>
+      </div><div class="content" id="slide-26">
+       <div class="container"><h2><a href="http://twitter.com/#!/jorgeo" >Jorge’s</a> lover</h2><p>Thou shalt only use implicit conversions for one of two (2) reasons:
+</p><ol><li>Pimping members onto an existing type
+</li><li>“Fixing” a broken type hierarchy
+</li></ol></div>
+      </div><div class="content" id="slide-27">
+       <div class="container"><h2>pimp-my-library</h2><ol><li>Pimping members onto an existing type
+</li></ol><pre><code class="prettyprint lang-scala">class StringOps(s:String){
+  def toInt = java.lang.Integer.parseInt(s)
+}
+object Predef {
+  implicit def augmentString(s:String):StringOps = new StringOps(s)
+}
+import Predef._
+
+val i = &quot;543&quot;.toInt
+
+// augmentString(&quot;543&quot;).toInt
+</code></pre></div>
+      </div><div class="content" id="slide-28">
+       <div class="container"><h2><a href="http://www.scala-lang.org/api/current/index.html#scala.Predef$" >scala.Predef</a></h2><ul><li>alltid importerte typer, metoder og implicits
+</li><li>et lite utvalg av de 96
+</li></ul><pre><code class="prettyprint lang-scala">type List[+A] = collection.immutable.List[A]
+type Pair[+A, +B] = Tuple2[A, B]
+
+implicit def augmentString(s:String):StringOps = new StringOps(s)
+
+final class ArrowAssoc[A](val x: A) {
+  @inline def -&gt; [B](y: B): Tuple2[A, B] = Tuple2(x, y)
+  def →[B](y: B): Tuple2[A, B] = -&gt;(y)
+}
+implicit def any2ArrowAssoc[A](x: A): ArrowAssoc[A] = new ArrowAssoc(x)
+</code></pre><p><br>
+inspiser implicits i scope med REPL
+</p><pre><code>&gt; :implicits
+&gt; :implicits -v
+</code></pre></div>
+      </div><div class="content" id="slide-29">
+       <div class="container"><h2>adapters</h2><ul><li>Jorge’s lov #2 “fixing a broken type hierarchy”
+</li><li>Er dette eksemplet i henhold ?
+</li></ul><pre><code class="prettyprint lang-scala">object Runnables {
+  implicit def function2Runnable(f:() =&gt; Unit) = new Runnable{
+    def run() { f() }
+  }
+}
+import Runnables._
+
+SwingUtilities.invokeLater(() =&gt; println(&quot;Too convenient ?&quot;))
+</code></pre></div>
+      </div><div class="content" id="slide-30">
+       <div class="container"><h1>Java interop m/ implicits</h1><ul><li><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.JavaConversions$" >JavaConversions</a>
+</li><li><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.JavaConverters$" >JavaConverters</a>
+</li></ul></div>
+      </div><div class="content" id="slide-31">
+       <div class="container"><h2><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.JavaConversions$" >JavaConversions</a></h2><p>implicit conversions mellom scala og java collections	
+</p><pre><code class="prettyprint lang-scala">import collection.JavaConversions._
+
+val list:java.util.List[String] = Seq(&quot;hello&quot;, &quot;world&quot;)
+
+val seq:Seq[String] = list
+</code></pre></div>
+      </div><div class="content" id="slide-32">
+       <div class="container"><h2><a href="http://www.scala-lang.org/api/current/index.html#scala.collection.JavaConverters$" >JavaConverters</a></h2><p>pimper <code>asScala</code> og <code>asJava</code> metoder på java og scala collections
+</p><pre><code class="prettyprint lang-scala">import collection.JavaConverters._
+
+val list:java.util.List[String] = Seq(&quot;Hello&quot;, &quot;World&quot;).asJava
+
+val seq:Seq[String] = list.asScala
+</code></pre></div>
+      </div><div class="content" id="slide-33">
+       <div class="container"><h2>diskusjon</h2><ul><li>hvilken er lettest å bruke ?
+</li><li>hvilken er lettest å lese/forstå ?
+</li><li>bryter JavaConversions med Jorge’s lov #2 ?
+</li></ul></div>
+      </div><div class="content" id="slide-34">
+       <div class="container"><h2>implicit parameters</h2><pre><code class="prettyprint lang-scala">implicit val msg = &quot;Hello&quot;
+
+def sayHello(s:String)(implicit m:String) = m + &quot; &quot; + s
+
+sayHello(&quot;World&quot;)
+
+&gt; Hello World
+</code></pre></div>
+      </div><div class="content" id="slide-35">
+       <div class="container"><h2>implicitly</h2><p>gir deg tilgang til implicit parameters
+</p><pre><code class="prettyprint lang-scala">val ordering = implicitly[Ordering[Int]]
+
+ordering.compare(1, 2)
+
+&gt; -1
+</code></pre><pre><code class="prettyprint lang-scala">// implementasjon
+def implicitly[A](implicit a:A):A = a
+</code></pre></div>
+      </div><div class="content" id="slide-36">
+       <div class="container"><h2>view bounds</h2><ul><li>definerer at vi skal kunne se på A som om den var en B
+</li><li>dvs: at det finnes implicit conversion A =&gt; B
+</li></ul><pre><code class="prettyprint lang-scala">object Min {
+  def min[A &lt;% Ordered[A]](a1:A, a2:A) = 
+    if(a1 &lt; a2) a1 else a2
+
+  // sukker for
+  def min[A](a1:A, a2:A)(implicit ev:A =&gt; Ordered[A]) = ...
+}
+
+case class Num(i:Int)
+  
+Min.min(Num(1), Num(2))
+
+</code></pre><pre><code>No implicit view available from MinRun.Num =&gt; Ordered[MinRun.Num].
+[error]   Min.min(Num(1), Num(2))
+[error]          ^
+</code></pre></div>
+      </div><div class="content" id="slide-37">
+       <div class="container"><h2>context bounds</h2><ul><li>definerer at det finnes <strong>implicit parameter</strong> <code>Ordering[A]</code>
+</li></ul><pre><code class="prettyprint lang-scala">object Min {
+  def min[A : Ordering](a1:A, a2:A) =
+    if(implicitly[Ordering[A]].lt(a1, a2)) a1 else a2
+
+  // sukker for
+  def min[A](a1:A, a2:A)(implicit ev:Ordering[A]) = ...
+}
+
+Min.min(Num(1), Num(2))
+
+// veldig fin for å kalle videre..
+def min2[A : Ordering](a1:A, a2:A) = Min.min(a1, a2)
+</code></pre></div>
+      </div><div class="content" id="slide-38">
+       <div class="container"><h2>evidence types</h2><ul><li>bruk typesystemet til å bevise ting
+</li></ul><pre><code class="prettyprint lang-scala">class Foo[A](a:A){
+  def int(implicit ev:A =:= Int):Int = a 
+}
+
+new Foo(0).int
+
+new Foo(&quot;Hello&quot;).int
+// error: Cannot prove that java.lang.String =:= Int
+</code></pre></div>
+      </div><div class="content" id="slide-39">
+       <div class="container"><h2>manifests</h2><ul><li>reified generics
+</li><li>veldig hendig når man trenger reflection med generisk kode
+</li><li>påkrevd for instansiering av Arrays
+</li></ul><pre><code class="prettyprint lang-scala">def newInstance[A](implicit manifest:Manifest[A]):A = 
+  manifest.erasure.asInstanceOf[Class[A]].newInstance
+	
+newInstance[java.util.ArrayList[String]]
+
+
+object Array {
+  def apply(elms:A*)[A : ClassManifest]:Array[A] = ...
+}
+
+def create[A](a:A) = Array(a)                 // feiler
+def create[A : ClassManifest](a:A) = Array(a) // ok
+</code></pre></div>
+      </div><div class="content" id="slide-40">
+       <div class="container"><h2>not found</h2><pre><code class="prettyprint lang-scala">trait Msg[A]{
+  def msg(a:A)
+}
+
+object MittApi {
+  def needsMsg[A : Msg](a:A){ ... }
+}
+
+// brukers kode
+MittApi.needsMsg(&quot;Hello&quot;)
+
+/*
+could not find implicit value for evidence parameter of type implicitstuff.Msg[java.lang.String]
+    MittApi.needsMsg(&quot;Hello&quot;)
+            ^
+*/
+</code></pre></div>
+      </div><div class="content" id="slide-41">
+       <div class="container"><h2>not found</h2><pre><code class="prettyprint lang-scala">import annotation.implicitNotFound
+
+@implicitNotFound(&quot;Du må definere/importere en implicit instans av Msg[${A}]&quot;)
+trait Msg[A]{
+  def msg(a:A)
+}
+
+object MittApi {
+  def needsMsg[A : Msg](a:A){ ... }
+}
+
+// brukers kode
+MittApi.needsMsg(&quot;Hello&quot;)
+
+/*
+Du må definere/importere en implicit instans av Msg[java.lang.String]
+    MittApi.needsMsg(&quot;Hello&quot;)
+            ^
+*/
+</code></pre></div>
+      </div><div class="content" id="slide-42">
+       <div class="container"><h2>implicit resolution</h2><ul><li>local
+</li><li>imported / package object
+</li><li>companion
+</li></ul><p><a href="http://eed3si9n.com/revisiting-implicits-without-import-tax" >http://eed3si9n.com/revisiting-implicits-without-import-tax</a>
+</p></div>
+      </div><div class="content" id="slide-43">
+       <div class="container"><h2>type classes</h2><ul><li>ad-hoc polymorfi
+</li><li>haskell
+</li><li>unngår problemet med tunge arve-hierarki
+</li><li>kan ha flere instanser per type
+</li><li><code>Comparable</code> vs <code>Comparator</code>
+</li><li>tar instans av type class som implicit parameter
+</li></ul></div>
+      </div><div class="content" id="slide-44">
+       <div class="container"><h2>java.util.Comparator som type class</h2><pre><code class="prettyprint lang-scala">implicit object IntComparator extends java.util.Comparator[Int]{
+  def compare(a:Int, b:Int) = a - b 
+}
+def myCompare[T](a:T, b:T)(implicit comarator:java.util.Comparator[Int]) = 
+  comparator.compare(a, b)
+
+myCompare(1,2)
+
+myCompare(&quot;Hello&quot;, &quot;World&quot;)
+// error: could not find implicit value for evidence parameter of type java.util.Comparator[java.lang.String]
+</code></pre></div>
+      </div><div class="content" id="slide-45">
+       <div class="container"><h2>parametere og conversions kombinert</h2><pre><code class="prettyprint lang-scala">class Syntax[A](a:A){
+  def === (other:A)(implicit c:java.util.Comparator[A]) = 
+    c.compare(a, other)
+}
+implicit def wrapSyntax[A](a:A) = new Syntax(a)
+
+5 === 4
+</code></pre></div>
+      </div><div class="content" id="slide-46">
+       <div class="container"><h1>type systemet</h1><ul><li>declaration-site variance
+</li><li>bounds
+</li><li>type variabler mm.
+</li><li>turing complete!
+</li></ul></div>
+      </div><div class="content" id="slide-47">
+       <div class="container"><h2><a href="http://en.wikipedia.org/wiki/Variance_(computer_science)" >variance</a> (wikipedia)</h2><p>Within the type system of a programming language, covariance and contravariance refers to the ordering of types from narrower to wider and their interchangeability or equivalence in certain situations (such as parameters, generics, and return types).
+</p><ul><li>covariant: converting from wider (double) to narrower (float).
+</li><li>contravariant: converting from narrower (float) to wider (double).
+</li><li>invariant: Not able to convert.
+</li></ul></div>
+      </div><div class="content" id="slide-48">
+       <div class="container"><h2>sub/super typing</h2><p>alle typer er 
+</p><ul><li>subtyper av seg selv
+</li><li>supertyper av seg selv
+</li></ul></div>
+      </div><div class="content" id="slide-49">
+       <div class="container"><h2>invariance</h2><pre><code class="prettyprint lang-scala">type X[T] // T er invariant
+</code></pre><p><code>X[A]</code> kan benyttes for <code>X[B]</code> hvis <code>A == B</code>
+</p></div>
+      </div><div class="content" id="slide-50">
+       <div class="container"><h2>+covariance</h2><pre><code class="prettyprint lang-scala">type X[+T] // + betyr at T er covariant
+</code></pre><p><code>X[A]</code> kan benyttes for <code>X[B]</code> hvis <code>A</code> er subtype av <code>B</code>
+</p></div>
+      </div><div class="content" id="slide-51">
+       <div class="container"><h2>-contravariance</h2><pre><code class="prettyprint lang-scala">type X[-T] // - betyr at T er contravariant 
+</code></pre><p><code>X[A]</code> kan benyttes for <code>X[B]</code> hvis <code>A</code> er supertype av <code>B</code>
+</p></div>
+      </div><div class="content" id="slide-52">
+       <div class="container"><h2>arvehierarki (gammelt nytt)</h2><pre><code class="prettyprint lang-scala">class SuperType
+class TheType extends SuperType
+class SubType extends TheType
+
+def x(theType:TheType){ ... }
+
+x(new SuperType) // ikke ok 
+x(new TheType)
+x(new SubType)   // ok
+</code></pre></div>
+      </div><div class="content" id="slide-53">
+       <div class="container"><h2>invariant</h2><pre><code class="prettyprint lang-scala">class Invariant[A](a:A){
+  def get:A = a
+  def set(a:A){ ... }
+}
+
+def in(invariant:Invariant[TheType]){ ... }
+
+in(new Invariant[SuperType]) // ikke ok
+in(new Invariant[TheType])
+in(new Invariant[SubType])   // ikke ok
+</code></pre></div>
+      </div><div class="content" id="slide-54">
+       <div class="container"><h2>+covariant</h2><pre><code class="prettyprint lang-scala">class Covariant[+A](a:A){
+  def get:A = a
+  def set(a:A){ ... } // ikke ok, contravariant position
+}
+
+def co(covariant:Covariant[TheType]){ ... }
+
+co(new Covariant[SuperType]) // ikke ok
+co(new Covariant[TheType])
+co(new Covariant[SubType])   // ok
+</code></pre></div>
+      </div><div class="content" id="slide-55">
+       <div class="container"><h2>-contravariant</h2><pre><code class="prettyprint lang-scala">class Contravariant[-A](a:A){
+  def get:A = a // ikke ok, covariant position
+  def set(a:A){ ... }
+}
+
+def contra(contravariant:Contravariant[TheType]){ ... }
+
+contra(new Contravariant[SuperType]) // ok
+contra(new Contravariant[TheType]) 
+contra(new Contravariant[SubType])   // ikke ok
+</code></pre></div>
+      </div><div class="content" id="slide-56">
+       <div class="container"><h2>type bounds</h2><ul><li>upper bound
+</li><li>lower bound
+</li></ul></div>
+      </div><div class="content" id="slide-57">
+       <div class="container"><h2>upper bound</h2><ul><li>beskriver subtype relasjon
+</li></ul><pre><code class="prettyprint lang-scala">A &lt;: B // A subtype av B
+</code></pre></div>
+      </div><div class="content" id="slide-58">
+       <div class="container"><pre><code class="prettyprint lang-scala font-90">class Foo
+class Bar extends Foo 
+  
+class Foos[F &lt;: Foo](var init:F){
+  def set(f:F){ init = f }
+  def get = init
+}
+  
+val bars = new Foos[Bar](new Bar)
+bars.set(new Bar)
+val f:Bar = bars.get
+
+// found Foo, required Bar  
+bars.set(new Foo) 
+
+// type arguments [String] do not conform to class 
+// Foos's type parameter bounds [F &lt;: Foo]
+val strings = new Foos[String](&quot;&quot;)
+</code></pre></div>
+      </div><div class="content" id="slide-59">
+       <div class="container"><h2>lower bound</h2><ul><li>beskriver supertype relasjon
+</li></ul><pre><code class="prettyprint lang-scala">A &gt;: B // A supertype av B
+</code></pre></div>
+      </div><div class="content" id="slide-60">
+       <div class="container"><pre><code class="prettyprint lang-scala">class Foo
+class Bar extends Foo
+
+class Generator[F &gt;: Bar]{
+  def next:F = new Bar
+}
+
+val gen = new Generator[Foo]
+val foo:Foo = gen.next
+</code></pre></div>
+      </div><div class="content" id="slide-61">
+       <div class="container"><h2>eksempel med List</h2><pre><code class="prettyprint lang-scala">sealed trait Lst[A]
+case object Empty extends Lst[Nothing]
+case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
+
+Cons(&quot;Hello&quot;, Empty)
+</code></pre></div>
+      </div><div class="content" id="slide-62">
+       <div class="container"><pre><code class="prettyprint lang-scala">sealed trait Lst[A]
+case object Empty extends Lst[Nothing]
+case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
+
+Cons(&quot;Hello&quot;, Empty)
+
+/*
+found   : Empty.type (with underlying type object Empty)
+required: Lst[java.lang.String]
+Note: Nothing &lt;: java.lang.String (and Empty.type &lt;: Lst[Nothing]), but trait Lst is invariant in type A.
+You may wish to define A as +A instead. (SLS 4.5)
+    Cons(&quot;Hello&quot;, Empty)
+*/
+</code></pre></div>
+      </div><div class="content" id="slide-63">
+       <div class="container"><pre><code class="prettyprint lang-scala">sealed trait Lst[+A]
+case object Empty extends Lst[Nothing]
+case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
+
+Cons(&quot;Hello&quot;, Empty)
+</code></pre></div>
+      </div><div class="content" id="slide-64">
+       <div class="container"><pre><code class="prettyprint lang-scala">sealed trait Lst[+A]{ // ok, fixed it!
+  def ::(a:A):Lst[A] = Cons(a, this)
+}
+case object Empty extends Lst[Nothing]
+case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
+
+&quot;Hello&quot; :: Empty
+</code></pre></div>
+      </div><div class="content" id="slide-65">
+       <div class="container"><pre><code class="prettyprint lang-scala">sealed trait Lst[+A]{
+  def ::(a:A):Lst[A] = Cons(a, this)
+}
+case object Empty extends Lst[Nothing]
+case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
+
+&quot;Hello&quot; :: Empty
+
+/*
+found   : x$1.type (with underlying type java.lang.String)
+required: Nothing
+   &quot;Hello&quot; :: Empty
+*/
+</code></pre></div>
+      </div><div class="content" id="slide-66">
+       <div class="container"><pre><code class="prettyprint lang-scala">sealed trait Lst[+A]{
+  def ::(a:A):Lst[A] = Cons(a, this)
+}
+case object Empty extends Lst[Nothing]
+case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
+
+// &quot;Hello&quot; :: Empty
+/*
+covariant type A occurs in contravariant position in type A of value a
+     def ::(a:A):Lst[A] = Cons(a, this)
+            ^
+*/
+</code></pre></div>
+      </div><div class="content" id="slide-67">
+       <div class="container"><pre><code class="prettyprint lang-scala">sealed trait Lst[+A]{
+  def ::[B &gt;: A](b:B):Lst[B] = Cons(b, this) // ok, fixed it
+}
+case object Empty extends Lst[Nothing]
+case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
+
+val lst:Lst[String] = &quot;Hello&quot; :: Empty    
+val lst2:Lst[Any] = 1 :: &quot;Hello&quot; :: Empty
+</code></pre></div>
+      </div><div class="content" id="slide-68">
+       <div class="container"><h1>CanBuildFrom ???</h1><pre><code class="prettyprint lang-scala">def map [B, That](f: (A) ⇒ B)(implicit bf: CanBuildFrom[Set[A], B, That]): That
+</code></pre></div>
+      </div><div class="content" id="slide-69">
+       <div class="container"><pre><code class="prettyprint lang-scala">trait Traversable[+A] extends TraversableLike[A, Traversable[A]] with ... {
+  ...
+}
+
+// alle implementasjonene
+trait TraversableLike[+A, +Repr] {
+  	
+  def map[B, That](f: A =&gt; B)(implicit bf: CanBuildFrom[Repr, B, That]): That = {
+    val b = bf(repr)
+    b.sizeHint(this) 
+    for (x &lt;- this) b += f(x)
+    b.result
+  }
+  ...
+}
+</code></pre></div>
+      </div><div class="content" id="slide-70">
+       <div class="container"><h2>implicit instanser av CanBuildFrom</h2><pre><code class="prettyprint lang-scala">object BitSet extends BitSetFactory[BitSet] {  
+  def newBuilder = immutable.BitSet.newBuilder  
+  implicit def canBuildFrom: CanBuildFrom[BitSet, Int, BitSet] = bitsetCanBuildFrom
+}
+
+object Set extends SetFactory[Set] {
+  def newBuilder[A] = immutable.Set.newBuilder[A]
+  implicit def canBuildFrom[A]: CanBuildFrom[Coll, A, Set[A]] = setCanBuildFrom[A]
+}
+
+val b2:BitSet = BitSet(1, 2, 3).map(i =&gt; i * 2)
+val Set[String] = b2.map(i =&gt; i.toString)
+</code></pre></div>
+      </div><div class="content" id="slide-71">
+       <div class="container"><h2>[usecase] vs full</h2><pre><code class="prettyprint lang-scala">trait Set[A]{
+  def map [B](f: (A) ⇒ B): Set[B] // [use case] 
+
+  def map [B, That](f: (A) ⇒ B)(implicit bf: CanBuildFrom[Set[A], B, That]): That
+}
+</code></pre></div>
+      </div><div class="content" id="slide-72">
+       <div class="container"><h2>eksempel</h2><pre><code class="prettyprint lang-scala">package lst2
+
+import collection.mutable.{Builder}
+import collection.immutable.LinearSeq
+import collection.LinearSeqOptimized
+import collection.generic.{GenericTraversableTemplate, SeqFactory}
+
+object Lst extends SeqFactory[Lst] {
+  def newBuilder[A]: Builder[A, Lst[A]] = new Builder[A, Lst[A]] {
+    private[this] var lst: Lst[A] = Empty
+
+    def +=(elem: A) = {
+      lst = Cons(elem, lst)
+      this
+    }
+
+    def clear() { lst = Empty }
+
+    def result() = lst
+  }
+}
+
+</code></pre></div>
+      </div><div class="content" id="slide-73">
+       <div class="container"><pre><code class="prettyprint lang-scala">sealed trait Lst[+A]
+  extends LinearSeq[A]
+  with GenericTraversableTemplate[A, Lst]
+  with LinearSeqOptimized[A, Lst[A]] {
+  
+  override def companion = Lst
+}
+
+case object Empty extends Lst[Nothing]{
+  override def isEmpty = true
+}
+
+final case class Cons[A](override val head: A, override val tail: Lst[A]) extends Lst[A]{
+  override def isEmpty = false
+}
+</code></pre></div>
+      </div><div class="content" id="slide-74">
+       <div class="container"><h1>XML</h1><ul><li><code>&lt;literal xml=&quot;support&quot;/&gt;</code>
+</li><li>kan navigeres som en collection (for-comprehensions)
+</li><li>korrekt escaping
+</li><li>ganske immutable (men ikke helt)
+</li><li>snodig arvehierarki
+</li></ul></div>
+      </div><div class="content" id="slide-75">
+       <div class="container"><pre><code class="prettyprint lang-xml font-80">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;weatherdata&gt;
+  &lt;forecast&gt;
+    &lt;text&gt;
+      &lt;location&gt;
+        &lt;time from=&quot;2011-12-23&quot; to=&quot;2011-12-24&quot; type=&quot;obsforecast&quot;&gt;
+          &lt;title&gt;Friday and Saturday&lt;/title&gt;
+          &lt;body&gt;&amp;lt;strong&amp;gt;Telemark:&amp;lt;/strong&amp;gt; Våte veibaner og synkende 
+          temperatur kan stedvis gi glattere veier fra natt til julaften.&lt;/body&gt;
+        &lt;/time&gt;
+        &lt;time from=&quot;2011-12-24&quot; to=&quot;2011-12-25&quot;&gt;
+          &lt;title&gt;Saturday and Sunday&lt;/title&gt;
+          &lt;body&gt;&amp;lt;strong&amp;gt;Østlandet og Telemark:&amp;lt;/strong&amp;gt; Vestlig bris. Stort sett
+          pent vær. I kveld sørvestlig bris, økende til liten og periodevis stiv kuling 15 m/s på	
+          kysten. Skyet eller delvis skyet. Oppholdsvær, men lengst vest regn, snø i høyden. Søndag
+          kveld sørvestlig frisk bris 10, sterk kuling 20 på kysten. Spredt regn, snø i høyden. Nedbør
+          vesentlig i vestlige områder.&lt;/body&gt;
+        &lt;/time&gt;
+        ...
+</code></pre></div>
+      </div><div class="content" id="slide-76">
+       <div class="container"><pre><code class="prettyprint lang-scala">case class Time(from:String, to:String, title:String, body:String)
+
+val xml = XML.load(getClass.getResourceAsStream(&quot;forecast_hour_by_hour.xml&quot;))
+
+val forecasts = for {
+  forecast &lt;- xml      \  &quot;forecast&quot;
+  text     &lt;- forecast \  &quot;text&quot;  // child element selection
+  time     &lt;- text     \\ &quot;time&quot;  // deep selection
+  from     &lt;- time     \  &quot;@from&quot; // attribute selection
+  to       &lt;- time     \  &quot;@to&quot;
+  title    &lt;- time     \  &quot;title&quot;
+  body     &lt;- time     \  &quot;body&quot;
+} yield Time(from.text, to.text, title.text, body.text)
+</code></pre></div>
+      </div><div class="content" id="slide-77">
+       <div class="container"><pre><code class="prettyprint lang-scala">&lt;weatherdata&gt;
+  &lt;forecast&gt;
+    &lt;text&gt;
+      &lt;location&gt;{ forecasts.flatMap{ case Time(from, to, title, body) =&gt;
+        &lt;time from={from} to={to}&gt;
+          &lt;title&gt;{title}&lt;/title&gt;
+          &lt;body&gt;{body}&lt;/body&gt;
+        &lt;/time&gt; }}
+      &lt;/location&gt;
+    &lt;/text&gt;
+  &lt;/forecast&gt;
+&lt;/weatherdata&gt;
+</code></pre></div>
+      </div><div class="content" id="slide-78">
+       <div class="container"><pre><code class="prettyprint lang-scala">for {
+  time  &lt;- xml  \\ &quot;time&quot;
+  tpe   &lt;- time \ &quot;@type&quot; if tpe.text == &quot;obsforecast&quot;
+  body  &lt;- time \ &quot;body&quot;
+  title &lt;- time \ &quot;title&quot;
+} yield title.text -&gt; body.text
+
+// (Friday and Saturday,&lt;strong&gt;Telemark:&lt;/strong&gt; Våte veibaner og 
+//    synkende temperatur kan stedvis gi glattere veier fra natt til julaften.)
+</code></pre></div>
+      </div><div class="content" id="slide-79">
+       <div class="container"><p><img  src="xml/xml.png" alt="xml" />
+</p></div>
+      </div><div class="content" id="slide-80">
+       <div class="container"><h1><a href="http://dispatch.databinder.net/Dispatch.html" >Dispatch</a></h1><ul><li>scala <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol" >http</a> klient bibliotek
+</li><li>wrapper for <a href="http://hc.apache.org/httpcomponents-client-ga/index.html" >Apache Http client</a>
+</li><li>masse <a href="http://www.flotsam.nl/dispatch-periodic-table.html" >symboler</a>, http dsl
+</li><li>blocking, nio og google-appengine executors
+</li><li>integrerer med mye forskjellig som f.eks <a href="http://ccil.org/~cowan/XML/tagsoup/" >TagSoup</a>
+</li></ul></div>
+      </div><div class="content" id="slide-81">
+       <div class="container"><ul><li>request builder - definerer request
+</li><li>handler - håndterer respons
+</li><li>executor - gjør selve kallet
+</li></ul><pre><code class="prettyprint lang-scala">import dispatch._
+
+val request = url(&quot;http://www.yr.no/place/Norway/Telemark/Sauherad/Gvarv/forecast_hour_by_hour.xml&quot;)
+val handler = request.as_str
+val result = Http(handler)
+</code></pre></div>
+      </div><div class="content" id="slide-82">
+       <div class="container"><h2>request</h2><pre><code class="prettyprint lang-scala">url(&quot;http://www.yr.no&quot;) / &quot;place&quot; / &quot;Norway&quot; / &quot;Telemark&quot; / &quot;Sauherad&quot; / &quot;Gvarv&quot; / &quot;forecast_hour_by_hour.xml&quot;
+
+url(&quot;http://sporing.posten.no/sporing.html&quot;) &lt;&lt;? Map(&quot;q&quot; -&gt; &quot;123123123&quot;)
+</code></pre></div>
+      </div><div class="content" id="slide-83">
+       <div class="container"><h2>handlers</h2><pre><code class="prettyprint lang-scala">val http = new Http
+val request = url(&quot;http://scala-lang.org&quot;)
+
+http(request &gt;&gt;&gt; System.out) // til OutputStream
+
+http(request as_str) // som string
+
+http(request &lt;&gt; (xml:Elem =&gt; xml \ &quot;foo&quot; \ &quot;bar&quot;) // håndtert som xml
+
+import tagsoup.TagSoupHttp._
+http(request &lt;/&gt; (xml:NodeSeq =&gt; xml \\ &quot;body&quot; \ &quot;@href&quot;) // vasket html og håndtert som xml
+</code></pre></div>
+      </div><div class="content" id="slide-84">
+       <div class="container"><h2>executors</h2><ul><li>Threadsafe m/threadpool  <code>Http / new Http with thread.Safety</code>
+</li><li>Current Thread           <code>new Http</code>
+</li><li>NIO                      <code>new nio.Http</code>
+</li><li>Google App Engine        <code>new gae.Http</code>
+</li></ul></div>
+      </div><div class="content" id="slide-85">
+       <div class="container"><h2>eksempel</h2><pre><code class="prettyprint lang-scala">import xml._
+import dispatch._
+
+val http = new Http
+def parse(xml:Elem) = 
+  for {
+    consignment &lt;- xml \ &quot;Consignment&quot;
+    totalweight &lt;- consignment \ &quot;TotalWeight&quot;
+  } yield totalweight.text
+
+http(url(&quot;http://beta.bring.no/sporing/sporing.xml&quot;) &lt;&lt;? Map(&quot;q&quot; -&gt; &quot;TESTPACKAGE-AT-PICKUPPOINT&quot;) &lt;&gt; parse)
+
+&lt;ConsignmentSet xmlns=&quot;http://www.bring.no/sporing/1.0&quot;&gt;
+  &lt;Consignment consignmentId=&quot;SHIPMENTNUMBER&quot;&gt;
+    &lt;TotalWeight unitCode=&quot;kg&quot;&gt;16.5&lt;/TotalWeight&gt;
+      ..
+
+// List(16,5)
+</code></pre></div>
+      </div><div class="content" id="slide-86">
+       <div class="container"><h2>Oppgavetid :-)</h2></div>
+      </div>
+          </div>
+        </div>
+        
+      </body>
+    </html>
