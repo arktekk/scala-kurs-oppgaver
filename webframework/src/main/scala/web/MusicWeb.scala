@@ -1,11 +1,24 @@
 package web
 
 import xml.NodeSeq
+import javax.servlet.http.HttpServletRequest
 
 trait MusicWeb extends WebApp {
   
+  object Path {
+    def unapply(r:HttpServletRequest) = Some(r.getRequestURI)
+  }
+  
+  object Method {
+    def unapply(r:HttpServletRequest) = Some(r.getMethod.toUpperCase)
+  }
+  
+  object & {
+    def unapply[A](a:A) = Some(a, a)
+  } 
+  
   def handle = {
-    case r => Status.OK andThen Render(r.getRequestURI){
+    case r @ Method("GET") & Path("/") => Status.OK andThen Render(r.getRequestURI){
       <h1>{r.getMethod + " " + r.getRequestURI}</h1>
     }
   }

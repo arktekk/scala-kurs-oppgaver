@@ -20,7 +20,7 @@ Finn de 3 mest brukte buzzwordene i agendaen for JavaZone 2011, sortert etter po
 Rop ut når dere har klart dette!
 
 
-Del 2 - Stoppwords
+Del 2 - Stopwords
 ------------------
 
 `stop-english.txt` og `stopp-norsk.txt` inneholder stoppord.
@@ -32,6 +32,8 @@ Del 3 - Buzzword Fight!
 -----------------------
 
 Applikasjonen skal kunne ta inn to buzzwords og finne ut hvilket av de som er mest populært.
+
+En mulig løsning kan lese fra terminal ved hjelp av `Console.readLine`
 
 
 Del 4 - Ascii Art
