@@ -7,7 +7,7 @@
         <script type="text/javascript" src="assets/js/jquery.min.js"></script>
         <script type="text/javascript" src="assets/js/show.js"></script>
         <script type="text/javascript" src="assets/js/prettify/prettify.js"></script>
-        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1325672782122" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="assets/js/prettify/lang-apollo.js"></script><script type="text/javascript" src="assets/js/prettify/lang-css.js"></script><script type="text/javascript" src="assets/js/prettify/lang-hs.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lisp.js"></script><script type="text/javascript" src="assets/js/prettify/lang-lua.js"></script><script type="text/javascript" src="assets/js/prettify/lang-ml.js"></script><script type="text/javascript" src="assets/js/prettify/lang-proto.js"></script><script type="text/javascript" src="assets/js/prettify/lang-scala.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-sql.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vb.js"></script><script type="text/javascript" src="assets/js/prettify/lang-vhdl.js"></script><script type="text/javascript" src="assets/js/prettify/lang-wiki.js"></script><script type="text/javascript" src="assets/js/prettify/lang-yaml.js"></script><link href="css/custom.css?1335911562006" type="text/css" rel="stylesheet" />
       <script type="text/javascript"><!--
         window.onload=function() { prettyPrint(); };
       --></script>
@@ -318,7 +318,7 @@ list.filterNot(element =&gt; element % 2 == 0)
 
 class Person(val pets:List[String])
 
-val family = List(new Person(List(&quot;Dog&quot;, &quot;Cat&quot;)), new Person(&quot;Fish&quot;))
+val family = List(new Person(List(&quot;Dog&quot;, &quot;Cat&quot;)), new Person(List(&quot;Fish&quot;)))
 
 val familyPets = family.flatMap(p =&gt; p.pets)
 // List(&quot;Dog&quot;, &quot;Cat&quot;, &quot;Fish&quot;)
@@ -443,12 +443,12 @@ val list = List(1, 2, 3)
 args(list :_*)
 </code></pre></div>
       </div><div class="content" id="slide-46">
-       <div class="container"><h2>symboler</h2><pre><code class="prettyprint lang-scala">1.0.+(2.0)    &quot;foo&quot;.charAt(0)
+       <div class="container"><h2>operators</h2><pre><code class="prettyprint lang-scala">1.0.+(2.0)    &quot;foo&quot;.charAt(0)
 
 1.0 + 2.0     &quot;foo&quot; charAt 0
 </code></pre></div>
       </div><div class="content" id="slide-47">
-       <div class="container"><h2>symboler</h2><pre><code class="prettyprint lang-scala">val a = BigDecimal(&quot;100.00&quot;)
+       <div class="container"><h2>operators</h2><pre><code class="prettyprint lang-scala">val a = BigDecimal(&quot;100.00&quot;)
 val b = BigDecimal(&quot;25.00&quot;)
 	
 a * b  // 2500.0000
@@ -773,7 +773,7 @@ implicit def plusMinus(i:Int) = new PlusMinus(i)
       </div><div class="content" id="slide-75">
        <div class="container"><h2><a href="http://scalatest.org/" >ScalaTest</a></h2><ul><li>Et av de eldste scala prosjektene
 </li><li>Støtter en rekke forskjellige test former (junit -&gt; bdd)
-</li><li>Stor utvalg av matchere
+</li><li>Stort utvalg av matchere
 </li><li>JUnit og TestNG integrasjon
 </li><li>IDEA integrasjon
 </li></ul></div>

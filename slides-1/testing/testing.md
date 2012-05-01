@@ -8,7 +8,7 @@
 ## [ScalaTest](http://scalatest.org/) ##
 * Et av de eldste scala prosjektene
 * Støtter en rekke forskjellige test former (junit -> bdd)
-* Stor utvalg av matchere
+* Stort utvalg av matchere
 * JUnit og TestNG integrasjon
 * IDEA integrasjon
 

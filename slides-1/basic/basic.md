@@ -330,7 +330,7 @@ List[+A]{
 
 class Person(val pets:List[String])
 
-val family = List(new Person(List("Dog", "Cat")), new Person("Fish"))
+val family = List(new Person(List("Dog", "Cat")), new Person(List("Fish")))
 
 val familyPets = family.flatMap(p => p.pets)
 // List("Dog", "Cat", "Fish")

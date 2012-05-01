@@ -55,14 +55,14 @@ args(list :_*)
 ```
 
 !SLIDE
-## symboler ##
+## operators ##
 ```scala
 1.0.+(2.0)    "foo".charAt(0)
 
 1.0 + 2.0     "foo" charAt 0
 ```
 !SLIDE
-## symboler ##
+## operators ##
 ```scala
 val a = BigDecimal("100.00")
 val b = BigDecimal("25.00")
