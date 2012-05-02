@@ -294,7 +294,8 @@ def myCompare[T](a:T, b:T)(implicit comarator:java.util.Comparator[Int]) =
 myCompare(1,2)
 
 myCompare("Hello", "World")
-// error: could not find implicit value for evidence parameter of type java.util.Comparator[java.lang.String]
+// error: could not find implicit value for evidence parameter 
+//          of type java.util.Comparator[java.lang.String]
 ```
 
 !SLIDE
@@ -302,7 +303,7 @@ myCompare("Hello", "World")
 ```scala
 class Syntax[A](a:A){
   def === (other:A)(implicit c:java.util.Comparator[A]) = 
-    c.compare(a, other)
+    c.compare(a, other) == 0
 }
 implicit def wrapSyntax[A](a:A) = new Syntax(a)
 

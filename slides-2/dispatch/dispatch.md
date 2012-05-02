@@ -23,7 +23,8 @@ val result = Http(handler)
 !SLIDE
 ## request ##
 ```scala
-url("http://www.yr.no") / "place" / "Norway" / "Telemark" / "Sauherad" / "Gvarv" / "forecast_hour_by_hour.xml"
+url("http://www.yr.no") / "place" / "Norway" / "Telemark" 
+	/ "Sauherad" / "Gvarv" / "forecast_hour_by_hour.xml"
 
 url("http://sporing.posten.no/sporing.html") <<? Map("q" -> "123123123")
 ```
@@ -38,10 +39,10 @@ http(request >>> System.out) // til OutputStream
 
 http(request as_str) // som string
 
-http(request <> (xml:Elem => xml \ "foo" \ "bar") // håndtert som xml
+http(request <> ((xml:Elem) => xml \ "foo" \ "bar") // håndtert som xml
 
 import tagsoup.TagSoupHttp._
-http(request </> (xml:NodeSeq => xml \\ "body" \ "@href") // vasket html og håndtert som xml
+http(request </> ((xml:NodeSeq) => xml \\ "body" \ "@href") // vasket html og håndtert som xml
 ```
 
 !SLIDE
@@ -64,7 +65,8 @@ def parse(xml:Elem) =
     totalweight <- consignment \ "TotalWeight"
   } yield totalweight.text
 
-http(url("http://beta.bring.no/sporing/sporing.xml") <<? Map("q" -> "TESTPACKAGE-AT-PICKUPPOINT") <> parse)
+http(url("http://beta.bring.no/sporing/sporing.xml") <<? 
+	Map("q" -> "TESTPACKAGE-AT-PICKUPPOINT") <> parse)
 
 <ConsignmentSet xmlns="http://www.bring.no/sporing/1.0">
   <Consignment consignmentId="SHIPMENTNUMBER">
@@ -76,3 +78,4 @@ http(url("http://beta.bring.no/sporing/sporing.xml") <<? Map("q" -> "TESTPACKAGE
 
 !SLIDE
 ## Oppgavetid :-) ##
+[https://github.com/arktekk/scala-kurs-oppgaver/tree/master/music](https://github.com/arktekk/scala-kurs-oppgaver/tree/master/music)

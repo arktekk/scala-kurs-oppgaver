@@ -36,12 +36,12 @@ val xml = XML.load(getClass.getResourceAsStream("forecast_hour_by_hour.xml"))
 
 val forecasts = for {
   forecast <- xml      \  "forecast"
-  text     <- forecast \  "text"  // child element selection
-  time     <- text     \\ "time"  // deep selection
-  from     <- time     \  "@from" // attribute selection
-  to       <- time     \  "@to"
-  title    <- time     \  "title"
-  body     <- time     \  "body"
+  text     =  forecast \  "text" // child select
+  time     <- text     \\ "time" // deep select
+  from     =  time     \ "@from" // attribute select
+  to       =  time     \ "@to"
+  title    =  time     \ "title"
+  body     =  time     \ "body"
 } yield Time(from.text, to.text, title.text, body.text)
 ```
 
@@ -63,11 +63,11 @@ val forecasts = for {
 
 !SLIDE
 ```scala
-for {
-  time  <- xml  \\ "time"
-  tpe   <- time \ "@type" if tpe.text == "obsforecast"
-  body  <- time \ "body"
-  title <- time \ "title"
+val obs = for {
+  time  <- xml \\ "time"
+  tpe   = time \ "@type" if tpe.text == "obsforecast"
+  body  = time \ "body"
+  title = time \ "title"
 } yield title.text -> body.text
 
 // (Friday and Saturday,<strong>Telemark:</strong> Våte veibaner og 

@@ -1,10 +1,8 @@
 !SLIDE
-# for-comprehensions #
-!SLIDE
 ## for-comprehensions ##
 * konsis måte å jobbe med "collections" og lignende
 * haskell, python, erlang og mange andre har varianter
-* syntax sukker (macro) for 
+* syntax sukker for 
 	*`foreach`
 	*`map`
 	*`flatMap`

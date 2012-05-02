@@ -1,5 +1,5 @@
 !SLIDE
-# type systemet #
+# typesystemet #
 * declaration-site variance
 * bounds
 * type variabler mm.
@@ -180,7 +180,8 @@ Cons("Hello", Empty)
 /*
 found   : Empty.type (with underlying type object Empty)
 required: Lst[java.lang.String]
-Note: Nothing <: java.lang.String (and Empty.type <: Lst[Nothing]), but trait Lst is invariant in type A.
+Note: Nothing <: java.lang.String (and Empty.type <: Lst[Nothing]), 
+but trait Lst is invariant in type A.
 You may wish to define A as +A instead. (SLS 4.5)
     Cons("Hello", Empty)
 */
@@ -203,6 +204,7 @@ sealed trait Lst[+A]{ // ok, fixed it!
 case object Empty extends Lst[Nothing]
 case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
 
+// i bruk
 "Hello" :: Empty
 ```
 
@@ -214,24 +216,6 @@ sealed trait Lst[+A]{
 case object Empty extends Lst[Nothing]
 case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
 
-"Hello" :: Empty
-
-/*
-found   : x$1.type (with underlying type java.lang.String)
-required: Nothing
-   "Hello" :: Empty
-*/
-```
-
-!SLIDE
-```scala
-sealed trait Lst[+A]{
-  def ::(a:A):Lst[A] = Cons(a, this)
-}
-case object Empty extends Lst[Nothing]
-case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
-
-// "Hello" :: Empty
 /*
 covariant type A occurs in contravariant position in type A of value a
      def ::(a:A):Lst[A] = Cons(a, this)
