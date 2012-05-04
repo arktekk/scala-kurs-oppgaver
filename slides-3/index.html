@@ -16,439 +16,17 @@
         <div id="slides">
           <div id="reel">
             <div class="content" id="slide-0">
-       <div class="container"><h2>Simple Build Tool</h2><p>defining a build in terms of typesafe <a href="https://github.com/harrah/xsbt/wiki/Settings" >expressions</a>
-</p><p>not inheritance hierarchies or xml
-</p></div>
-      </div><div class="content" id="slide-1">
-       <div class="container"><h2>Goal: a unified design - Settings!</h2><pre><code>key in scope bind (dependencies) value
-</code></pre></div>
-      </div><div class="content" id="slide-2">
-       <div class="container"><h2>From a bird’s eye</h2><ul><li>Setting[T] produces typed values (simple values, tasks)
-</li><li>Builds are collections of Settings
-</li><li>Settings can (<code>&lt;&lt;=</code>) other settings’ result types
-</li><li>Think unix pipes but more flexible and for setting definitions
-</li><li>More on Settings later &hellip;
-</li></ul></div>
-      </div><div class="content" id="slide-3">
-       <div class="container"><h2>Build it <em>your</em> way</h2><p>on build sizes and flavors
-</p><ol><li>(small) shell
-</li><li>(medium) <a href="https://github.com/harrah/xsbt/wiki/Basic-Configuration" >Quick</a> Configuration
-</li><li>(large) <a href="https://github.com/harrah/xsbt/wiki/Full-Configuration" >Full</a> Configuration
-</li></ol></div>
-      </div><div class="content" id="slide-4">
-       <div class="container"><h2>In other words</h2><ol><li><code>&gt; eval expression # toe dipping</code>
-</li><li><code>build.sbt # single project</code>
-</li><li><code>build.scala # family of projects</code>
-</li></ol></div>
-      </div><div class="content" id="slide-5">
-       <div class="container"><h1>new friends</h1><h2>eval (uate an expression)</h2><h2>inspect (task doc and deps)</h2><h2>show (run task and show output)</h2><h2>last (say again?)</h2></div>
-      </div><div class="content" id="slide-6">
-       <div class="container"><h1>familiar friends</h1><h2>~ (watch and repeat)</h2><h2>+ (against cross version)</h2><h2>++ (against all cross versions)</h2><h2>(compile, clean, test,…)</h2></div>
-      </div><div class="content" id="slide-7">
-       <div class="container"><h2>self aware</h2><p><code>session</code> is your passenger
-</p><pre><code>&gt; help session
-&gt; Manipulates session settings ...
-&gt; session list
-&gt; session save-all
-</code></pre></div>
-      </div><div class="content" id="slide-8">
-       <div class="container"><h2><a href="https://github.com/harrah/xsbt/blob/0.11.2/main/Keys.scala" >key</a>-<a href="https://github.com/harrah/xsbt/blob/0.11.2/main/Defaults.scala" >value</a></h2><p>type <code>name</code> in the shell
-</p><pre><code>&gt; name
-[info] helloworld
-</code></pre><ul><li>this is looking up a value from <code>settings</code><br>using the key <code>name</code>
-</li></ul></div>
-      </div><div class="content" id="slide-9">
-       <div class="container"><h2>key-value</h2><p>type <code>publish-local</code> in the shell
-</p><pre><code>&gt; publish-local
-[info] Packaging .../helloworld_2.9.1-sources.jar ...
-...
-</code></pre></div>
-      </div><div class="content" id="slide-10">
-       <div class="container"><h2>key-value</h2><p>type <code>publish-local</code> in the shell
-</p><pre><code>&gt; publish-local
-[info] Packaging .../helloworld_2.9.1-sources.jar ...
-...
-</code></pre><ul><li>this is looking up a value from <code>settings</code><br>using the key <code>publish-local</code>
-</li><li>values can be executable functions (tasks)
-</li></ul></div>
-      </div><div class="content" id="slide-11">
-       <div class="container"><h2>key-value</h2><p><code>settings</code> is a Seq of <code>Setting[T]</code>
-</p><p><img  src="theory/sbt0.10k-v.png" alt="k-v" />
-</p></div>
-      </div><div class="content" id="slide-12">
-       <div class="container"><h2>keys can declare their independence</h2><h3>(<code>:=</code>) context free</h3><h2>or their dependencies on other keys (<code>&lt;*</code>)</h2><p><img  src="theory/sbt0.10k-v2.png" alt="deps" />
-</p></div>
-      </div><div class="content" id="slide-13">
-       <div class="container"><h2>An Emoji for just about every occasion</h2><h1>(<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L177" >:=</a>), (<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L176" >::=</a>), (<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L178" >:==</a>) (<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L132" >+=</a>), (<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L133" >++=</a>), (<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L130" >&lt;+=</a>), (<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L131" >&lt;++=</a>), (<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L156" >&lt;&lt;=</a>), (<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L179" >~=</a>), (<a href="https://github.com/harrah/xsbt/blob/0.10/main/Structure.scala#L162" >??</a>) &hellip;</h1></div>
-      </div><div class="content" id="slide-14">
-       <div class="container"><h3>A quick rule of thumb regarding</h3><h3>TasksKeys and SettingKeys with dependencies</h3></div>
-      </div><div class="content" id="slide-15">
-       <div class="container"><h2>SettingKeys <em>apply</em></h2><pre><code>val whichVersion = SettingKey[String](&quot;which-version&quot;,&quot;...&quot;)
-override def settings = Seq(
-  whichVersion &lt;&lt;= scalaVersion.apply(v =&gt;
-    &quot;mah scala version is %s&quot; format v
-  )
-)
-</code></pre></div>
-      </div><div class="content" id="slide-16">
-       <div class="container"><h2>TaskKeys <em>map</em></h2><pre><code>val ohai = TaskKey[Unit](&quot;ohai&quot;,&quot;prints ohai&quot;)
-override def settings = Seq(
-   ohai &lt;&lt;= (streams, version) map { (out, vers) =&gt;
-     out.log.info(&quot;ohai %s!&quot; format vers)
-   }
-)
-</code></pre></div>
-      </div><div class="content" id="slide-17">
-       <div class="container"><h1>quick config dsl</h1><p><br>
-<br>
-a simple way to describe single module projects as a list of expressions
-</p></div>
-      </div><div class="content" id="slide-18">
-       <div class="container"><h2>where</h2><br>
-<p>in the root directory of your project
-<br>
-<br>
-</p><pre><code>// settings and tasks go here
-build.sbt
-
-// define the sbt version here
-project/build.properties
-
-// plugins go here
-project/build.sbt
-</code></pre></div>
-      </div><div class="content" id="slide-19">
-       <div class="container"><h2>build.sbt</h2><p>start with these settings in <code>build.sbt</code>
-<br>
-</p><pre><code>organization := &quot;com.foo&quot;
-
-name := &quot;bar&quot;
-
-version := &quot;0.0.1&quot;
-
-scalaVersion := &quot;2.9.1&quot;
-</code></pre></div>
-      </div><div class="content" id="slide-20">
-       <div class="container"><h2>build.properties</h2><p>this is all you need in <code>project/build.properties</code>
-<br>
-<br>
-</p><pre><code>sbt.version=0.11.2
-</code></pre></div>
-      </div><div class="content" id="slide-21">
-       <div class="container"><h2>setting or task?</h2><blockquote><p>if it can be cached, it’s a setting
-</p></blockquote><br>
-<blockquote><p>if it depends on your project, it’s a task
-</p></blockquote></div>
-      </div><div class="content" id="slide-22">
-       <div class="container"><h2>how do settings work?</h2><br>
-<p><a href="https://github.com/harrah/xsbt/wiki/Settings" >Settings</a> are evaluated at project load time and on reload.
-<br>
-<br>
-</p><p>once the project is loaded, the dependencies are fixed.
-</p></div>
-      </div><div class="content" id="slide-23">
-       <div class="container"><h2>how are tasks different from settings?</h2><br>
-<ul><li><a href="https://github.com/harrah/xsbt/wiki/Tasks" >Tasks</a> can be added, changed or removed at execution
-</li><li>execute on demand
-</li><li>use <code>map</code> or <code>flatMap</code> to pass values from one task to another
-</li><li>may have external dependencies
-</li><li>may have side effects
-</li></ul></div>
-      </div><div class="content" id="slide-24">
-       <div class="container"><h1>syntax</h1><blockquote><p>everything is parsed as an expression
-</p></blockquote></div>
-      </div><div class="content" id="slide-25">
-       <div class="container"><h2>field guide</h2><ul><li><a href="http://harrah.github.com/xsbt/latest/sxr/Keys.scala.html" >Keys</a> describe available settings
-</li><li>the <a href="https://github.com/harrah/xsbt/wiki/Index" >harrah/xsbt/wiki/Index</a> of practically just about everything
-</li></ul><br>
-<br>
-<ul><li>operators ending in <code>=</code> intialize
-</li><li>operators beginning with <code>&lt;</code> depend on other values
-</li><li>no semi-colons are allowed at the end of lines
-</li><li>use curly braces to scope or pass a function as a setting value
-</li></ul></div>
-      </div><div class="content" id="slide-26">
-       <div class="container"><h2>initializing</h2><br>
-<ul><li><code>&lt;&lt;=</code> is the most general initialization operator 
-</li><li>it declares a dependency and passes the right-hand value or method result to 
-the setting represented by the left-hand key
-</li><li>every other initialization operator can be defined in terms of <code>&lt;&lt;=</code>
-</li></ul></div>
-      </div><div class="content" id="slide-27">
-       <div class="container"><h2>assign values</h2><br>
-<p><code>:=</code> initializes a setting that is
-<br>
-<br>
-</p><ul><li>a constant value
-</li><li>does not depend on any other settings
-</li><li>will silently overwrite a previously defined value with the same key
-</li></ul></div>
-      </div><div class="content" id="slide-28">
-       <div class="container"><h2>initial setup</h2><p><br>
-start with these settings in <code>build.sbt</code>
-<br>
-</p><pre><code>organization := &quot;org.myproject&quot;
-
-name := &quot;something&quot;
-
-version := &quot;0.1&quot;
-
-scalaVersion := &quot;2.9.1&quot;
-</code></pre><p><br>
-and specify sbt 0.11.2 in <code>build.properties</code>:
-<br>
-</p><pre><code>sbt.version=0.11.2
-</code></pre></div>
-      </div><div class="content" id="slide-29">
-       <div class="container"><h2>adding maven repos</h2><br>
-<pre><code>resolvers += &quot;name&quot; at &quot;url&quot;
-
-resolvers ++= Seq(&quot;name2&quot; at &quot;url2&quot;, 
-  &quot;name3&quot; at &quot;url3&quot;)
-</code></pre></div>
-      </div><div class="content" id="slide-30">
-       <div class="container"><h2>adding dependencies</h2><p><br>
-use <code>+=</code> to append one dependency, or <code>++=</code> to append a <code>Seq</code> of multiple dependencies.
-<br>
-<br> 
-</p><pre><code>libraryDependencies += &quot;org.xyz&quot; %% &quot;xyz&quot; % &quot;2.1&quot;
-
-libraryDependencies ++= Seq(
-  &quot;net.databinder&quot; %% &quot;dispatch-meetup&quot; % &quot;0.7.8&quot;,
-  &quot;net.databinder&quot; %% &quot;dispatch-twitter&quot; % &quot;0.7.8&quot;
-)
-</code></pre></div>
-      </div><div class="content" id="slide-31">
-       <div class="container"><h2>dependencies are settings that update other settings</h2><br> 
-<pre><code>libraryDependencies += &quot;org.xyz&quot; %% &quot;xyz&quot; % &quot;2.1&quot;
-</code></pre><p><br>
-<br>
-is the same as using <code>&lt;&lt;=</code> to call apply to update the previous value of 
-<code>libraryDependencies</code> with another <code>ModuleID</code>  
-<br/>
-<br>
-<br>
-</p><pre><code>libraryDependencies &lt;&lt;= libraryDependencies { deps =&gt;
-  deps :+ &quot;org.xyz&quot; %% &quot;xyz&quot; % &quot;2.1&quot;
-}
-</code></pre></div>
-      </div><div class="content" id="slide-32">
-       <div class="container"><h2>dependencies that use scala version</h2><br>
-<p><code>scalaVersion</code> is itself a setting, so you need to combine an append operator with
-the <code>&lt;&lt;=</code> operator:
-<br>
-</p><ul><li><code>&lt;+=</code> combines <code>+=</code> and <code>&lt;&lt;=</code> 
-</li><li><code>&lt;++=</code> combines <code>++=</code> and <code>&lt;&lt;=</code>
-</li></ul><br>
-<pre><code>libraryDependencies &lt;+= scalaVersion( &quot;org.scala-lang&quot; 
-  % &quot;scala-compiler&quot; % _ )
-
-libraryDependencies &lt;++= scalaVersion { sv =&gt;
-  (&quot;org.scala-lang&quot; % &quot;scala-compiler&quot; % sv) ::
-  (&quot;org.scala-lang&quot; % &quot;scalap&quot; % sv) ::
-  Nil
-}    
-</code></pre></div>
-      </div><div class="content" id="slide-33">
-       <div class="container"><h2>unmanaged dependencies</h2><p><br>
-use <code>unmanagedJars</code> to take care of unmanaged dependencies:
-<br>
-<br>
-</p><pre><code>unmanagedJars in Compile 
-  += file(&quot;/home/rose/myproject/lib/some.jar&quot;)
-</code></pre></div>
-      </div><div class="content" id="slide-34">
-       <div class="container"><h2>compiler options</h2><p><br>
-Java:
-<br>
-</p><pre><code>javacOptions ++= Seq(&quot;-source&quot;, &quot;1.6&quot;, &quot;-target&quot;, &quot;1.6&quot;)
-
-javaOptions += &quot;-Xms512M -Xmx2G&quot;
-
-</code></pre><p><br>
-<br>
-Scala:
-<br>
-</p><pre><code>scalacOptions ++= Seq(&quot;-deprecation&quot;, &quot;-unchecked&quot;)
-</code></pre></div>
-      </div><div class="content" id="slide-35">
-       <div class="container"><h2>console-project</h2><p><br>
-<a href="https://github.com/harrah/xsbt/wiki/Console-Project" >Console-Project</a> lets you use the DSL to 
-interact with your project:
-<br>
-<br>
-</p><ul><li>see and modify configuration values
-</li><li><p>evaluate tasks (use <code>currentState</code> - see <a href="https://github.com/harrah/xsbt/wiki/Build-State" >Build State</a>) for more
-</p><ul><li>show the classpaths for compilation and testing
-</li><li>show available or remaining commands
-</li></ul></li></ul></div>
-      </div><div class="content" id="slide-36">
-       <div class="container"><h2>testing - supported out of box</h2><ul><li>specs2
-</li><li>ScalaCheck
-</li><li>ScalaTest
-</li></ul><br>
-<br>
-<h2>needs a plugin</h2><ul><li>JUnit
-</li></ul></div>
-      </div><div class="content" id="slide-37">
-       <div class="container"><h2>publish</h2><p><br>
-By default, sbt will publish
-</p><ul><li>the main binary jar
-</li><li>a source jar
-</li><li>API documentation jar
-</li><li>a Maven pom
-<br>
-<br>
-</li></ul><pre>
-publishTo := Some("XYZ Repo" 
-  at "http://repo.xyz.org/releases/")
-</pre>
-</div>
-      </div><div class="content" id="slide-38">
-       <div class="container"><h2>define credentials</h2><p><br>
-using a file
-</p><pre><code>credentials += Credentials(Path.userHome / &quot;.ivy2&quot; / 
-  &quot;.credentials&quot;)
-</code></pre><p><br>
-or inline 
-</p><pre><code>credentials += Credentials(&quot;Some Repo&quot;, &quot;myproject.org&quot;, 
-  &quot;admin&quot;, &quot;admin123&quot;)
-</code></pre></div>
-      </div><div class="content" id="slide-39">
-       <div class="container"><h2>publish snapshots and releases</h2><br>
-<pre><code>publishTo &lt;&lt;= (version) { version: String =&gt;
-  val nexus = &quot;http://xyz.org/content/repositories/&quot;
-  if (version.trim.endsWith(&quot;SNAPSHOT&quot;)) 
-    Some(&quot;snapshots&quot; at nexus+&quot;snapshots/&quot;) 
-  else                                   
-    Some(&quot;releases&quot; at nexus+&quot;releases/&quot;)
-}
-</code></pre></div>
-      </div><div class="content" id="slide-40">
-       <div class="container"><h1>plugins</h1><blockquote><p>a way to use external code in a build definition
-</p></blockquote><ul><li>custom tasks
-</li><li>custom commands<a href="http://groups.google.com/group/simple-build-tool/browse_frm/thread/7344d891f0a941a5/edfae75e124d255e" >*</a>
-</li><li>custom settings
-</li></ul></div>
-      </div><div class="content" id="slide-41">
-       <div class="container"><ul><li><a href="https://github.com/mpeltonen/sbt-idea" >mpeltonen/sbt-idea</a>
-</li><li><a href="https://github.com/typesafehub/sbteclipse" >typesafehub/sbteclipse</a>
-</li><li><a href="https://github.com/siasia/xsbt-web-plugin" >siasia/xsbt-web-plugin</a>
-</li><li><a href="https://github.com/eed3si9n/sbt-appengine" >eed3si9n/sbt-appengine</a>
-</li><li><a href="https://github.com/sbt/sbt-assembly" >sbt/sbt-assembly</a>
-</li><li><a href="https://github.com/softprops/coffeescripted-sbt" >softprops/coffeescripted-sbt</a>
-</li><li><a href="https://github.com/n8han/posterous-sbt" >n8han/posterous-sbt</a>
-</li><li><a href="https://github.com/steppenwells/sbt-sh" >steppenwells/sbt-sh</a>
-</li><li><a href="https://github.com/harrah/xsbt/wiki/sbt-0.10-plugins-list" >and many more</a>
-</li></ul></div>
-      </div><div class="content" id="slide-42">
-       <div class="container"><h2>using plugins</h2><p><br>
-in project/build.sbt
-</p><pre><code>addSbtPlugin(&quot;com.typesafe.sbteclipse&quot; % &quot;sbteclipse-plugin&quot; % &quot;2.0.0-M3&quot;)
-
-libraryDependencies += &quot;org.clapper&quot; %% &quot;grizzled-scala&quot; % &quot;1.0.9&quot;
-</code></pre></div>
-      </div><div class="content" id="slide-43">
-       <div class="container"><h2>plugins in your project</h2><p><br>
-at the top of <code>build.sbt</code>, add the imports:
-</p><pre><code>import grizzled.sys._
-import OperatingSystem._
-
-// now do stuff with the plugin...
-libraryDependencies ++=
-    if (os ==Windows)
-	    (&quot;org.example&quot; % &quot;windows-only&quot; 
-	        % &quot;1.0&quot;) :: Nil
-    else
-	    Nil
-  
-</code></pre></div>
-      </div><div class="content" id="slide-44">
-       <div class="container"><h2>bring plugin settings into scope</h2><p><br>
-at the top of <code>build.sbt</code>, import the plugin settings:
-<br>
-<br>
-</p><pre><code>seq(SomePlugin.someSettings :_*)
-
-someSetting := &quot;foo&quot;
-</code></pre></div>
-      </div><div class="content" id="slide-45">
-       <div class="container"><h2>using plugins</h2><p><img  src="plugins/sbt0.10plugins.png" alt="plugins k-v" />
-</p></div>
-      </div><div class="content" id="slide-46">
-       <div class="container"><h2><a href="https://github.com/harrah/xsbt/wiki/Full-Configuration" >full configuration</a></h2><pre><code>import sbt._
-
-object FooBuild extends Build {
-  lazy val root = Project(&quot;root&quot;,
-    file(&quot;.&quot;)) aggregate(cli, scalaxbPlugin)
-  lazy val cli = Project(&quot;scalaxb&quot;, file(&quot;cli&quot;)) 
-  lazy val scalaxbPlugin = Project(&quot;sbt-scalaxb&quot;, 
-    file(&quot;sbt-scalaxb&quot;)) dependsOn(cli)
-
-  // common settings
-  override lazy val settings = super.settings ++ Seq(
-    ...
-  )
-}
-</code></pre></div>
-      </div><div class="content" id="slide-47">
-       <div class="container"><h2>subproject</h2><pre><code>lazy val cli = Project(&quot;scalaxb&quot;, file(&quot;cli&quot;)) 
-</code></pre><ul><li>creates scalaxb project under <code>cli</code> dir
-</li><li>details can go into cli/build.sbt
-</li></ul></div>
-      </div><div class="content" id="slide-48">
-       <div class="container"><h2>3 ways to reference</h2><ol><li><p>Project object
-</p><pre><code>lazy val cli = Project(&quot;scalaxb&quot;, file(&quot;cli&quot;)) 
-</code></pre></li><li><p>RootProject at <code>uri</code> or <code>file</code>
-</p><pre><code>RootProject(file(&quot;/home/user/a-project&quot;))
-</code></pre></li><li><p>ProjectRef within <code>uri</code> or <code>file</code>
-</p><pre><code>ProjectRef(
-  uri(&quot;git://github.com/dragos/dupcheck.git&quot;),
-  &quot;project-id&quot;)
-</code></pre></li></ol></div>
-      </div><div class="content" id="slide-49">
-       <div class="container"><h2>3 ways to relate</h2><ol><li>execution dependency<br>- task on <code>root</code> also runs on <code>cli</code>
-</li><li>classpath dependency<br>- use classpath from other projs
-</li><li>configuration dependency<br>- when a key is not found<br>it looks up another proj
-</li></ol></div>
-      </div><div class="content" id="slide-50">
-       <div class="container"><h2>execution dependency</h2><pre><code>lazy val root = Project(&quot;root&quot;,
-  file(&quot;.&quot;)) aggregate(cli, scalaxbPlugin)
-</code></pre><p>running <code>compile</code> now compiles both <code>cli</code> and <code>scalaxbPlugin</code>
-</p></div>
-      </div><div class="content" id="slide-51">
-       <div class="container"><h2>classpath dependency</h2><pre><code>lazy val scalaxbPlugin = Project(&quot;sbt-scalaxb&quot;, 
-  file(&quot;sbt-scalaxb&quot;)) dependsOn(cli)
-</code></pre><p>use code without <code>publish-local</code>
-</p></div>
-      </div><div class="content" id="slide-52">
-       <div class="container"><h2>configuration dependency</h2><pre><code>lazy val root: Project = Project(&quot;root&quot;,
-  file(&quot;.&quot;)) aggregate(ui)   
-lazy val ui = Project(&quot;ui&quot;,
-  file(&quot;ui&quot;), delegates = root :: Nil)  
-</code></pre><p>if a key is not found in ui/build.sbt it checks build.sbt.<br>
-</p></div>
-      </div><div class="content" id="slide-53">
-       <div class="container"><h2>configuration dependency</h2><p>workaround is to put common settings in build.scala.
-</p><pre><code>override lazy val settings = super.settings ++ Seq(
-  version := &quot;0.6.2-SNAPSHOT&quot;,
-  organization := &quot;org.scalaxb&quot;,
-  scalaVersion := &quot;2.9.0-1&quot;,
-  ...
-)
-</code></pre></div>
-      </div><div class="content" id="slide-54">
        <div class="container"><h1>pattern matching</h1><ul><li>“switch på steroider”
 </li><li>destructuring &amp; matching
 </li><li>vanlig blant funksjonelle språk som haskell, erlang, ml osv
 </li></ul></div>
-      </div><div class="content" id="slide-55">
+      </div><div class="content" id="slide-1">
        <div class="container"><h1>krav</h1><ul><li>gitt en <code>List[List[Int]]</code>
 </li><li>når det første element er er en liste hvor første element er er 1, 2 eller 3, return det tallet
 </li><li>når det andre elementer i lista er en liste, returner det andre elementet i den listen hvis det eksisterer
 </li><li>ellers returner 0
 </li></ul></div>
-      </div><div class="content" id="slide-56">
+      </div><div class="content" id="slide-2">
        <div class="container"><pre><code class="prettyprint lang-java">public int f(List&lt;List&lt;Integer&gt;&gt; l){
   if(l != null){
     if(l.size() &gt;= 1){
@@ -468,24 +46,24 @@ lazy val ui = Project(&quot;ui&quot;,
   return 0;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-57">
+      </div><div class="content" id="slide-3">
        <div class="container"><pre><code class="prettyprint lang-scala">def f(l:List[List[Int]]) = l match {
   case List(List(x @ (1 | 2 | 3), _*), _*) =&gt; x
   case List(_, List(_, x, _),_*) =&gt; x
   case _ =&gt; 0
 }
 </code></pre></div>
-      </div><div class="content" id="slide-58">
+      </div><div class="content" id="slide-4">
        <div class="container"><h2>wildcard</h2><pre><code class="prettyprint lang-scala">x match {
   case _ =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-59">
+      </div><div class="content" id="slide-5">
        <div class="container"><h2>variable</h2><pre><code class="prettyprint lang-scala">x match {
   case y =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-60">
+      </div><div class="content" id="slide-6">
        <div class="container"><h2>typed</h2><pre><code class="prettyprint lang-scala">x match {
   case _:Foo =&gt;
   case a:C =&gt;
@@ -495,12 +73,12 @@ lazy val ui = Project(&quot;ui&quot;,
   case e:(A with B with C) =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-61">
+      </div><div class="content" id="slide-7">
        <div class="container"><h2>binding</h2><pre><code class="prettyprint lang-scala">x match {
   case y @ _ =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-62">
+      </div><div class="content" id="slide-8">
        <div class="container"><h2>literal</h2><pre><code class="prettyprint lang-scala">x match {
   case &quot;hello&quot; =&gt;
   case 5 =&gt;
@@ -510,14 +88,14 @@ lazy val ui = Project(&quot;ui&quot;,
 }
 
 </code></pre></div>
-      </div><div class="content" id="slide-63">
+      </div><div class="content" id="slide-9">
        <div class="container"><h2>@switch</h2><pre><code class="prettyprint lang-scala">(x: @switch) match {
   case 1 =&gt;
   case 2 =&gt;
   case 3 =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-64">
+      </div><div class="content" id="slide-10">
        <div class="container"><h2>@switch</h2><pre><code class="prettyprint lang-scala">(x: @switch) match {
   case 1 =&gt;
   case 2 =&gt;
@@ -526,31 +104,31 @@ lazy val ui = Project(&quot;ui&quot;,
 
 // error: could not emit switch for @switch annotated match
 </code></pre></div>
-      </div><div class="content" id="slide-65">
+      </div><div class="content" id="slide-11">
        <div class="container"><h2>stable identifier ?</h2><pre><code class="prettyprint lang-scala">val hello = &quot;hello&quot;
 &quot;world&quot; match {
   case hello =&gt; // matcher
 }
 </code></pre></div>
-      </div><div class="content" id="slide-66">
+      </div><div class="content" id="slide-12">
        <div class="container"><h2>stable identifier</h2><pre><code class="prettyprint lang-scala">val Hello = &quot;hello&quot;
 &quot;world&quot; match {
   case Hello =&gt; // matcher ikke
 }
 </code></pre></div>
-      </div><div class="content" id="slide-67">
+      </div><div class="content" id="slide-13">
        <div class="container"><h2>stable identifier</h2><pre><code class="prettyprint lang-scala">def f(x:Int, y:Int) = x match {
   case `y` =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-68">
+      </div><div class="content" id="slide-14">
        <div class="container"><h2>constructor</h2><pre><code class="prettyprint lang-scala">case class Foo(a:String, b:Int)
 
 x match {
   case Foo(aString, anInt) =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-69">
+      </div><div class="content" id="slide-15">
        <div class="container"><h2>constructor</h2><pre><code class="prettyprint lang-scala">case class Foo(a:String, b:Int)
 
 x match {
@@ -558,7 +136,7 @@ x match {
   case Foo(aString, anInt) =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-70">
+      </div><div class="content" id="slide-16">
        <div class="container"><h2>Algebraiske Data Typer</h2><pre><code class="prettyprint lang-scala">sealed trait Tree
 case class Branch(l:Tree, r:Tree) extends Tree
 case class Leaf(v:Int) extends Tree
@@ -573,36 +151,36 @@ val tree = Branch(
   Branch(Leaf(3), Leaf(4)))
 sum(tree)
 </code></pre></div>
-      </div><div class="content" id="slide-71">
+      </div><div class="content" id="slide-17">
        <div class="container"><h2>tuple</h2><pre><code class="prettyprint lang-scala">x match {
   case (first, second) =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-72">
+      </div><div class="content" id="slide-18">
        <div class="container"><h2>tuple</h2><pre><code class="prettyprint lang-scala">x match {
   case (first, second, third) =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-73">
+      </div><div class="content" id="slide-19">
        <div class="container"><h2>sequences</h2><pre><code class="prettyprint lang-scala">x match {
   case List(a, b) =&gt;
   case List(a, b, c, _*) =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-74">
+      </div><div class="content" id="slide-20">
        <div class="container"><h2>sequences</h2><pre><code class="prettyprint lang-scala">x match {
   case List(a, b) =&gt;
   case List(a, b, c, d @ _*) =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-75">
+      </div><div class="content" id="slide-21">
        <div class="container"><h2>extractors</h2><pre><code class="prettyprint lang-scala">def unapply(a:A):Boolean
 
 def unapply(a:A):Option[B]
 
 def unapplySeq(a:A):Option[Seq[B]]
 </code></pre></div>
-      </div><div class="content" id="slide-76">
+      </div><div class="content" id="slide-22">
        <div class="container"><h2>unapply</h2><pre><code class="prettyprint lang-scala">object Empty {
   def unapply(a:String):Boolean = a.trim.size == 0
 }
@@ -611,7 +189,7 @@ x match {
   case Empty() =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-77">
+      </div><div class="content" id="slide-23">
        <div class="container"><h2>unapply</h2><pre><code class="prettyprint lang-scala">object Even {
   def unapply(a:Int):Option[Int] =
     if(a % 2 == 0) Some(a) else None
@@ -621,7 +199,7 @@ x match {
   case Even(even) =&gt; 
 }
 </code></pre></div>
-      </div><div class="content" id="slide-78">
+      </div><div class="content" id="slide-24">
        <div class="container"><pre><code class="prettyprint lang-java">class Name{
   String first; String last;
   public Name(first:String, last:String){
@@ -637,7 +215,7 @@ x match {
   case FirstLast(first, last) =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-79">
+      </div><div class="content" id="slide-25">
        <div class="container"><h2>unapplySeq</h2><pre><code class="prettyprint lang-scala">object Csv {
   def unapplySeq(s:String) = Some(s.split(&quot;,&quot;).toSeq)
 }
@@ -646,7 +224,7 @@ x match {
   case Csv(a, b, c) =&gt; a+&quot;-&quot;+b+&quot;-&quot;+c
 }
 </code></pre></div>
-      </div><div class="content" id="slide-80">
+      </div><div class="content" id="slide-26">
        <div class="container"><h2>extractor tree</h2><pre><code class="prettyprint lang-scala">sealed trait Tree
 object Branch {
   private class Impl(val l:Tree, r:Tree) extends Tree
@@ -665,20 +243,20 @@ object Leaf {
   }
 }
 </code></pre></div>
-      </div><div class="content" id="slide-81">
+      </div><div class="content" id="slide-27">
        <div class="container"><pre><code class="prettyprint lang-scala">def sum(tree:Tree):Int = tree match {
   case Branch(left, right) =&gt; sum(left) + sum(right)
   case Leaf(value) =&gt; value
 }
 </code></pre></div>
-      </div><div class="content" id="slide-82">
+      </div><div class="content" id="slide-28">
        <div class="container"><h2>infix</h2><pre><code class="prettyprint lang-scala">case class XX(a:String, b:Int)
 
 x match {
   case a XX b =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-83">
+      </div><div class="content" id="slide-29">
        <div class="container"><h2>infix</h2><pre><code class="prettyprint lang-scala">case class ::[A](head:A, tail:List[A]) extends List[A] {
   def ::[B &gt;: A](b:B):List[B] = ::(b, this)
 }
@@ -687,7 +265,7 @@ x match {
   case a :: b :: c :: Nil =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-84">
+      </div><div class="content" id="slide-30">
        <div class="container"><h2>infix</h2><pre><code class="prettyprint lang-scala">case class ::[A](head:A, tail:List[A]) extends List[A] {
   def ::[B &gt;: A](b:B):List[B] = ::(b, this)
 }
@@ -696,7 +274,7 @@ x match {
   case ::(1, ::(2, ::(3, Nil))) =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-85">
+      </div><div class="content" id="slide-31">
        <div class="container"><h2>infix</h2><pre><code class="prettyprint lang-scala">object -&gt; {
   def unapply[A, B](ab:(A, B)):Option[(A, B)] =
 	Some(ab)
@@ -710,44 +288,44 @@ x match {
   case a -&gt; b -&gt; c =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-86">
+      </div><div class="content" id="slide-32">
        <div class="container"><h2>infix</h2><pre><code class="prettyprint lang-scala">case class EX(l:List[String], num:Int, s:String)
 
 x match {
   case l EX (num, s) =&gt; 
 }
 </code></pre></div>
-      </div><div class="content" id="slide-87">
+      </div><div class="content" id="slide-33">
        <div class="container"><h2>infix</h2><pre><code class="prettyprint lang-scala">case class EX(l:List[String], num:Int, s:String)
 
 x match {
   case a :: b :: c EX (num, s) =&gt; 
 }
 </code></pre></div>
-      </div><div class="content" id="slide-88">
+      </div><div class="content" id="slide-34">
        <div class="container"><h2>alternatives</h2><pre><code class="prettyprint lang-scala">x match {
   case 1 | 2 =&gt;
   case _:Foo | _:Bar =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-89">
+      </div><div class="content" id="slide-35">
        <div class="container"><h2>alternatives</h2><pre><code class="prettyprint lang-scala">try {
   // throw something
 } catch {
   case e @ (_:ExA | _:ExB) =&gt; // multicatch
 }
 </code></pre></div>
-      </div><div class="content" id="slide-90">
+      </div><div class="content" id="slide-36">
        <div class="container"><h2>xml</h2><pre><code class="prettyprint lang-scala">&lt;foo&gt;bar&lt;/foo&gt; match {
   case &lt;foo&gt;{what}&lt;/foo&gt; =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-91">
+      </div><div class="content" id="slide-37">
        <div class="container"><h2>guards</h2><pre><code class="prettyprint lang-scala">x match {
   case y if y &gt; 2 =&gt;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-92">
+      </div><div class="content" id="slide-38">
        <div class="container"><h2>partial functions</h2><pre><code class="prettyprint lang-scala">val pos:PartialFunction[Int, String] = {
   case n if n &gt; 0 =&gt; n.toString
 }
@@ -758,7 +336,7 @@ pos.isDefinedAt(-1) // false
 pos(5)  // &quot;5&quot;
 pos(-1) // java.util.NoSuchElementException
 </code></pre></div>
-      </div><div class="content" id="slide-93">
+      </div><div class="content" id="slide-39">
        <div class="container"><h2>partial functions</h2><pre><code class="prettyprint lang-scala">val pos:PartialFunction[Int, String] = {
   case n if n &gt; 0 =&gt; n.toString
 }
@@ -772,26 +350,26 @@ val all = pos orElse notPos
 for(i &lt;- -5 to 5)
   println(all(i))
 </code></pre></div>
-      </div><div class="content" id="slide-94">
+      </div><div class="content" id="slide-40">
        <div class="container"><pre><code class="prettyprint lang-scala">val Num = &quot;(\\d+)&quot;.r
 List(&quot;123&quot;, &quot;abc&quot;, &quot;321&quot;).collect{
   case Num(num) =&gt; num.toInt
 }
 // List(123, 321)
 </code></pre></div>
-      </div><div class="content" id="slide-95">
+      </div><div class="content" id="slide-41">
        <div class="container"><h2>functions</h2><pre><code class="prettyprint lang-scala">List(-2, -1, 0, 1, 2).foldLeft(0){
   case (a, e) =&gt; if e &lt; 0 =&gt; a
   case (a, e) =&gt; a + e
 }
 </code></pre></div>
-      </div><div class="content" id="slide-96">
+      </div><div class="content" id="slide-42">
        <div class="container"><h2>assignment</h2><pre><code class="prettyprint lang-scala">val (minors, adults) = people.partition(_.age &lt; 18)
 
 val Email = &quot;(.+)@(.+)&quot;.r
 val EMail(name, domain) = &quot;foo@bar.com&quot;
 </code></pre></div>
-      </div><div class="content" id="slide-97">
+      </div><div class="content" id="slide-43">
        <div class="container"><h2>for-comprehensions</h2><pre><code class="prettyprint lang-scala">object Even {
   def unapply(i:Int) = 
     if(i % 2 == 0) Some(i) else None
@@ -801,7 +379,7 @@ for{
   Even(number) &lt;- List(1, 2, 3, 4)
 } yield number
 </code></pre></div>
-      </div><div class="content" id="slide-98">
+      </div><div class="content" id="slide-44">
        <div class="container"><h2>erasure</h2><pre><code class="prettyprint lang-scala">val list:List[Any] = List(1, 2, 3)
 
 list match {
@@ -809,11 +387,11 @@ list match {
   case x:List[Int] =&gt; &quot;Ints&quot;
 }
 </code></pre></div>
-      </div><div class="content" id="slide-99">
+      </div><div class="content" id="slide-45">
        <div class="container"><h2>#1133</h2><p><code>Exception in thread &quot;main&quot; java.lang.Error: 
 ch.epfl.lamp.fjbg.JCod$OffsetTooBigException: offset to big to fit in 16 bits: 55087</code>
 </p></div>
-      </div><div class="content" id="slide-100">
+      </div><div class="content" id="slide-46">
        <div class="container"><h2>don’t</h2><pre><code class="prettyprint lang-scala">val a:Option[Int] = ...
 
 a match {
@@ -821,12 +399,12 @@ a match {
   case _ =&gt; None
 }
 </code></pre></div>
-      </div><div class="content" id="slide-101">
+      </div><div class="content" id="slide-47">
        <div class="container"><h2>do</h2><pre><code class="prettyprint lang-scala">val a:Option[Int] = ...
 
 a.map(i =&gt; i * 2)
 </code></pre></div>
-      </div><div class="content" id="slide-102">
+      </div><div class="content" id="slide-48">
        <div class="container"><h2>don’t</h2><pre><code class="prettyprint lang-scala">val a:Option[String] = ...
 val b:Option[String] = ...
 
@@ -835,7 +413,7 @@ val b:Option[String] = ...
   case _ =&gt; None
 }
 </code></pre></div>
-      </div><div class="content" id="slide-103">
+      </div><div class="content" id="slide-49">
        <div class="container"><h2>do</h2><pre><code class="prettyprint lang-scala">val a:Option[String] = ...
 val b:Option[String] = ...
 
@@ -844,24 +422,74 @@ for{
   world &lt;- b
 } yield hello + &quot; &quot; + world
 </code></pre></div>
-      </div><div class="content" id="slide-104">
+      </div><div class="content" id="slide-50">
        <div class="container"><h1>Oppgavetid :-)</h1><p>Skriv ditt eget webrammeverk! (thats right)
 </p><p><a href="https://github.com/arktekk/scala-kurs-oppgaver/tree/master/webframework" >webframework</a>
 </p></div>
-      </div><div class="content" id="slide-105">
-       <div class="container"><h2>unfiltered</h2><ul><li>toolkit
-</li><li>pattern matching
-</li><li>jetty og netty backends
-</li><li>lettvekts
-</li></ul></div>
-      </div><div class="content" id="slide-106">
-       <div class="container"><h2>Plans and Intents</h2></div>
-      </div><div class="content" id="slide-107">
-       <div class="container"><h2>Http</h2></div>
-      </div><div class="content" id="slide-108">
-       <div class="container"><h2>Routing ##</h2></div>
-      </div><div class="content" id="slide-109">
-       <div class="container"><h2>Content negotiation</h2></div>
+      </div><div class="content" id="slide-51">
+       <div class="container"><h1>self types</h1><pre><code class="prettyprint lang-scala">trait A {
+  this:B =&gt;
+
+  def callB(){ bMethod() }
+}
+
+trait B {
+  def bMethod(){ println(&quot;I am B!&quot;)}
+}
+</code></pre></div>
+      </div><div class="content" id="slide-52">
+       <div class="container"><pre><code class="prettyprint lang-scala">new A with B{} // OK
+
+new A{}
+
+error: illegal inheritance;
+ self-type java.lang.Object with A does not conform to A's selftype A with B
+              new A{}
+                  ^
+</code></pre></div>
+      </div><div class="content" id="slide-53">
+       <div class="container"><h1>path-dependent types</h1><pre><code class="prettyprint lang-scala">trait A {
+  class Param
+  val param = new Param
+
+  def hi(param:Param){ println(&quot;Hi Param&quot;) }
+}
+
+object X1 extends A
+object X2 extends A
+
+X1.hi(X1.param)
+X2.hi(X2.param)
+
+X1.hi(X2.param)
+
+error: type mismatch;
+ found   : X2.Param
+ required: X1.Param
+              X1.hi(X2.param)
+                       ^
+</code></pre></div>
+      </div><div class="content" id="slide-54">
+       <div class="container"><h1>cake pattern</h1><pre><code class="prettyprint lang-scala">trait A { def sayHi() }
+
+trait AComponent { this:BComponent =&gt;
+  def a:A
+  class AImpl(name:String) extends A { 
+	def sayHi(){ 
+	  println(b.hi + &quot; &quot; + name) 
+	}
+  }
+}
+
+trait BComponent {
+  def b:B = new B{}
+  trait B{ def hi = &quot;Hi&quot; }
+}
+
+object ProdApp extends AComponent with BComponent {
+  val a = new AImpl(&quot;Prod&quot;)
+}
+</code></pre></div>
       </div>
           </div>
         </div>
