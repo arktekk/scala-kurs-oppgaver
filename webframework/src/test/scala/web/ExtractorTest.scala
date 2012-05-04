@@ -1,24 +1,24 @@
 package web
 
 import org.scalatest.FunSuite
-import org.scalatest.matchers.ShouldMatchers._
 import org.eclipse.jetty.server.Request
+import javax.servlet.http.HttpServletRequest
 
 class ExtractorTest extends FunSuite {
   
   test("Path matcher /"){
-    val request = new Request{
+    val request:HttpServletRequest = new Request{
       override def getRequestURI = "/"
     }
     
     request match {
-    //  case Path("/") =>
+//      case Path("/") =>
       case _ => fail()
     }
   }
   
   test("Path matcher /hello"){
-    val request = new Request{
+    val request:HttpServletRequest = new Request{
       override def getRequestURI = "/hello"
     }
     
@@ -29,7 +29,7 @@ class ExtractorTest extends FunSuite {
   }
   
   test("Method extractor"){
-    val request = new Request{
+    val request:HttpServletRequest = new Request{
       override def getMethod = "GET"
     }
     
@@ -40,7 +40,7 @@ class ExtractorTest extends FunSuite {
   }
   
   test("GET Method extractor"){
-    val request = new Request{
+    val request:HttpServletRequest = new Request{
       override def getMethod = "GET"
     }
     
@@ -51,7 +51,7 @@ class ExtractorTest extends FunSuite {
   }
   
   test("POST Method extractor"){
-    val request = new Request{
+    val request:HttpServletRequest = new Request{
       override def getMethod = "POST"
     }
     
@@ -73,7 +73,7 @@ class ExtractorTest extends FunSuite {
     import collection.JavaConverters._
     val params = Map("A" -> Array("1", "2"), "B" -> Array("3", "4"))
     
-    val request = new Request{
+    val request:HttpServletRequest = new Request{
       override def getParameterNames = params.keysIterator.asJavaEnumeration
       override def getParameter(name:String) = params.get(name).flatMap(_.headOption).orNull
       override def getParameterValues(name: String) = params.get(name).orNull
@@ -90,7 +90,7 @@ class ExtractorTest extends FunSuite {
     import collection.JavaConverters._
     val headers = Map("Accept" -> Seq("text/html", "application/xhtml+xml"))
     
-    val request = new Request{
+    val request:HttpServletRequest = new Request{
       override def getHeaders(name: String) = headers.get(name).flatten.iterator.asJavaEnumeration
       override def getHeaderNames = headers.keysIterator.asJavaEnumeration
       override def getHeader(name: String) = headers.get(name).flatMap(_.headOption).orNull
