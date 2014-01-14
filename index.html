@@ -36,17 +36,26 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section data-markdown="intro-1.md"  
+				<section>
+					<ul>
+						<li><a href="#/intro-1">Intro 1</a></li>
+						<li><a href="#/intro-2">Intro 2</a></li>
+					</ul>
+				</section>
+				
+				<section id="intro-1" 
+				         data-markdown="intro-1.md"  
 				         data-separator="^\n---\n"  
 				         data-vertical="^\n--\n"  
 				         data-notes="^Note:">
 				</section>
 				
-				<section data-markdown="intro-2.md"  
+				<section id="intro-2"
+				         data-markdown="intro-2.md"  
 				         data-separator="^\n---\n"  
 				         data-vertical="^\n--\n"  
 				         data-notes="^Note:">
-				</section>				
+				</section>
 			</div>
 
 		</div>
