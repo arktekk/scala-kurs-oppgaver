@@ -804,7 +804,7 @@ case class Branch(left:Tree, right:Tree) extends Tree
 case class Leaf(value:Int) extends Tree
 
 def sum(tree:Tree):Int = tree match {
-  case Branch(leaf, right) => sum(left) + sum(right)
+  case Branch(left, right) => sum(left) + sum(right)
   case Leaf(value) => value
 }
 
