@@ -1,6 +1,6 @@
 package music
 
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import xml.XML
 import org.scalatest.{FunSuite}
 

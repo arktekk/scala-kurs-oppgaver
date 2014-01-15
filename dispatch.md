@@ -1,4 +1,3 @@
-!SLIDE
 # [Dispatch](http://dispatch.databinder.net/Dispatch.html) #
 * scala [http](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) klient bibliotek
 * wrapper for [Apache Http client](http://hc.apache.org/httpcomponents-client-ga/index.html)
@@ -6,7 +5,7 @@
 * blocking, nio og google-appengine executors
 * integrerer med mye forskjellig som f.eks [TagSoup](http://ccil.org/~cowan/XML/tagsoup/)
 
-!SLIDE
+---
 
 * request builder - definerer request
 * handler - håndterer respons
@@ -20,7 +19,8 @@ val handler = request.as_str
 val result = Http(handler)
 ```
 
-!SLIDE
+---
+
 ## request ##
 ```scala
 url("http://www.yr.no") / "place" / "Norway" / "Telemark" 
@@ -29,7 +29,8 @@ url("http://www.yr.no") / "place" / "Norway" / "Telemark"
 url("http://sporing.posten.no/sporing.html") <<? Map("q" -> "123123123")
 ```
 
-!SLIDE
+---
+
 ## handlers ##
 ```scala
 val http = new Http
@@ -45,14 +46,16 @@ import tagsoup.TagSoupHttp._
 http(request </> ((xml:NodeSeq) => xml \\ "body" \ "@href") // vasket html og håndtert som xml
 ```
 
-!SLIDE
+---
+
 ## executors ##
 * Threadsafe m/threadpool  `Http / new Http with thread.Safety`
 * Current Thread           `new Http`
 * NIO                      `new nio.Http`
 * Google App Engine        `new gae.Http`
 
-!SLIDE
+---
+
 ## eksempel ##
 ```scala
 import xml._
@@ -76,6 +79,7 @@ http(url("http://beta.bring.no/sporing/sporing.xml") <<?
 // List(16,5)
 ```
 
-!SLIDE
+---
+
 ## Oppgavetid :-) ##
 [https://github.com/arktekk/scala-kurs-oppgaver/tree/master/music](https://github.com/arktekk/scala-kurs-oppgaver/tree/master/music)

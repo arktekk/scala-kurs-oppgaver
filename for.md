@@ -1,4 +1,3 @@
-!SLIDE
 ## for-comprehensions ##
 * konsis måte å jobbe med "collections" og lignende
 * haskell, python, erlang og mange andre har varianter
@@ -9,7 +8,8 @@
 	*`withFilter`
 * lettere ?
 
-!SLIDE
+---
+
 ## foreach ##
 ```scala
 for {
@@ -24,7 +24,8 @@ List(1, 2).foreach {
 }
 ```
 
-!SLIDE
+---
+
 ## map ##
 ```scala
 for {
@@ -34,7 +35,8 @@ for {
 List(1, 2).map(a => a + 1)
 ```
 
-!SLIDE
+---
+
 ## flatMap ##
 ```scala
 for {
@@ -52,7 +54,8 @@ List(1, 2).flatMap {
 }
 ```
 
-!SLIDE
+---
+
 ## withFilter ##
 ```scala
 for {
@@ -70,7 +73,8 @@ List(1, 2).flatMap {
 }
 ```
 
-!SLIDE
+---
+
 ## pattern matching ##
 ```scala
 val R = "\\d+".r
@@ -86,7 +90,8 @@ List("123", "abc", "321").withFilter {
 }
 ```
 
-!SLIDE
+---
+
 ## inline variabler ##
 ```scala
 for {
@@ -105,7 +110,8 @@ List(1, 2).map { a =>
 }
 ```
 
-!SLIDE
+---
+
 ## fordeler og ulemper ? ##
 * skrive
 * lese

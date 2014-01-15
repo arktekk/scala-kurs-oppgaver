@@ -1,11 +1,11 @@
-!SLIDE
 # typesystemet #
 * declaration-site variance
 * bounds
 * type variabler mm.
 * turing complete!
 
-!SLIDE
+---
+
 ## [variance][1] (wikipedia)##
 
 Within the type system of a programming language, covariance and contravariance refers to the ordering of types from narrower to wider and their interchangeability or equivalence in certain situations (such as parameters, generics, and return types).
@@ -16,21 +16,24 @@ Within the type system of a programming language, covariance and contravariance 
 
 [1]: http://en.wikipedia.org/wiki/Variance_(computer_science)
 
-!SLIDE
+---
+
 ## sub/super typing ##
 alle typer er 
 
 * subtyper av seg selv
 * supertyper av seg selv
 
-!SLIDE
+---
+
 ## invariance ##
 ```scala
 type X[T] // T er invariant
 ```
 `X[A]` kan benyttes for `X[B]` hvis `A == B`
 
-!SLIDE
+---
+
 ## +covariance ##
 ```scala
 type X[+T] // + betyr at T er covariant
@@ -38,14 +41,16 @@ type X[+T] // + betyr at T er covariant
 `X[A]` kan benyttes for `X[B]` hvis `A` er subtype av `B`
 
 
-!SLIDE
+---
+
 ## -contravariance ##
 ```scala
 type X[-T] // - betyr at T er contravariant 
 ```
 `X[A]` kan benyttes for `X[B]` hvis `A` er supertype av `B`
 
-!SLIDE
+---
+
 ## arvehierarki (gammelt nytt) ##
 ```scala
 class SuperType
@@ -59,7 +64,8 @@ x(new TheType)
 x(new SubType)   // ok
 ```
 
-!SLIDE
+---
+
 ## invariant ##
 ```scala
 class Invariant[A](a:A){
@@ -74,7 +80,8 @@ in(new Invariant[TheType])
 in(new Invariant[SubType])   // ikke ok
 ```
 
-!SLIDE
+---
+
 ## +covariant ##
 ```scala
 class Covariant[+A](a:A){
@@ -89,7 +96,8 @@ co(new Covariant[TheType])
 co(new Covariant[SubType])   // ok
 ```
 
-!SLIDE
+---
+
 ## -contravariant ##
 ```scala
 class Contravariant[-A](a:A){
@@ -104,12 +112,14 @@ contra(new Contravariant[TheType])
 contra(new Contravariant[SubType])   // ikke ok
 ```
 
-!SLIDE
+---
+
 ## type bounds ##
 * upper bound
 * lower bound
 
-!SLIDE
+---
+
 ## upper bound ##
 * beskriver subtype relasjon
 
@@ -117,8 +127,8 @@ contra(new Contravariant[SubType])   // ikke ok
 A <: B // A subtype av B
 ```
 
-!SLIDE
-```scala font-90
+---
+```scala
 class Foo
 class Bar extends Foo 
   
@@ -139,7 +149,8 @@ bars.set(new Foo)
 val strings = new Foos[String]("")
 ```
 
-!SLIDE
+---
+
 ## lower bound ##
 * beskriver supertype relasjon
 
@@ -160,7 +171,8 @@ val gen = new Generator[Foo]
 val foo:Foo = gen.next
 ```
 
-!SLIDE
+---
+
 ## eksempel med List ##
 ```scala
 sealed trait Lst[A]
@@ -169,7 +181,9 @@ case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
 
 Cons("Hello", Empty)
 ```
-!SLIDE
+
+---
+
 ```scala
 sealed trait Lst[A]
 case object Empty extends Lst[Nothing]
@@ -187,7 +201,8 @@ You may wish to define A as +A instead. (SLS 4.5)
 */
 ```
 
-!SLIDE
+---
+
 ```scala
 sealed trait Lst[+A]
 case object Empty extends Lst[Nothing]
@@ -196,7 +211,8 @@ case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
 Cons("Hello", Empty)
 ```
 
-!SLIDE
+---
+
 ```scala
 sealed trait Lst[+A]{ // ok, fixed it!
   def ::(a:A):Lst[A] = Cons(a, this)
@@ -208,7 +224,8 @@ case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
 "Hello" :: Empty
 ```
 
-!SLIDE
+---
+
 ```scala
 sealed trait Lst[+A]{
   def ::(a:A):Lst[A] = Cons(a, this)
@@ -223,7 +240,8 @@ covariant type A occurs in contravariant position in type A of value a
 */
 ```
 
-!SLIDE
+---
+
 ```scala
 sealed trait Lst[+A]{
   def ::[B >: A](b:B):Lst[B] = Cons(b, this) // ok, fixed it

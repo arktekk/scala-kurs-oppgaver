@@ -1,10 +1,10 @@
-!SLIDE
 # CanBuildFrom ??? #
 ```scala
 def map [B, That](f: (A) ⇒ B)(implicit bf: CanBuildFrom[Set[A], B, That]): That
 ```
 
-!SLIDE
+---
+
 ```scala
 trait Traversable[+A] extends TraversableLike[A, Traversable[A]] with ... {
   ...
@@ -23,7 +23,8 @@ trait TraversableLike[+A, +Repr] {
 }
 ```
 
-!SLIDE
+---
+
 ## implicit instanser av CanBuildFrom ##
 ```scala
 object BitSet extends BitSetFactory[BitSet] {  
@@ -39,7 +40,9 @@ object Set extends SetFactory[Set] {
 val b2:BitSet = BitSet(1, 2, 3).map(i => i * 2)
 val Set[String] = b2.map(i => i.toString)
 ```
-!SLIDE
+
+---
+
 ## [usecase] vs full ##
 ```scala
 trait Set[A]{
@@ -49,7 +52,8 @@ trait Set[A]{
 }
 ```
 
-!SLIDE
+---
+
 ## eksempel ##
 ```scala
 package lst2
@@ -76,7 +80,8 @@ object Lst extends SeqFactory[Lst] {
 
 ```
 
-!SLIDE
+---
+
 ```scala
 sealed trait Lst[+A]
   extends LinearSeq[A]

@@ -286,7 +286,7 @@ abc._3 // List(1, 2, 3)
 
 ## collections ##
 
-![collections](dag1/collections.png)
+![collections](img/collections.png)
 
 ---
 
@@ -305,11 +305,11 @@ val range  = 1 to 10
 
 ## mutable ##
 
-![mutable](dag1/mutable.png)
+![mutable](img/mutable.png)
 
 ## immutable
 
-![immutable](dag1/immutable.png)
+![immutable](img/immutable.png)
 
 ---
 

@@ -1,4 +1,3 @@
-!SLIDE
 # XML #
 * `<literal xml="support"/>`
 * kan navigeres som en collection (for-comprehensions)
@@ -6,8 +5,9 @@
 * ganske immutable (men ikke helt)
 * snodig arvehierarki
 
-!SLIDE
-```xml font-80
+---
+
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <weatherdata>
   <forecast>
@@ -28,7 +28,9 @@
         </time>
         ...
 ```
-!SLIDE
+
+---
+
 ```scala
 case class Time(from:String, to:String, title:String, body:String)
 
@@ -45,7 +47,8 @@ val forecasts = for {
 } yield Time(from.text, to.text, title.text, body.text)
 ```
 
-!SLIDE
+---
+
 ```scala
 <weatherdata>
   <forecast>
@@ -61,7 +64,8 @@ val forecasts = for {
 </weatherdata>
 ```
 
-!SLIDE
+---
+
 ```scala
 val obs = for {
   time  <- xml \\ "time"
@@ -74,5 +78,6 @@ val obs = for {
 //    synkende temperatur kan stedvis gi glattere veier fra natt til julaften.)
 ```
 
-!SLIDE
-![xml](xml/xml.png)
+---
+
+![xml](img/xml.png)

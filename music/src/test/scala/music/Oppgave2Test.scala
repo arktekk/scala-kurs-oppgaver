@@ -1,7 +1,7 @@
 package music
 
 import org.scalatest.FunSuite
-import org.scalatest.matchers.ShouldMatchers._
+import org.scalatest.Matchers._
 import xml.XML
 
 class Oppgave2Test extends FunSuite {

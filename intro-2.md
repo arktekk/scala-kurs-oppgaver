@@ -223,7 +223,7 @@ try{
 
 ---
 
-![pimp](dag1/pimp.png)
+![pimp](img/pimp.png)
 
 ---
 

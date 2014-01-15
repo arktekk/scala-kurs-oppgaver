@@ -1,19 +1,18 @@
-!SLIDE
 # pattern matching #
 * "switch på steroider"
 * destructuring & matching
 * vanlig blant funksjonelle språk som haskell, erlang, ml osv
 
+---
 
-
-!SLIDE
 # krav #
 * gitt en `List[List[Int]]`
 * når det første element er er en liste hvor første element er er 1, 2 eller 3, return det tallet
 * når det andre elementer i lista er en liste, returner det andre elementet i den listen hvis det eksisterer
 * ellers returner 0
 	
-!SLIDE
+---
+
 ```java
 public int f(List<List<Integer>> l){
   if(l != null){
@@ -35,7 +34,8 @@ public int f(List<List<Integer>> l){
 }
 ```
 
-!SLIDE
+---
+
 ```scala
 def f(l:List[List[Int]]) = l match {
   case List(List(x @ (1 | 2 | 3), _*), _*) => x
@@ -44,7 +44,8 @@ def f(l:List[List[Int]]) = l match {
 }
 ```
 
-!SLIDE
+---
+
 ## wildcard ##
 ```scala
 x match {
@@ -52,7 +53,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## variable ##
 ```scala
 x match {
@@ -60,7 +62,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## typed ##
 ```scala
 x match {
@@ -73,7 +76,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## binding ##
 ```scala
 x match {
@@ -81,7 +85,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## literal ##
 ```scala
 x match {
@@ -94,7 +99,8 @@ x match {
 
 ```
 
-!SLIDE
+---
+
 ## @switch ##
 ```scala
 (x: @switch) match {
@@ -104,7 +110,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## @switch ##
 ```scala
 (x: @switch) match {
@@ -116,7 +123,8 @@ x match {
 // error: could not emit switch for @switch annotated match
 ```
 
-!SLIDE
+---
+
 ## stable identifier ? ##
 ```scala
 val hello = "hello"
@@ -125,7 +133,8 @@ val hello = "hello"
 }
 ```
 
-!SLIDE
+---
+
 ## stable identifier ##
 ```scala
 val Hello = "hello"
@@ -133,7 +142,9 @@ val Hello = "hello"
   case Hello => // matcher ikke
 }
 ```
-!SLIDE
+
+---
+
 ## stable identifier ##
 ```scala
 def f(x:Int, y:Int) = x match {
@@ -141,7 +152,8 @@ def f(x:Int, y:Int) = x match {
 }
 ```
 
-!SLIDE
+---
+
 ## constructor ##
 ```scala
 case class Foo(a:String, b:Int)
@@ -151,7 +163,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## constructor ##
 ```scala
 case class Foo(a:String, b:Int)
@@ -162,7 +175,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## Algebraiske Data Typer ##
 ```scala
 sealed trait Tree
@@ -180,7 +194,8 @@ val tree = Branch(
 sum(tree)
 ```
 
-!SLIDE
+---
+
 ## tuple ##
 ```scala
 x match {
@@ -188,7 +203,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## tuple ##
 ```scala
 x match {
@@ -196,7 +212,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## sequences ##
 ```scala
 x match {
@@ -205,7 +222,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## sequences ##
 ```scala
 x match {
@@ -214,7 +232,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## extractors ##
 ```scala
 def unapply(a:A):Boolean
@@ -224,7 +243,8 @@ def unapply(a:A):Option[B]
 def unapplySeq(a:A):Option[Seq[B]]
 ```
 
-!SLIDE
+---
+
 ## unapply ##
 ```scala
 object Empty {
@@ -236,7 +256,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## unapply ##
 ```scala
 object Even {
@@ -249,7 +270,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ```java
 class Name{
   String first; String last;
@@ -269,7 +291,8 @@ object FirstLast {
 }
 ```
 
-!SLIDE
+---
+
 ## unapplySeq ##
 ```scala
 object Csv {
@@ -281,7 +304,8 @@ object Csv {
 }
 ```
 
-!SLIDE
+---
+
 ## extractor tree ##
 ```scala
 sealed trait Tree
@@ -303,7 +327,8 @@ object Leaf {
 }
 ```
 
-!SLIDE
+---
+
 ```scala
 def sum(tree:Tree):Int = tree match {
   case Branch(left, right) => sum(left) + sum(right)
@@ -311,7 +336,8 @@ def sum(tree:Tree):Int = tree match {
 }
 ```
 
-!SLIDE
+---
+
 ## infix ##
 ```scala
 case class XX(a:String, b:Int)
@@ -321,7 +347,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## infix ##
 ```scala
 case class ::[A](head:A, tail:List[A]) extends List[A] {
@@ -333,7 +360,8 @@ case class ::[A](head:A, tail:List[A]) extends List[A] {
 }
 ```
 
-!SLIDE
+---
+
 ## infix ##
 ```scala
 case class ::[A](head:A, tail:List[A]) extends List[A] {
@@ -345,7 +373,8 @@ case class ::[A](head:A, tail:List[A]) extends List[A] {
 }
 ```
 
-!SLIDE
+---
+
 ## infix ##
 ```scala
 object -> {
@@ -362,7 +391,8 @@ object -> {
 }
 ```
 
-!SLIDE
+---
+
 ## infix ##
 ```scala
 case class EX(l:List[String], num:Int, s:String)
@@ -372,7 +402,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## infix ##
 ```scala
 case class EX(l:List[String], num:Int, s:String)
@@ -382,7 +413,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## alternatives ##
 ```scala
 x match {
@@ -391,7 +423,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## alternatives ##
 ```scala
 try {
@@ -401,7 +434,8 @@ try {
 }
 ```
 
-!SLIDE
+---
+
 ## xml ##
 ```scala
 <foo>bar</foo> match {
@@ -409,7 +443,8 @@ try {
 }
 ```
 
-!SLIDE
+---
+
 ## guards ##
 ```scala
 x match {
@@ -417,7 +452,8 @@ x match {
 }
 ```
 
-!SLIDE
+---
+
 ## partial functions ##
 ```scala
 val pos:PartialFunction[Int, String] = {
@@ -431,7 +467,8 @@ pos(5)  // "5"
 pos(-1) // java.util.NoSuchElementException
 ```
 
-!SLIDE
+---
+
 ## partial functions ##
 ```scala
 val pos:PartialFunction[Int, String] = {
@@ -457,7 +494,8 @@ List("123", "abc", "321").collect{
 // List(123, 321)
 ```
 
-!SLIDE
+---
+
 ## functions ##
 ```scala
 List(-2, -1, 0, 1, 2).foldLeft(0){
@@ -466,7 +504,8 @@ List(-2, -1, 0, 1, 2).foldLeft(0){
 }
 ```
 
-!SLIDE
+---
+
 ## assignment ##
 ```scala
 val (minors, adults) = people.partition(_.age < 18)
@@ -475,7 +514,8 @@ val Email = "(.+)@(.+)".r
 val EMail(name, domain) = "foo@bar.com"
 ```
 
-!SLIDE
+---
+
 ## for-comprehensions ##
 ```scala
 object Even {
@@ -488,7 +528,8 @@ for{
 } yield number
 ```
 
-!SLIDE
+---
+
 ## erasure ##
 ```scala
 val list:List[Any] = List(1, 2, 3)
@@ -499,12 +540,8 @@ list match {
 }
 ```
 
-!SLIDE
-## #1133 ##
-`Exception in thread "main" java.lang.Error: 
-ch.epfl.lamp.fjbg.JCod$OffsetTooBigException: offset to big to fit in 16 bits: 55087`
+---
 
-!SLIDE
 ## don't ##
 ```scala
 val a:Option[Int] = ...
@@ -515,7 +552,8 @@ a match {
 }
 ```
 
-!SLIDE
+---
+
 ## do ##
 ```scala
 val a:Option[Int] = ...
@@ -523,7 +561,8 @@ val a:Option[Int] = ...
 a.map(i => i * 2)
 ```
 
-!SLIDE
+---
+
 ## don't ##
 ```scala
 val a:Option[String] = ...
@@ -535,7 +574,8 @@ val b:Option[String] = ...
 }
 ```
 
-!SLIDE
+---
+
 ## do ##
 ```scala
 val a:Option[String] = ...
