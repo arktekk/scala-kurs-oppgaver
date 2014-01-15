@@ -1,4 +1,7 @@
 # [Dispatch](http://dispatch.databinder.net/Dispatch.html) #
+
+---
+
 * scala [http](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) klient bibliotek
 * wrapper for [Apache Http client](http://hc.apache.org/httpcomponents-client-ga/index.html)
 * masse [symboler](http://www.flotsam.nl/dispatch-periodic-table.html), http dsl

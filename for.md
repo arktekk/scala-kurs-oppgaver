@@ -1,4 +1,7 @@
-## for-comprehensions ##
+# for-comprehensions
+
+---
+
 * konsis måte å jobbe med "collections" og lignende
 * haskell, python, erlang og mange andre har varianter
 * syntax sukker for 

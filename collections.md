@@ -1,4 +1,7 @@
-## [collections](http://www.scala-lang.org/api/current/index.html#scala.collection.package)
+# [collections](http://www.scala-lang.org/api/current/index.html#scala.collection.package)
+
+---
+
 ![collections](img/collections.png)
 
 ---

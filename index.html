@@ -16,13 +16,23 @@
 
 		<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
 		<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+		
+		<style type="text/css">
+			.reveal pre code {
+				max-height: none;
+			}
+			
+			.reveal .slides {
+				top: 47%;
+			}
+		</style>
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+			document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
 
 		<!--[if lt IE 9]>
@@ -48,6 +58,7 @@
 						<li><a href="#/pattern-matching">Pattern Matching</a></li>
 						<li><a href="#/types">Types</a></li>
 						<li><a href="#/xml">XML</a></li>
+						<li><a href="#/sql">SQL</a></li>
 					</ul>
 				</section>
 				
@@ -120,6 +131,13 @@
 				         data-vertical="^\n--\n"  
 				         data-notes="^Note:">
 				</section>
+				
+				<section id="sql"
+				         data-markdown="sql.md"  
+				         data-separator="^\n---\n"  
+				         data-vertical="^\n--\n"  
+				         data-notes="^Note:">
+				</section>
 			</div>
 
 		</div>
@@ -136,6 +154,8 @@
 				progress: true,
 				history: true,
 				center: true,
+				controls: false,
+				slideNumber: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none

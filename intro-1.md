@@ -190,6 +190,16 @@ a eq b // false (java ==)
 
 ---
 
+## string interpolation
+
+```scala
+val msg = "World"
+
+s"Hello ${world}"
+```
+
+---
+
 ## Java ##
 ```java
 class Person {
@@ -233,7 +243,7 @@ object Person {
 }
 
 class Person(val name: String, var age: Int){
-  override def toString = "["+name+","+age+"]"
+  override def toString = s"[$name,$age]"
 }
 
 ```

@@ -1,11 +1,14 @@
 # pattern matching #
+
+---
+
 * "switch på steroider"
 * destructuring & matching
 * vanlig blant funksjonelle språk som haskell, erlang, ml osv
 
 ---
 
-# krav #
+## krav
 * gitt en `List[List[Int]]`
 * når det første element er er en liste hvor første element er er 1, 2 eller 3, return det tallet
 * når det andre elementer i lista er en liste, returner det andre elementet i den listen hvis det eksisterer
@@ -39,7 +42,7 @@ public int f(List<List<Integer>> l){
 ```scala
 def f(l:List[List[Int]]) = l match {
   case List(List(x @ (1 | 2 | 3), _*), _*) => x
-  case List(_, List(_, x, _),_*) => x
+  case List(_, List(_, x, _*),_*) => x
   case _ => 0
 }
 ```

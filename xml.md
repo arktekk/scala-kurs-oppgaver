@@ -1,4 +1,7 @@
 # XML #
+
+---
+
 * `<literal xml="support"/>`
 * kan navigeres som en collection (for-comprehensions)
 * korrekt escaping
