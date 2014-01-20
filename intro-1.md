@@ -195,7 +195,7 @@ a eq b // false (java ==)
 ```scala
 val msg = "World"
 
-s"Hello ${world}"
+s"Hello ${msg}"
 ```
 
 ---
@@ -316,6 +316,8 @@ val range  = 1 to 10
 ## mutable ##
 
 ![mutable](img/mutable.png)
+
+---
 
 ## immutable
 

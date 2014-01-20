@@ -158,7 +158,8 @@ val strings = new Foos[String]("")
 A >: B // A supertype av B
 ```
 
-!SLIDE
+---
+
 ```scala
 class Foo
 class Bar extends Foo
@@ -190,7 +191,8 @@ case object Empty extends Lst[Nothing]
 case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
 
 Cons("Hello", Empty)
-
+```
+```
 /*
 found   : Empty.type (with underlying type object Empty)
 required: Lst[java.lang.String]

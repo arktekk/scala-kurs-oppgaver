@@ -169,7 +169,7 @@ trait FizzBuzz extends Rule {
 
 ---
 
-[traits](dag1/traits.png)
+[traits](img/traits.png)
 
 ---
 

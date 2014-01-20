@@ -1,7 +1,4 @@
 # sql
-
----
-
 * alt fra Java!
 * [Slick](http://slick.typesafe.com/)
 * [sqlτyped](https://github.com/jonifreeman/sqltyped)
@@ -11,23 +8,27 @@
 
 ## slick
 
+* fra typesafe
+* "tabeller er scala collections"
+
+---
+
 ```scala
 object Coffees extends Table[(String, Int, Double)]("COFFEES") {
-    def name  = column[String]("COF_NAME", O.PrimaryKey)
-    def supID = column[Int]("SUP_ID")
-    def price = column[Double]("PRICE")
-    def * = name ~ supID ~ price
-  }
+  def name  = column[String]("COF_NAME", O.PrimaryKey)
+  def supID = column[Int]("SUP_ID")
+  def price = column[Double]("PRICE")
+  def * = name ~ supID ~ price
+}
  
-  Coffees.insertAll(
-    ("Colombian",         101, 7.99),
-    ("Colombian_Decaf",   101, 8.99),
-    ("French_Roast_Decaf", 49, 9.99)
-  )
+Coffees.insertAll(
+  ("Colombian",         101, 7.99),
+  ("Colombian_Decaf",   101, 8.99),
+  ("French_Roast_Decaf", 49, 9.99))
  
-  val q = for {
-    c <- Coffees if c.supID === 101
-  } yield (c.name, c.price)
+val q = for {
+  c <- Coffees if c.supID === 101
+} yield (c.name, c.price)
 ```
 
 ---
@@ -35,22 +36,22 @@ object Coffees extends Table[(String, Int, Double)]("COFFEES") {
 ```scala
 case class Coffee(name: String, supID: Int, price: Double)
  
-  implicit val getCoffeeResult = GetResult(r => Coffee(r.<<, r.<<, r.<<))
+implicit val getCoffeeResult = GetResult(r => Coffee(r.<<, r.<<, r.<<))
  
-  Database.forURL("...") withSession {
-    Seq(
-      Coffee("Colombian", 101, 7.99),
-      Coffee("Colombian_Decaf", 101, 8.99),
-      Coffee("French_Roast_Decaf", 49, 9.99)
-    ).foreach(c => sqlu"""
-        insert into coffees values (${c.name}, ${c.supID}, ${c.price})
-      """).execute)
+Database.forURL("...") withSession {
+  Seq(
+    Coffee("Colombian", 101, 7.99),
+    Coffee("Colombian_Decaf", 101, 8.99),
+    Coffee("French_Roast_Decaf", 49, 9.99)
+  ).foreach(c => sqlu"""
+      insert into coffees values (${c.name}, ${c.supID}, ${c.price})
+    """).execute)
  
-    val sup = 101
-    val q = sql"select * from coffees where sup_id = $sup".as[Coffee]
-    //      A bind variable to prevent SQL injection ^
-    q.foreach(println)
-  }
+  val sup = 101
+  val q = sql"select * from coffees where sup_id = $sup".as[Coffee]
+  //      A bind variable to prevent SQL injection ^
+  q.foreach(println)
+}
 ```
 
 ---
@@ -76,11 +77,3 @@ q("30") map (_ get "name")
 
 q(30) map (_ get "name") // ok
 ```
-
-## Oppgave
-
-Lag ditt eget jdbc api :-D
-* java interop
-* string interpolation
-* functions
-* implicits

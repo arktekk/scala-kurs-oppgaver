@@ -6,15 +6,19 @@
 * destructuring & matching
 * vanlig blant funksjonelle språk som haskell, erlang, ml osv
 
+
 ---
+
 
 ## krav
 * gitt en `List[List[Int]]`
 * når det første element er er en liste hvor første element er er 1, 2 eller 3, return det tallet
 * når det andre elementer i lista er en liste, returner det andre elementet i den listen hvis det eksisterer
 * ellers returner 0
-	
+
+
 ---
+
 
 ```java
 public int f(List<List<Integer>> l){

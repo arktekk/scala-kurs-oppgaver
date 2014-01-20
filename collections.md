@@ -154,13 +154,10 @@ val mySet = new HashSet[String] with SynchronizedSet[String]
 sieve of eratosthenes
 
 ```scala
-def from(n: Int): Stream[Int] =
-  Stream.cons(n, from(n + 1))
-
 def sieve(s: Stream[Int]): Stream[Int] =
-  Stream.cons(s.head, sieve(s.tail filter { _ % s.head != 0 }))
+  Stream.cons(s.head, sieve(s.tail filterNot { _ % s.head == 0 }))
 
-def primes = sieve(from(2))
+def primes = sieve(Stream.from(2))
 ```
 
 ---

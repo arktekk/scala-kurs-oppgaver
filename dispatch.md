@@ -1,88 +1,62 @@
-# [Dispatch](http://dispatch.databinder.net/Dispatch.html) #
+# [Dispatch](http://dispatch.databinder.net/Dispatch.html)
+* http klient bygget på [async-http-client](https://github.com/AsyncHttpClient/async-http-client)
+* async, bruker [Futures](http://docs.scala-lang.org/overviews/core/futures.html)
+* bygg request -> eksekver -> håndter respons
+* retries
+* json, tagsoup etc..
+* ([Dispatch classic](http://dispatch-classic.databinder.net/Dispatch.html) bygger på [HttpClient](http://hc.apache.org/httpcomponents-client/))
 
 ---
-
-* scala [http](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) klient bibliotek
-* wrapper for [Apache Http client](http://hc.apache.org/httpcomponents-client-ga/index.html)
-* masse [symboler](http://www.flotsam.nl/dispatch-periodic-table.html), http dsl
-* blocking, nio og google-appengine executors
-* integrerer med mye forskjellig som f.eks [TagSoup](http://ccil.org/~cowan/XML/tagsoup/)
-
----
-
-* request builder - definerer request
-* handler - håndterer respons
-* executor - gjør selve kallet
 
 ```scala
-import dispatch._
+import dispatch._, Defaults._
 
-val request = url("http://www.yr.no/place/Norway/Telemark/Sauherad/Gvarv/forecast_hour_by_hour.xml")
-val handler = request.as_str
-val result = Http(handler)
+val svc = url("http://api.hostip.info/country.php")
+val country = Http(svc OK as.String)
+
+// non blocking foreach
+for (c <- country)
+  println(c)
+
+// blocking!
+val c = country()
+
+// map, flatMap etc. (non-blocking)
+val length = for (c <- country) yield c.length
 ```
 
 ---
 
-## request ##
+## request
 ```scala
-url("http://www.yr.no") / "place" / "Norway" / "Telemark" 
-	/ "Sauherad" / "Gvarv" / "forecast_hour_by_hour.xml"
+// legg til form-parameter
+def myPostWithParams = myPost.addParameter("key", "value")
 
-url("http://sporing.posten.no/sporing.html") <<? Map("q" -> "123123123")
+// POST + legg til form-parameter
+def myPostWithParams = myRequest << Map("key" -> "value")
+
+// POST body
+def myPostWithBody = myRequest << """{"key": "value"}"""
+
+// legg til query param
+def myRequestWithParams = myRequest.addQueryParameter("key", "value")
+
+// legg til query param
+def myRequestWithParams = myRequest <<? Map("key" -> "value")
+
+// PUT java.io.File
+def myPut = myRequest <<< myFile
 ```
 
 ---
 
-## handlers ##
+## response
+
 ```scala
-val http = new Http
-val request = url("http://scala-lang.org")
+Http(request OK as.String) //200 range, eller Failure
 
-http(request >>> System.out) // til OutputStream
+Http(request > as.String) //aksepterer alle
 
-http(request as_str) // som string
-
-http(request <> ((xml:Elem) => xml \ "foo" \ "bar") // håndtert som xml
-
-import tagsoup.TagSoupHttp._
-http(request </> ((xml:NodeSeq) => xml \\ "body" \ "@href") // vasket html og håndtert som xml
+def f(r:Response) = ...
+Http(request > f) //bruk min egen funksjon
 ```
-
----
-
-## executors ##
-* Threadsafe m/threadpool  `Http / new Http with thread.Safety`
-* Current Thread           `new Http`
-* NIO                      `new nio.Http`
-* Google App Engine        `new gae.Http`
-
----
-
-## eksempel ##
-```scala
-import xml._
-import dispatch._
-
-val http = new Http
-def parse(xml:Elem) = 
-  for {
-    consignment <- xml \ "Consignment"
-    totalweight <- consignment \ "TotalWeight"
-  } yield totalweight.text
-
-http(url("http://beta.bring.no/sporing/sporing.xml") <<? 
-	Map("q" -> "TESTPACKAGE-AT-PICKUPPOINT") <> parse)
-
-<ConsignmentSet xmlns="http://www.bring.no/sporing/1.0">
-  <Consignment consignmentId="SHIPMENTNUMBER">
-    <TotalWeight unitCode="kg">16.5</TotalWeight>
-      ..
-
-// List(16,5)
-```
-
----
-
-## Oppgavetid :-) ##
-[https://github.com/arktekk/scala-kurs-oppgaver/tree/master/music](https://github.com/arktekk/scala-kurs-oppgaver/tree/master/music)

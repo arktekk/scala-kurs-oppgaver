@@ -54,9 +54,9 @@ trait Set[A]{
 
 ---
 
-## eksempel ##
+## din egen collection ##
 ```scala
-package lst2
+package lst
 
 import collection.mutable.{Builder}
 import collection.immutable.LinearSeq
