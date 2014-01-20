@@ -1,5 +1,7 @@
 package sql
 
+import java.sql.ResultSet
+
 object Demo {
 
   def main(args:Array[String]) {
@@ -13,23 +15,20 @@ object Demo {
 
     jdbc.tx{ implicit tx =>
 
-    app.create
-    app.insert("Mr A")
-    app.insert("Mr B")
-    app.insert("Mr C")
+      app.create
+      app.insert("Mr A")
+      app.insert("Mr B")
+      app.insert("Mr C")
 
     }
 
     jdbc.tx{ implicit tx =>
       app.list.foreach(println)
     }
-
-
   }
-
 }
 
-case class User(id:Int, name:String)
+case class User(id:Int, name:Option[String])
 
 class DemoApp(jdbc:Jdbc){
   import jdbc._
@@ -38,5 +37,7 @@ class DemoApp(jdbc:Jdbc){
 
   def insert(name:String)(implicit s:Session) = sql"insert into user (name) values($name);".update
 
-  def list(implicit s:Session) = sql"select id, name from user".mapRow(rs => User(rs.getInt("id"), rs.getString("name")))
+  def getUser(rs:ResultSet) = User(rs.get[Int]("id"), rs.get[Option[String]]("name"))
+
+  def list(implicit s:Session) = sql"select id, name from user".mapRow(getUser)
 }
