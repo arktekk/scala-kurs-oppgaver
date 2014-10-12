@@ -2,7 +2,7 @@ name := "music"
 
 organization := "no.arktekk"
 
-version := "2.10.3"
+version := "2.11.2"
 
 libraryDependencies ++= Seq(
   "net.databinder" %% "dispatch-http" % "0.8.10",
