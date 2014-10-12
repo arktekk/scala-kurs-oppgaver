@@ -29,7 +29,7 @@
 
 ## *Ladies and gentlemen, start your engines..* ##
 * [IntelliJ](http://www.jetbrains.com/idea/) / [Eclipse](http://scala-ide.org/)
-* [SBT](https://github.com/harrah/xsbt/wiki/Getting-Started-Setup)
+* [SBT](http://www.scala-sbt.org/)
 * [Git](http://help.github.com/win-set-up-git/)
 * [https://github.com/arktekk/scala-kurs-oppgaver](https://github.com/arktekk/scala-kurs-oppgaver)
 
@@ -127,24 +127,24 @@ def something(i:Int):Unit = {
 
 ---
 
-## void/Unit metoder ##
+## void/Unit metoder (deprecated) ##
 ```scala
 def something(i:Int) {
   println("Do " + i)
 }
 
-// return type inference og ingen =
+// returnerer alltid Unit (ingen =)
 ```
 
 ---
 
 ## void/Unit uten parameter ##
 ```scala
-def printSomething(){
+def printSomething() = {
   println("something")
 }
 
-// () indikerer sideeffekt
+// () indikerer sideeffekt som konvensjon
 ```
 
 ---

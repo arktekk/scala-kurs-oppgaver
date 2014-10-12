@@ -1,7 +1,7 @@
 
 Årets Buzzword
 ===============
-Målet for denne oppgaven er å finne årets buzzword på JavaZone.
+Målet for denne oppgaven er å finne buzzwords fra JavaZone.
 
 Sammen med denne README-filen finner dere et skjelett man kan ta utgangspunkt i. Dette skjelettet består av et Scala-prosjekt med standard struktur, som bruker simple build tool (sbt) som byggeverktøy. En liten oversikt over sbt finner du i roten av git-repositoriet. 
 

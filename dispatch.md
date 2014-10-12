@@ -1,7 +1,7 @@
 # [Dispatch](http://dispatch.databinder.net/Dispatch.html)
 * http klient bygget på [async-http-client](https://github.com/AsyncHttpClient/async-http-client)
 * async, bruker [Futures](http://docs.scala-lang.org/overviews/core/futures.html)
-* bygg request -> eksekver -> håndter respons
+* bygg request -> definer response handling -> eksekver
 * retries
 * json, tagsoup etc..
 * ([Dispatch classic](http://dispatch-classic.databinder.net/Dispatch.html) bygger på [HttpClient](http://hc.apache.org/httpcomponents-client/))

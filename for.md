@@ -5,10 +5,10 @@
 * konsis måte å jobbe med "collections" og lignende
 * haskell, python, erlang og mange andre har varianter
 * syntax sukker for 
-	*`foreach`
-	*`map`
-	*`flatMap`
-	*`withFilter`
+  - `foreach`
+  - `map`
+  - `flatMap`
+  - `withFilter`
 * lettere ?
 
 ---
@@ -47,6 +47,7 @@ for {
   b <- List(3, 4)
   c <- List(5, 6)
 } yield a + b + c
+
 
 List(1, 2).flatMap {
   a => List(3, 4).flatMap {

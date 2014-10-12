@@ -169,7 +169,7 @@ trait FizzBuzz extends Rule {
 
 ---
 
-[traits](img/traits.png)
+![traits](img/traits.png)
 
 ---
 
@@ -227,7 +227,11 @@ try{
 
 ---
 
-## implicit conversions
+a.k.a 'Enrich my Library'
+
+---
+
+## adapter pattern
 ```scala
 class PlusMinus(i:Int){
   def +- (o:Int) = i-o to o+i
