@@ -48,18 +48,12 @@ class LstTest extends FunSuite with Checkers {
 
   test("apply"){
     check{ (i:Int, list:List[Int]) =>
-      list.isDefinedAt(i) ==> (list(i) == toLst(list)(i))
-    }
-
-    check{ (i:Int, list:List[Int]) =>
-      !list.isDefinedAt(i) ==> (try{
+      if(list.isDefinedAt(i)){
+        list(i) == toLst(list)(i)
+      } else throws(classOf[NoSuchElementException]){
         toLst(list)(i)
-        false
-      } catch {
-        case _:NoSuchElementException => true
-      })
+      }
     }
-
   }
 
   test("map"){
