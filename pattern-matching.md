@@ -10,7 +10,7 @@
 ---
 
 
-## krav
+## eksempel
 * gitt en `List[List[Int]]`
 * når det første element er er en liste hvor første element er er 1, 2 eller 3, return det tallet
 * når det andre elementer i lista er en liste, returner det andre elementet i den listen hvis det eksisterer
@@ -492,7 +492,8 @@ for(i <- -5 to 5)
   println(all(i))
 ```
 
-!SLIDE
+---
+
 ```scala
 val Num = "(\\d+)".r
 List("123", "abc", "321").collect{
@@ -594,7 +595,8 @@ for{
 } yield hello + " " + world
 ```
 
-!SLIDE
+---
+
 # Oppgavetid :-) #
 Skriv ditt eget webrammeverk! (thats right)
 

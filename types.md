@@ -192,21 +192,20 @@ case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
 
 Cons("Hello", Empty)
 ```
-```
-/*
-found   : Empty.type (with underlying type object Empty)
-required: Lst[java.lang.String]
-Note: Nothing <: java.lang.String (and Empty.type <: Lst[Nothing]), 
-but trait Lst is invariant in type A.
-You may wish to define A as +A instead. (SLS 4.5)
-    Cons("Hello", Empty)
-*/
+
+```scala
+// found   : Empty.type (with underlying type object Empty)
+// required: Lst[java.lang.String]
+// Note: Nothing <: java.lang.String (and Empty.type <: Lst[Nothing]), 
+// but trait Lst is invariant in type A.
+// You may wish to define A as +A instead. (SLS 4.5)
+//    Cons("Hello", Empty)
 ```
 
 ---
 
 ```scala
-sealed trait Lst[+A]
+sealed trait Lst[+A] // ok, fixed it
 case object Empty extends Lst[Nothing]
 case class Cons[A](head:A, tail:Lst[A]) extends Lst[A]
 
@@ -216,7 +215,7 @@ Cons("Hello", Empty)
 ---
 
 ```scala
-sealed trait Lst[+A]{ // ok, fixed it!
+sealed trait Lst[+A]{
   def ::(a:A):Lst[A] = Cons(a, this)
 }
 case object Empty extends Lst[Nothing]

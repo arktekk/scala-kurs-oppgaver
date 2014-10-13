@@ -72,8 +72,8 @@ inspiser implicits i scope med REPL
 	> :implicits
 	> :implicits -v
 
-
 ---
+
 
 ## adapters ##
 * Jorge's lov #2 "fixing a broken type hierarchy"
@@ -238,7 +238,7 @@ object Array {
   def apply(elms:A*)[A : ClassManifest]:Array[A] = ...
 }
 
-def create[A](a:A) = Array(a)                 // feiler
+def create[A](a:A) = Array(a)            // kompilerer ikke
 def create[A : ClassTag](a:A) = Array(a) // ok
 ```
 
