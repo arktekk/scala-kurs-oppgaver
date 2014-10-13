@@ -4,6 +4,7 @@
 
 * [json4s](https://github.com/json4s/json4s)
 * [argonaut](http://argonaut.io/)
+* [rapure](http://rapture.io)
 * og mange fler
 
 ---
@@ -68,4 +69,48 @@ val json: Json = person.asJson
 val prettyprinted: String = json.spaces2
 
 val parsed: Option[Person] = prettyprinted.decodeOption[Person]
+```
+
+---
+
+## rapture
+* samling av biblioteker / utilities
+* e.g io, crypt, json, xml ++
+
+---
+
+```
+{
+  "groups": [
+    {
+      "groupName": "The Beatles",
+      "members": [
+        { "name": "John Lennon", "born": 1940 },
+        { "name": "Paul McCartney", "born": 1942 },
+        { "name": "Ringo Starr", "born": 1940 },
+        { "name": "George Harrison", "born": 1943 }
+      ]
+     }
+  ]
+}
+```
+
+---
+
+```scala
+import rapture._
+import core._, io._, net._, uri._, json._, codec._
+
+// Read a file into a string
+import encodings.`UTF-8`
+val src = uri"http://rapture.io/sample.json".slurp[Char]
+
+// Parse it as Json
+import jsonBackends.jackson._
+val json = Json.parse(src)
+
+// Auto-extract a `Group` into a case class structure
+case class Member(name: String, born: Int)
+case class Group(groupName: String, members: Set[Member])
+json.groups(0).as[Group]
 ```
