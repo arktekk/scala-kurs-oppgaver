@@ -101,12 +101,4 @@ class ExtractorTest extends FunSuite {
       case _ => fail()
     }
   }
-  
-  /*
-    Lag en webapp for Music api'et du laget i går!
-    Det skal være mulig å 
-    (1)+søke etter band og liste ut album
-    (2)+liste ut sanger for et album (linkes til fra (1))
-    (3)+vise frem fulle lyrics for en sang (linkes til fra (2))    
-   */
 }

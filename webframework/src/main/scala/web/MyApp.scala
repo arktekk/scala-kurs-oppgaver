@@ -2,7 +2,7 @@ package web
 
 import xml.NodeSeq
 
-trait MusicWeb extends WebApp {
+trait MyApp extends WebApp {
    
   def handle = {
     case r => Status.OK andThen Render(r.getRequestURI){
@@ -20,8 +20,8 @@ trait MusicWeb extends WebApp {
   }
 }
 
-object MusicWeb extends MusicWeb
+object MyApp extends MyApp
 
-object RunMusicWeb extends App {    
-  WebServer run MusicWeb
+object RunMyApp extends App {    
+  WebServer run MyApp
 }
