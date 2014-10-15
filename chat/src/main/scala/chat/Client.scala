@@ -54,6 +54,10 @@ class Client extends Actor {
 
     // remote
     case Message(from, msg) => println(from + " :: " + msg)
+
+    case NickTaken(taken) => sender() ! Subscribe(taken + "1")
+
+    case StatusMessage(msg) => println("server-status => " + msg)
   }
 }
 
